@@ -1,0 +1,120 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heterogeneous treatment effects causal tree: a root node splits down to leaf segments, each with a small effect-size bar; one leaf and its bar are highlighted in violet as the discovered high-lift segment.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#13294f"/>
+      <stop offset="0.55" stop-color="#0f2036"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0891b2"/>
+      <stop offset="1" stop-color="#0e7490"/>
+    </linearGradient>
+    <linearGradient id="root" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="hot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c4b5fd"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#67e8f9"/>
+    </linearGradient>
+    <linearGradient id="barHot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#c4b5fd"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a78bfa" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="vig" x1="0" y1="0" x2="1" y2="0.55">
+      <stop offset="0" stop-color="#0b1220" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#0b1220" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- faint plotting grid -->
+  <g stroke="#cbe8f5" stroke-width="1" opacity="0.07">
+    <line x1="160" y1="40" x2="160" y2="400"/>
+    <line x1="320" y1="40" x2="320" y2="400"/>
+    <line x1="480" y1="40" x2="480" y2="400"/>
+    <line x1="640" y1="40" x2="640" y2="400"/>
+    <line x1="100" y1="120" x2="740" y2="120"/>
+    <line x1="100" y1="200" x2="740" y2="200"/>
+    <line x1="100" y1="280" x2="740" y2="280"/>
+  </g>
+  <!-- baseline axis -->
+  <line x1="80" y1="392" x2="740" y2="392" stroke="#cbe8f5" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- connector edges -->
+  <g fill="none" stroke="#22d3ee" stroke-width="2" opacity="0.55" stroke-linecap="round">
+    <!-- root -> two internal -->
+    <path d="M400,118 C400,150 250,150 250,182"/>
+    <path d="M400,118 C400,150 560,150 560,182"/>
+    <!-- left internal -> leaves -->
+    <path d="M250,218 C250,250 165,250 165,288"/>
+    <path d="M250,218 C250,250 335,250 335,288"/>
+    <!-- right internal -> leaves -->
+    <path d="M560,218 C560,250 475,250 475,288"/>
+    <path d="M560,218 C560,250 645,250 645,288"/>
+  </g>
+  <!-- highlighted edge path to hot leaf (right-most) -->
+  <path d="M400,118 C400,150 560,150 560,182" fill="none" stroke="#a78bfa" stroke-width="2.5" opacity="0.85"/>
+  <path d="M560,218 C560,250 645,250 645,288" fill="none" stroke="#a78bfa" stroke-width="2.5" opacity="0.9"/>
+
+  <!-- glow behind hot leaf -->
+  <ellipse cx="645" cy="306" rx="90" ry="80" fill="url(#glow)"/>
+
+  <!-- root node -->
+  <rect x="356" y="86" width="88" height="34" rx="9" fill="url(#root)"/>
+  <rect x="356" y="86" width="88" height="34" rx="9" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.5"/>
+  <circle cx="380" cy="103" r="4" fill="#0b1220" opacity="0.5"/>
+  <line x1="394" y1="98" x2="424" y2="98" stroke="#0b1220" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+  <line x1="394" y1="108" x2="416" y2="108" stroke="#0b1220" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+
+  <!-- internal split nodes -->
+  <g>
+    <rect x="214" y="184" width="72" height="32" rx="8" fill="url(#node)"/>
+    <rect x="214" y="184" width="72" height="32" rx="8" fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.45"/>
+    <line x1="228" y1="200" x2="272" y2="200" stroke="#cbe8f5" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+  </g>
+  <g>
+    <rect x="524" y="184" width="72" height="32" rx="8" fill="url(#node)"/>
+    <rect x="524" y="184" width="72" height="32" rx="8" fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.45"/>
+    <line x1="538" y1="200" x2="582" y2="200" stroke="#cbe8f5" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- leaf nodes (circles) with effect bars below -->
+  <!-- leaf A -->
+  <circle cx="165" cy="306" r="20" fill="url(#node)"/>
+  <circle cx="165" cy="306" r="20" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.5"/>
+  <rect x="129" y="338" width="32" height="7" rx="3.5" fill="url(#bar)" opacity="0.9"/>
+  <circle cx="129" cy="341.5" r="2.5" fill="#67e8f9"/>
+
+  <!-- leaf B -->
+  <circle cx="335" cy="306" r="20" fill="url(#node)"/>
+  <circle cx="335" cy="306" r="20" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.5"/>
+  <rect x="299" y="338" width="50" height="7" rx="3.5" fill="url(#bar)" opacity="0.9"/>
+  <circle cx="299" cy="341.5" r="2.5" fill="#67e8f9"/>
+
+  <!-- leaf C -->
+  <circle cx="475" cy="306" r="20" fill="url(#node)"/>
+  <circle cx="475" cy="306" r="20" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.5"/>
+  <rect x="439" y="338" width="22" height="7" rx="3.5" fill="url(#bar)" opacity="0.9"/>
+  <circle cx="439" cy="341.5" r="2.5" fill="#67e8f9"/>
+
+  <!-- leaf D — HOT highlighted segment -->
+  <circle cx="645" cy="306" r="23" fill="url(#hot)"/>
+  <circle cx="645" cy="306" r="23" fill="none" stroke="#c4b5fd" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="645" cy="306" r="29" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.45"/>
+  <path d="M645,296 l3,7 h7 l-6,5 2.5,8 -6.5,-5 -6.5,5 2.5,-8 -6,-5 h7 z" fill="#0b1220" opacity="0.55"/>
+  <rect x="609" y="340" width="68" height="9" rx="4.5" fill="url(#barHot)"/>
+  <circle cx="609" cy="344.5" r="3" fill="#c4b5fd"/>
+
+  <!-- top-left vignette so white pill tag stays readable -->
+  <rect x="0" y="0" width="300" height="120" fill="url(#vig)"/>
+</svg>

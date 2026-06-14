@@ -1,0 +1,125 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hierarchical Bayes shrinkage: several teal point estimates with confidence whiskers pulled inward by arrows toward a central global mean line, with the most-shrunk pooled estimate highlighted in violet.">
+  <defs>
+    <linearGradient id="hbBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#13294f"/>
+      <stop offset="0.5" stop-color="#0f2036"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <linearGradient id="hbMean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#67e8f9" stop-opacity="0.15"/>
+      <stop offset="0.5" stop-color="#22d3ee" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#67e8f9" stop-opacity="0.15"/>
+    </linearGradient>
+    <radialGradient id="hbDist" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hbPool" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c4b5fd" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hbVignette" x1="0" y1="0" x2="1" y2="0.45">
+      <stop offset="0" stop-color="#0b1220" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#0b1220" stop-opacity="0"/>
+    </linearGradient>
+    <marker id="hbArrow" markerWidth="7" markerHeight="7" refX="5.2" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#67e8f9"/>
+    </marker>
+    <marker id="hbArrowV" markerWidth="7" markerHeight="7" refX="5.2" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c4b5fd"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#hbBg)"/>
+
+  <!-- faint plotting grid -->
+  <g stroke="#cbe8f5" stroke-width="1" opacity="0.07">
+    <line x1="180" y1="60" x2="180" y2="372"/>
+    <line x1="320" y1="60" x2="320" y2="372"/>
+    <line x1="460" y1="60" x2="460" y2="372"/>
+    <line x1="600" y1="60" x2="600" y2="372"/>
+    <line x1="100" y1="120" x2="740" y2="120"/>
+    <line x1="100" y1="180" x2="740" y2="180"/>
+    <line x1="100" y1="240" x2="740" y2="240"/>
+    <line x1="100" y1="300" x2="740" y2="300"/>
+  </g>
+  <!-- brighter baseline axis -->
+  <line x1="100" y1="372" x2="740" y2="372" stroke="#cbe8f5" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- faint converging distribution curves behind, centered on the mean line -->
+  <g>
+    <ellipse cx="424" cy="225" rx="230" ry="150" fill="url(#hbDist)"/>
+    <path d="M150,360 C300,360 330,150 424,150 C518,150 548,360 698,360" fill="none" stroke="#67e8f9" stroke-width="1.2" opacity="0.12"/>
+    <path d="M230,360 C350,360 370,185 424,185 C478,185 498,360 618,360" fill="none" stroke="#67e8f9" stroke-width="1.2" opacity="0.16"/>
+  </g>
+
+  <!-- central global mean line -->
+  <line x1="424" y1="92" x2="424" y2="372" stroke="url(#hbMean)" stroke-width="2.4"/>
+  <circle cx="424" cy="92" r="3.2" fill="#22d3ee"/>
+
+  <!-- shrinkage estimates: each row has whisker CI, original dot, inward arrow, shrunk dot -->
+  <!-- Row 1 -->
+  <g>
+    <line x1="556" y1="118" x2="640" y2="118" stroke="#0891b2" stroke-width="2"/>
+    <line x1="556" y1="113" x2="556" y2="123" stroke="#0891b2" stroke-width="2"/>
+    <line x1="640" y1="113" x2="640" y2="123" stroke="#0891b2" stroke-width="2"/>
+    <line x1="588" y1="118" x2="512" y2="118" stroke="#67e8f9" stroke-width="1.6" opacity="0.85" marker-end="url(#hbArrow)"/>
+    <circle cx="598" cy="118" r="4" fill="#0e7490"/>
+    <circle cx="498" cy="118" r="5.2" fill="#06b6d4"/>
+    <circle cx="498" cy="118" r="5.2" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.6"/>
+  </g>
+  <!-- Row 2 -->
+  <g>
+    <line x1="228" y1="160" x2="304" y2="160" stroke="#0891b2" stroke-width="2"/>
+    <line x1="228" y1="155" x2="228" y2="165" stroke="#0891b2" stroke-width="2"/>
+    <line x1="304" y1="155" x2="304" y2="165" stroke="#0891b2" stroke-width="2"/>
+    <line x1="276" y1="160" x2="356" y2="160" stroke="#67e8f9" stroke-width="1.6" opacity="0.85" marker-end="url(#hbArrow)"/>
+    <circle cx="266" cy="160" r="4" fill="#0e7490"/>
+    <circle cx="370" cy="160" r="5.2" fill="#06b6d4"/>
+    <circle cx="370" cy="160" r="5.2" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.6"/>
+  </g>
+  <!-- Row 3 -->
+  <g>
+    <line x1="528" y1="202" x2="596" y2="202" stroke="#0891b2" stroke-width="2"/>
+    <line x1="528" y1="197" x2="528" y2="207" stroke="#0891b2" stroke-width="2"/>
+    <line x1="596" y1="197" x2="596" y2="207" stroke="#0891b2" stroke-width="2"/>
+    <line x1="552" y1="202" x2="476" y2="202" stroke="#67e8f9" stroke-width="1.6" opacity="0.85" marker-end="url(#hbArrow)"/>
+    <circle cx="562" cy="202" r="4" fill="#0e7490"/>
+    <circle cx="462" cy="202" r="5.2" fill="#06b6d4"/>
+    <circle cx="462" cy="202" r="5.2" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.6"/>
+  </g>
+  <!-- Row 4 — POOLED / most-shrunk, violet accent -->
+  <g>
+    <circle cx="424" cy="244" r="16" fill="url(#hbPool)"/>
+    <line x1="270" y1="244" x2="330" y2="244" stroke="#0891b2" stroke-width="2"/>
+    <line x1="270" y1="239" x2="270" y2="249" stroke="#0891b2" stroke-width="2"/>
+    <line x1="330" y1="239" x2="330" y2="249" stroke="#0891b2" stroke-width="2"/>
+    <line x1="316" y1="244" x2="404" y2="244" stroke="#c4b5fd" stroke-width="1.8" opacity="0.95" marker-end="url(#hbArrowV)"/>
+    <circle cx="300" cy="244" r="4" fill="#0e7490"/>
+    <circle cx="424" cy="244" r="6.4" fill="#a78bfa"/>
+    <circle cx="424" cy="244" r="6.4" fill="none" stroke="#c4b5fd" stroke-width="1.3"/>
+  </g>
+  <!-- Row 5 -->
+  <g>
+    <line x1="244" y1="286" x2="320" y2="286" stroke="#0891b2" stroke-width="2"/>
+    <line x1="244" y1="281" x2="244" y2="291" stroke="#0891b2" stroke-width="2"/>
+    <line x1="320" y1="281" x2="320" y2="291" stroke="#0891b2" stroke-width="2"/>
+    <line x1="290" y1="286" x2="368" y2="286" stroke="#67e8f9" stroke-width="1.6" opacity="0.85" marker-end="url(#hbArrow)"/>
+    <circle cx="280" cy="286" r="4" fill="#0e7490"/>
+    <circle cx="382" cy="286" r="5.2" fill="#06b6d4"/>
+    <circle cx="382" cy="286" r="5.2" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.6"/>
+  </g>
+  <!-- Row 6 -->
+  <g>
+    <line x1="540" y1="328" x2="624" y2="328" stroke="#0891b2" stroke-width="2"/>
+    <line x1="540" y1="323" x2="540" y2="333" stroke="#0891b2" stroke-width="2"/>
+    <line x1="624" y1="323" x2="624" y2="333" stroke="#0891b2" stroke-width="2"/>
+    <line x1="566" y1="328" x2="490" y2="328" stroke="#67e8f9" stroke-width="1.6" opacity="0.85" marker-end="url(#hbArrow)"/>
+    <circle cx="576" cy="328" r="4" fill="#0e7490"/>
+    <circle cx="476" cy="328" r="5.2" fill="#06b6d4"/>
+    <circle cx="476" cy="328" r="5.2" fill="none" stroke="#67e8f9" stroke-width="1" opacity="0.6"/>
+  </g>
+
+  <!-- top-left vignette to keep white pill tag readable -->
+  <rect x="0" y="0" width="300" height="120" fill="url(#hbVignette)"/>
+</svg>

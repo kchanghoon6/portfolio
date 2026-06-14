@@ -1,0 +1,113 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Time-series experiment cover: a teal time-series line wiggling across alternating teal and violet time blocks with an uncertainty band and a spike, on a deep slate-navy plotting grid.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#13294f"/>
+      <stop offset="0.5" stop-color="#0f2036"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0e7490"/>
+      <stop offset="0.45" stop-color="#06b6d4"/>
+      <stop offset="0.75" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#67e8f9"/>
+    </linearGradient>
+    <linearGradient id="bandFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#06b6d4" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#0b1220" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="spikeGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c4b5fd" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Alternating ABBA time blocks (faint teal / faint violet) -->
+  <g>
+    <rect x="100" y="80" width="160" height="280" fill="#06b6d4" opacity="0.055"/>
+    <rect x="260" y="80" width="160" height="280" fill="#a78bfa" opacity="0.07"/>
+    <rect x="420" y="80" width="160" height="280" fill="#a78bfa" opacity="0.07"/>
+    <rect x="580" y="80" width="160" height="280" fill="#06b6d4" opacity="0.055"/>
+  </g>
+
+  <!-- Faint plotting grid -->
+  <g stroke="#cbe8f5" stroke-width="1" opacity="0.07">
+    <line x1="180" y1="80" x2="180" y2="360"/>
+    <line x1="340" y1="80" x2="340" y2="360"/>
+    <line x1="500" y1="80" x2="500" y2="360"/>
+    <line x1="660" y1="80" x2="660" y2="360"/>
+    <line x1="100" y1="130" x2="740" y2="130"/>
+    <line x1="100" y1="190" x2="740" y2="190"/>
+    <line x1="100" y1="250" x2="740" y2="250"/>
+    <line x1="100" y1="310" x2="740" y2="310"/>
+  </g>
+
+  <!-- Block boundary ticks (subtle) -->
+  <g stroke="#cbe8f5" stroke-width="1" opacity="0.14">
+    <line x1="260" y1="80" x2="260" y2="360"/>
+    <line x1="420" y1="80" x2="420" y2="360"/>
+    <line x1="580" y1="80" x2="580" y2="360"/>
+  </g>
+
+  <!-- Brighter baseline axis -->
+  <line x1="100" y1="360" x2="740" y2="360" stroke="#cbe8f5" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- Uncertainty band around the time-series line -->
+  <path d="M100,228
+           C140,196 160,210 180,180
+           C210,134 230,164 260,142
+           C290,118 310,158 340,168
+           C370,178 390,128 420,150
+           C450,170 470,118 500,128
+           C530,138 545,80 560,108
+           C580,142 610,196 640,182
+           C670,168 700,214 740,196
+           L740,250
+           C700,266 670,222 640,238
+           C610,252 580,200 560,170
+           C545,144 530,200 500,192
+           C470,184 450,232 420,214
+           C390,196 370,244 340,234
+           C310,224 290,186 260,210
+           C230,234 210,206 180,250
+           C160,278 140,266 100,292 Z"
+        fill="url(#bandFill)"/>
+
+  <!-- Spike glow -->
+  <ellipse cx="555" cy="92" rx="46" ry="60" fill="url(#spikeGlow)"/>
+
+  <!-- Main time-series line (teal, wiggling, autocorrelated) -->
+  <path d="M100,250
+           C140,218 160,232 180,202
+           C210,156 230,186 260,164
+           C290,140 310,180 340,190
+           C370,200 390,150 420,172
+           C450,194 470,142 500,152
+           C530,162 545,90 560,118
+           C580,160 610,210 640,196
+           C670,182 700,234 740,216"
+        fill="none" stroke="url(#line)" stroke-width="3.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- The spike marker (violet treatment accent) -->
+  <line x1="555" y1="120" x2="555" y2="92" stroke="#c4b5fd" stroke-width="2" opacity="0.8"/>
+  <circle cx="555" cy="92" r="5" fill="#c4b5fd"/>
+  <circle cx="555" cy="92" r="9" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- A few sample dots along the line -->
+  <g fill="#67e8f9">
+    <circle cx="180" cy="202" r="3"/>
+    <circle cx="340" cy="190" r="3"/>
+    <circle cx="500" cy="152" r="3"/>
+    <circle cx="640" cy="196" r="3"/>
+  </g>
+
+  <!-- Top-left vignette so the white pill tag stays readable -->
+  <rect x="0" y="0" width="300" height="120" fill="url(#vignette)"/>
+</svg>
