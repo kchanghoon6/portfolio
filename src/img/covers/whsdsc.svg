@@ -1,41 +1,134 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Wharton High School Data Science Competition — ice hockey analytics">
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cinematic vector view looking down an ice-hockey rink: cool blue ice receding to a vanishing point with soft arena-light reflections and a faint analytics scatter and trend curve, red center line and foreshortened blue lines, center and end-zone faceoff circles, a far goal crease, in a deep navy arena with overhead light bloom and a soft stand structure.">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1e3a8a"/>
-      <stop offset="0.55" stop-color="#2563eb"/>
-      <stop offset="1" stop-color="#0ea5e9"/>
+    <linearGradient id="arena" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a1430"/><stop offset="0.4" stop-color="#0f2148"/><stop offset="1" stop-color="#15294e"/>
     </linearGradient>
-    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.14"/>
-    </pattern>
-    <linearGradient id="shade" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#0b1220" stop-opacity="0.42"/>
-      <stop offset="0.6" stop-color="#0b1220" stop-opacity="0"/>
+    <linearGradient id="ice" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#aecbef"/><stop offset="0.32" stop-color="#cfe0f7"/><stop offset="0.66" stop-color="#dbe8fa"/><stop offset="1" stop-color="#eef4fc"/>
     </linearGradient>
+    <radialGradient id="iceGlow" cx="0.5" cy="0.24" r="0.9">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.6"/><stop offset="0.36" stop-color="#eef4fc" stop-opacity="0.2"/><stop offset="1" stop-color="#c2d6f2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="iceSheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="topGlow" cx="0.5" cy="0" r="0.95">
+      <stop offset="0" stop-color="#2f6df0" stop-opacity="0.5"/><stop offset="0.45" stop-color="#1e40af" stop-opacity="0.14"/><stop offset="1" stop-color="#0b1736" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lampGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#eef4fc" stop-opacity="0.95"/><stop offset="0.45" stop-color="#9ec0f0" stop-opacity="0.38"/><stop offset="1" stop-color="#9ec0f0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lampCore" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/><stop offset="0.5" stop-color="#dbe8fa" stop-opacity="0.6"/><stop offset="1" stop-color="#dbe8fa" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="topVignette" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050d22" stop-opacity="0.82"/><stop offset="0.5" stop-color="#0b1736" stop-opacity="0.32"/><stop offset="1" stop-color="#0b1736" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="cornerVig" cx="0" cy="0" r="1">
+      <stop offset="0" stop-color="#030a1c" stop-opacity="0.85"/><stop offset="0.7" stop-color="#030a1c" stop-opacity="0.25"/><stop offset="1" stop-color="#030a1c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="boardL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#26489c"/><stop offset="0.55" stop-color="#16285a"/><stop offset="1" stop-color="#0b1736"/>
+    </linearGradient>
+    <linearGradient id="boardR" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0b1736"/><stop offset="0.45" stop-color="#16285a"/><stop offset="1" stop-color="#26489c"/>
+    </linearGradient>
+    <linearGradient id="boardTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9ec0f0" stop-opacity="0.7"/><stop offset="1" stop-color="#9ec0f0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="redLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e23b4e" stop-opacity="0.45"/><stop offset="0.5" stop-color="#e23b4e"/><stop offset="1" stop-color="#e23b4e" stop-opacity="0.45"/>
+    </linearGradient>
+    <linearGradient id="blueLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.42"/><stop offset="0.5" stop-color="#2563eb"/><stop offset="1" stop-color="#2563eb" stop-opacity="0.42"/>
+    </linearGradient>
+    <linearGradient id="trend" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0ea5e9" stop-opacity="0"/><stop offset="0.25" stop-color="#0ea5e9" stop-opacity="0.6"/><stop offset="0.75" stop-color="#38bdf8" stop-opacity="0.6"/><stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="iceClip"><path d="M 392 100 Q 396 99 404 100 L 468 150 L 742 430 L 58 430 L 332 150 Z"/></clipPath>
   </defs>
-  <rect width="800" height="450" fill="url(#g)"/>
-  <rect width="800" height="450" fill="url(#dots)"/>
-  <!-- faint rink markings -->
-  <g stroke="#ffffff" stroke-opacity="0.16" fill="none">
-    <circle cx="600" cy="225" r="120" stroke-width="3"/>
-    <line x1="600" y1="70" x2="600" y2="380" stroke-width="3"/>
-    <circle cx="600" cy="225" r="10" fill="#ffffff" fill-opacity="0.18" stroke="none"/>
-  </g>
-  <!-- crossed hockey sticks + puck -->
-  <g transform="translate(600,235)" opacity="0.92">
-    <!-- stick 1 -->
-    <g transform="rotate(28)">
-      <rect x="-12" y="-150" width="20" height="250" rx="10" fill="#ffffff" fill-opacity="0.9"/>
-      <path d="M -12 92 L -12 78 L 70 96 L 70 122 Z" fill="#ffffff" fill-opacity="0.9"/>
+
+  <rect x="0" y="0" width="800" height="450" fill="url(#arena)"/>
+
+  <g opacity="0.5">
+    <path d="M 0 196 L 800 196 L 800 214 L 0 214 Z" fill="#0b1c40"/>
+    <path d="M 0 214 L 800 214 L 800 236 L 0 236 Z" fill="#102451"/>
+    <g fill="#1a3066" opacity="0.55">
+      <rect x="30" y="198" width="40" height="14"/><rect x="86" y="198" width="40" height="14"/><rect x="142" y="198" width="40" height="14"/><rect x="198" y="198" width="40" height="14"/><rect x="254" y="198" width="40" height="14"/><rect x="310" y="198" width="40" height="14"/><rect x="450" y="198" width="40" height="14"/><rect x="506" y="198" width="40" height="14"/><rect x="562" y="198" width="40" height="14"/><rect x="618" y="198" width="40" height="14"/><rect x="674" y="198" width="40" height="14"/><rect x="730" y="198" width="40" height="14"/>
     </g>
-    <!-- stick 2 (mirrored) -->
-    <g transform="rotate(-28) scale(-1,1)">
-      <rect x="-12" y="-150" width="20" height="250" rx="10" fill="#ffffff" fill-opacity="0.78"/>
-      <path d="M -12 92 L -12 78 L 70 96 L 70 122 Z" fill="#ffffff" fill-opacity="0.78"/>
-    </g>
-    <!-- puck -->
-    <ellipse cx="0" cy="150" rx="34" ry="13" fill="#0b1220" fill-opacity="0.92"/>
-    <ellipse cx="0" cy="146" rx="34" ry="13" fill="#10203a"/>
-    <ellipse cx="0" cy="146" rx="34" ry="13" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+    <g fill="#16285a" opacity="0.6">
+      <rect x="58" y="216" width="44" height="16"/><rect x="118" y="216" width="44" height="16"/><rect x="178" y="216" width="44" height="16"/><rect x="238" y="216" width="44" height="16"/><rect x="298" y="216" width="44" height="16"/><rect x="458" y="216" width="44" height="16"/><rect x="518" y="216" width="44" height="16"/><rect x="578" y="216" width="44" height="16"/><rect x="638" y="216" width="44" height="16"/><rect x="698" y="216" width="44" height="16"/></g>
   </g>
+
+  <rect x="0" y="0" width="800" height="280" fill="url(#topGlow)"/>
+
+  <g>
+    <ellipse cx="400" cy="64" rx="190" ry="74" fill="url(#lampGlow)" opacity="0.75"/>
+    <ellipse cx="400" cy="60" rx="64" ry="22" fill="url(#lampCore)"/>
+    <ellipse cx="214" cy="56" rx="86" ry="34" fill="url(#lampGlow)" opacity="0.5"/>
+    <ellipse cx="214" cy="54" rx="26" ry="10" fill="url(#lampCore)" opacity="0.8"/>
+    <ellipse cx="586" cy="56" rx="86" ry="34" fill="url(#lampGlow)" opacity="0.5"/>
+    <ellipse cx="586" cy="54" rx="26" ry="10" fill="url(#lampCore)" opacity="0.8"/>
+  </g>
+
+  <path d="M 392 100 Q 396 99 404 100 L 468 150 L 742 430 L 58 430 L 332 150 Z" fill="url(#ice)"/>
+  <path d="M 392 100 Q 396 99 404 100 L 468 150 L 742 430 L 58 430 L 332 150 Z" fill="url(#iceGlow)"/>
+  <path d="M 392 100 Q 396 99 404 100 L 460 144 L 372 156 L 348 138 Z" fill="url(#iceSheen)" opacity="0.6"/>
+
+  <g clip-path="url(#iceClip)">
+    <g opacity="0.7">
+      <path d="M 360 168 L 440 168 L 660 430 L 140 430 Z" fill="#ffffff" opacity="0.12"/>
+      <path d="M 250 300 L 270 300 L 200 430 L 150 430 Z" fill="#9ec0f0" opacity="0.18"/>
+      <path d="M 530 300 L 550 300 L 650 430 L 600 430 Z" fill="#9ec0f0" opacity="0.18"/>
+    </g>
+
+    <g opacity="0.5">
+      <path d="M 280 240 L 520 240 L 540 270 L 260 270 Z" fill="#9ec0f0" opacity="0.16"/>
+    </g>
+
+    <g stroke="#0ea5e9" stroke-width="1.6" fill="none" opacity="0.32">
+      <path d="M 250 392 C 320 350 360 322 400 322 C 440 322 500 352 565 392"/>
+    </g>
+    <g stroke="#38bdf8" stroke-width="2.4" fill="none" opacity="0.4" stroke-linecap="round">
+      <path d="M 245 396 C 318 350 360 320 400 320 C 442 320 502 354 570 396"/>
+    </g>
+    <g fill="#0ea5e9" opacity="0.5">
+      <circle cx="262" cy="386" r="2.2"/><circle cx="300" cy="356" r="2.2"/><circle cx="338" cy="338" r="2.2"/><circle cx="372" cy="326" r="2.4"/><circle cx="412" cy="324" r="2.4"/><circle cx="452" cy="333" r="2.2"/><circle cx="492" cy="350" r="2.2"/><circle cx="534" cy="372" r="2.2"/><circle cx="566" cy="390" r="2.2"/>
+    </g>
+    <g fill="#7dd3fc" opacity="0.38">
+      <circle cx="318" cy="372" r="1.8"/><circle cx="356" cy="352" r="1.8"/><circle cx="392" cy="344" r="1.8"/><circle cx="432" cy="348" r="1.8"/><circle cx="472" cy="366" r="1.8"/><circle cx="288" cy="392" r="1.8"/><circle cx="512" cy="384" r="1.8"/>
+    </g>
+
+    <path d="M 342 162 L 458 162 L 460 168 L 340 168 Z" fill="url(#redLine)" opacity="0.92"/>
+
+    <polygon points="320,196 480,196 484,206 316,206" fill="url(#blueLine)"/>
+
+    <polygon points="262,272 538,272 546,289 254,289" fill="url(#redLine)"/>
+
+    <polygon points="206,368 594,368 602,386 198,386" fill="url(#blueLine)"/>
+
+    <ellipse cx="400" cy="280" rx="84" ry="29" fill="none" stroke="#2563eb" stroke-width="3.2" opacity="0.85"/>
+    <ellipse cx="400" cy="280" rx="84" ry="29" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
+    <ellipse cx="400" cy="280" rx="11" ry="3.8" fill="#e23b4e"/>
+
+    <g fill="#2563eb" opacity="0.7">
+      <ellipse cx="330" cy="210" rx="4.5" ry="1.7"/><ellipse cx="470" cy="210" rx="4.5" ry="1.7"/>
+      <ellipse cx="296" cy="293" rx="6" ry="2.2"/><ellipse cx="504" cy="293" rx="6" ry="2.2"/>
+    </g>
+
+    <g opacity="0.85">
+      <path d="M 372 152 A 28 9 0 0 1 428 152 L 428 152 L 372 152 Z" fill="#bcd6f6" opacity="0.5"/>
+      <path d="M 372 152 A 28 9 0 0 1 428 152" fill="none" stroke="#2563eb" stroke-width="2"/>
+      <line x1="372" y1="152" x2="428" y2="152" stroke="#2563eb" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <path d="M 332 150 L 58 430 L 30 430 L 314 148 Q 312 156 332 150 Z" fill="url(#boardL)"/>
+  <path d="M 468 150 L 742 430 L 770 430 L 486 148 Q 488 156 468 150 Z" fill="url(#boardR)"/>
+  <path d="M 332 150 L 314 148 Q 322 152 332 150 Z" fill="url(#boardTop)" opacity="0.5"/>
+  <path d="M 314 148 L 30 430 L 30 426 L 314 145 Z" fill="#5b86d6" opacity="0.35"/>
+  <path d="M 486 148 L 770 430 L 770 426 L 486 145 Z" fill="#5b86d6" opacity="0.35"/>
+
+  <rect x="0" y="0" width="800" height="160" fill="url(#topVignette)"/>
+  <rect x="0" y="0" width="360" height="200" fill="url(#cornerVig)"/>
 </svg>
