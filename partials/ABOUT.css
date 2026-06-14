@@ -1,0 +1,25 @@
+.about__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.about__para {
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+@media (min-width: 1024px) {
+  .about__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 3rem;
+    align-items: start;
+  }
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Anomaly Detection for IMU Streams">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b45309"/>
+      <stop offset="0.55" stop-color="#d97706"/>
+      <stop offset="1" stop-color="#ea580c"/>
+    </linearGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.16"/>
+    </pattern>
+    <linearGradient id="shade" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.38"/>
+      <stop offset="0.6" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <rect width="800" height="450" fill="url(#dots)"/>
+  <g opacity="0.4"><rect x="540" y="260" width="40" height="120" rx="6" fill="#ffffff" fill-opacity="0.45"/><rect x="595" y="200" width="40" height="180" rx="6" fill="#ffffff" fill-opacity="0.45"/><rect x="650" y="150" width="40" height="230" rx="6" fill="#ffffff" fill-opacity="0.45"/><rect x="705" y="230" width="40" height="150" rx="6" fill="#ffffff" fill-opacity="0.45"/></g>
+  <rect width="800" height="450" fill="url(#shade)"/>
+  <g font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace">
+    <rect x="56" y="56" rx="13" ry="13" height="30" width="146" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-opacity="0.5"/>
+    <text x="74" y="76" fill="#ffffff" font-size="14" letter-spacing="1.5" font-weight="600">STATISTICS</text>
+  </g>
+  <text x="56" y="320" fill="#ffffff" font-family="'Geist', ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="700" letter-spacing="-0.5"><tspan x="56" dy="0">Anomaly Detection for</tspan><tspan x="56" dy="40">IMU Streams</tspan></text>
+</svg>

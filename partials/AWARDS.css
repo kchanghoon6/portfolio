@@ -1,0 +1,30 @@
+/* Awards & certifications */
+.award__grid { margin-top: 2.25rem; }
+
+.award__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.award__text { min-width: 0; }
+
+.award__title {
+  font-size: 1.02rem;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+}
+
+.award__issuer {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.award__year {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--muted-2);
+}

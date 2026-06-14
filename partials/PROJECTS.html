@@ -1,0 +1,403 @@
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Selected work</p>
+      <h2 class="section-title">Featured projects</h2>
+      <p class="section-desc">A few projects I'm most proud of, spanning robotics, perception, and embedded ML.</p>
+    </div>
+
+    <div class="grid grid-3 proj-featured-grid">
+      <article class="card proj-card proj-card--featured reveal" data-category="robotics">
+        <div class="cover">
+          <img src="src-img/covers/autonomous-indoor-navigation.svg" alt="" loading="lazy" />
+          <span class="cover__tag">Robotics</span>
+        </div>
+        <div class="card__body">
+          <div class="proj-card__head">
+            <h3 class="proj-card__title">Autonomous Indoor Navigation Stack</h3>
+            <span class="proj-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </span>
+          </div>
+          <p class="proj-card__impact">Reliable point-to-point navigation in cluttered indoor spaces.</p>
+          <p class="proj-card__desc">A ROS2 + Nav2 stack with LiDAR-based SLAM and a tuned local planner that handles dynamic obstacles. Validated in Gazebo across procedurally generated rooms before hardware trials on a differential-drive base.</p>
+          <ul class="tags">
+            <li class="tag">ROS2</li>
+            <li class="tag">SLAM</li>
+            <li class="tag">Python</li>
+            <li class="tag">Robotics</li>
+          </ul>
+          <div class="proj-card__links">
+            <a class="icon-link" href="#">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+              GitHub
+            </a>
+            <a class="icon-link" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              Writeup
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card proj-card proj-card--featured reveal" data-category="DL" data-reveal-delay="120">
+        <div class="cover">
+          <img src="src-img/covers/hand-gesture-recognition.svg" alt="" loading="lazy" />
+          <span class="cover__tag">Deep Learning</span>
+        </div>
+        <div class="card__body">
+          <div class="proj-card__head">
+            <h3 class="proj-card__title">Real-Time Hand Gesture Recognition</h3>
+            <span class="proj-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </span>
+          </div>
+          <p class="proj-card__impact">Low-latency gesture control for touchless interfaces.</p>
+          <p class="proj-card__desc">A compact PyTorch classifier over MediaPipe hand landmarks with an OpenCV preprocessing front end. Runs at interactive frame rates on a laptop GPU and exposes a simple event API for downstream apps.</p>
+          <ul class="tags">
+            <li class="tag">PyTorch</li>
+            <li class="tag">OpenCV</li>
+            <li class="tag">Computer Vision</li>
+            <li class="tag">ML</li>
+          </ul>
+          <div class="proj-card__links">
+            <a class="icon-link" href="#">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+              GitHub
+            </a>
+            <a class="icon-link" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              Demo
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card proj-card proj-card--featured reveal" data-category="robotics" data-reveal-delay="240">
+        <div class="cover">
+          <img src="src-img/covers/sensor-fusion-logger.svg" alt="" loading="lazy" />
+          <span class="cover__tag">Robotics</span>
+        </div>
+        <div class="card__body">
+          <div class="proj-card__head">
+            <h3 class="proj-card__title">Sensor-Fusion Logger for Embedded Robots</h3>
+            <span class="proj-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </span>
+          </div>
+          <p class="proj-card__impact">Clean, synchronized multi-sensor datasets for training.</p>
+          <p class="proj-card__desc">A C++/Python pipeline that timestamps and aligns IMU and camera streams, with a lightweight web dashboard for live inspection. Designed to make downstream model training reproducible and painless.</p>
+          <ul class="tags">
+            <li class="tag">C++</li>
+            <li class="tag">Embedded</li>
+            <li class="tag">Firebase</li>
+            <li class="tag">React</li>
+          </ul>
+          <div class="proj-card__links">
+            <a class="icon-link" href="#">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="proj-archive">
+      <div class="section__head reveal">
+        <p class="eyebrow">Archive</p>
+        <h2 class="section-title">All projects</h2>
+      </div>
+
+      <div class="filters proj-filters reveal" role="group" aria-label="Filter projects by category">
+        <button class="filter" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="algorithm" aria-pressed="false">algorithm</button>
+        <button class="filter" data-filter="statistics" aria-pressed="false">statistics</button>
+        <button class="filter" data-filter="ML" aria-pressed="false">ML</button>
+        <button class="filter" data-filter="DL" aria-pressed="false">DL</button>
+        <button class="filter" data-filter="robotics" aria-pressed="false">robotics</button>
+      </div>
+
+      <div class="grid grid-3 proj-archive-grid" id="proj-archive-grid">
+        <article class="card proj-card reveal" data-category="robotics">
+          <div class="cover">
+            <img src="src-img/covers/autonomous-indoor-navigation.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Robotics</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">Autonomous Indoor Navigation Stack</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">Reliable point-to-point navigation in cluttered indoor spaces.</p>
+            <p class="proj-card__desc">A ROS2 + Nav2 stack with LiDAR-based SLAM and a tuned local planner that handles dynamic obstacles. Validated in Gazebo across procedurally generated rooms before hardware trials on a differential-drive base.</p>
+            <ul class="tags">
+              <li class="tag">ROS2</li>
+              <li class="tag">SLAM</li>
+              <li class="tag">Python</li>
+              <li class="tag">Robotics</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+                GitHub
+              </a>
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Writeup
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="DL" data-reveal-delay="80">
+          <div class="cover">
+            <img src="src-img/covers/hand-gesture-recognition.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Deep Learning</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">Real-Time Hand Gesture Recognition</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">Low-latency gesture control for touchless interfaces.</p>
+            <p class="proj-card__desc">A compact PyTorch classifier over MediaPipe hand landmarks with an OpenCV preprocessing front end. Runs at interactive frame rates on a laptop GPU and exposes a simple event API for downstream apps.</p>
+            <ul class="tags">
+              <li class="tag">PyTorch</li>
+              <li class="tag">OpenCV</li>
+              <li class="tag">Computer Vision</li>
+              <li class="tag">ML</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+                GitHub
+              </a>
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="robotics" data-reveal-delay="160">
+          <div class="cover">
+            <img src="src-img/covers/sensor-fusion-logger.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Robotics</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">Sensor-Fusion Logger for Embedded Robots</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">Clean, synchronized multi-sensor datasets for training.</p>
+            <p class="proj-card__desc">A C++/Python pipeline that timestamps and aligns IMU and camera streams, with a lightweight web dashboard for live inspection. Designed to make downstream model training reproducible and painless.</p>
+            <ul class="tags">
+              <li class="tag">C++</li>
+              <li class="tag">Embedded</li>
+              <li class="tag">Firebase</li>
+              <li class="tag">React</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="DL">
+          <div class="cover">
+            <img src="src-img/covers/monocular-depth-drones.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Deep Learning</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">Monocular Depth for Small Drones</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">Lightweight depth estimation under tight compute budgets.</p>
+            <p class="proj-card__desc">A distilled depth network optimized for onboard inference, trained with self-supervised photometric losses on flight footage.</p>
+            <ul class="tags">
+              <li class="tag">PyTorch</li>
+              <li class="tag">Computer Vision</li>
+              <li class="tag">Embedded</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="robotics" data-reveal-delay="80">
+          <div class="cover">
+            <img src="src-img/covers/grasp-planning-simulator.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Robotics</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">Grasp Planning Simulator</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">Faster iteration on manipulation policies in simulation.</p>
+            <p class="proj-card__desc">A Gazebo-based environment for benchmarking grasp strategies with scripted scene randomization and metrics logging.</p>
+            <ul class="tags">
+              <li class="tag">Gazebo</li>
+              <li class="tag">ROS2</li>
+              <li class="tag">Python</li>
+              <li class="tag">Robotics</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+                GitHub
+              </a>
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="statistics" data-reveal-delay="160">
+          <div class="cover">
+            <img src="src-img/covers/anomaly-detection-imu.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Statistics</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">Anomaly Detection for IMU Streams</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">Early warning for sensor faults on mobile robots.</p>
+            <p class="proj-card__desc">An unsupervised model flagging drift and dropout in inertial data, with thresholds calibrated from field recordings.</p>
+            <ul class="tags">
+              <li class="tag">scikit-learn</li>
+              <li class="tag">NumPy</li>
+              <li class="tag">ML</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Writeup
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="ML">
+          <div class="cover">
+            <img src="src-img/covers/pose-estimation-tool.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Machine Learning</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">Pose Estimation Annotation Tool</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">Cut keypoint labeling time roughly in half.</p>
+            <p class="proj-card__desc">A React + TypeScript tool with model-assisted suggestions and keyboard-first editing for fast, consistent keypoint labels.</p>
+            <ul class="tags">
+              <li class="tag">React</li>
+              <li class="tag">Next.js</li>
+              <li class="tag">TypeScript</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+                GitHub
+              </a>
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="ML" data-reveal-delay="80">
+          <div class="cover">
+            <img src="src-img/covers/tinyml-keyword-spotter.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Machine Learning</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">TinyML Keyword Spotter</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">On-device wake-word detection under 100KB.</p>
+            <p class="proj-card__desc">A quantized TensorFlow model deployed to a microcontroller, with a streaming feature extractor tuned for low power.</p>
+            <ul class="tags">
+              <li class="tag">TensorFlow</li>
+              <li class="tag">Embedded</li>
+              <li class="tag">ML</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="algorithm" data-reveal-delay="160">
+          <div class="cover">
+            <img src="src-img/covers/multi-robot-coordination.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Algorithm</span>
+          </div>
+          <div class="card__body">
+            <div class="proj-card__head">
+              <h3 class="proj-card__title">Multi-Robot Coordination Demo</h3>
+              <span class="proj-card__arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </span>
+            </div>
+            <p class="proj-card__impact">Conflict-free routing for a small robot fleet.</p>
+            <p class="proj-card__desc">A planner that assigns and deconflicts paths across multiple agents, visualized through a real-time dashboard.</p>
+            <ul class="tags">
+              <li class="tag">ROS2</li>
+              <li class="tag">Nav2</li>
+              <li class="tag">Python</li>
+              <li class="tag">Robotics</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+                GitHub
+              </a>
+              <a class="icon-link" href="#">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Writeup
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="proj-empty" id="proj-empty" hidden>No projects match this filter.</p>
+    </div>
+  </div>
+</section>

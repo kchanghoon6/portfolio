@@ -1,0 +1,115 @@
+/* ============================ NAVBAR =================================== */
+.nav {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 3.75rem;
+}
+
+/* Brand */
+.nav__brand {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  transition: color 0.16s ease;
+}
+.nav__brand:hover { color: var(--brand); }
+.nav__dot { color: var(--brand); }
+
+/* Desktop links — hidden on mobile, flex on >=768px */
+.nav__links { display: none; }
+
+.nav__link {
+  position: relative;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.16s ease;
+}
+.nav__link:hover { color: var(--fg); }
+.nav__link.is-active { color: var(--fg); }
+
+/* Subtle active indicator (desktop) */
+.nav__links .nav__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.45rem;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+}
+
+/* Right-side actions */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Mobile menu toggle — visible only <768px */
+.nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  color: var(--muted);
+  background: var(--surface);
+  transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease;
+}
+.nav__toggle:hover { color: var(--fg); background: var(--surface-2); }
+.nav__toggle svg { width: 1.2rem; height: 1.2rem; }
+
+/* Icon swap driven by aria-expanded */
+.nav__toggle .nav__icon-x { display: none; }
+.nav__toggle[aria-expanded="true"] .nav__icon-menu { display: none; }
+.nav__toggle[aria-expanded="true"] .nav__icon-x { display: block; }
+
+/* Mobile panel — only <768px */
+.nav__mobile {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.nav__mobile nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-block: 0.75rem 1rem;
+}
+.nav__mobile .nav__link {
+  padding: 0.7rem 0.25rem;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.nav__mobile .nav__link:last-child { border-bottom: 0; }
+.nav__mobile .nav__link.is-active {
+  color: var(--brand);
+}
+
+@media (min-width: 768px) {
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+  .nav__toggle { display: none; }
+  .nav__mobile { display: none; }
+}

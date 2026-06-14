@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Editor / tooling
+/.claude/
+
+# Node (only relevant if the Next.js source is ever built locally)
+node_modules/
+_src_nextjs/node_modules/
+_src_nextjs/.next/
+
+# Backups
+*.prev.jpg

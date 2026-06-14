@@ -1,0 +1,56 @@
+/* PUBLICATIONS & WRITING (.pub__) */
+.pub__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2.25rem;
+}
+
+.pub__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pub__title {
+  font-size: 1.12rem;
+  letter-spacing: -0.02em;
+}
+
+.pub__venue {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.01em;
+  color: var(--muted-2);
+  white-space: nowrap;
+}
+
+.pub__authors {
+  margin-top: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.pub__summary {
+  margin-top: 0.55rem;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.pub__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin-top: 1.1rem;
+}
+
+@media (min-width: 640px) {
+  .pub__header {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .pub__venue { padding-top: 0.1rem; }
+}
