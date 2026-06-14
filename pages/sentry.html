@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SENTRY — Low-Cost Bridge Anomaly Detection · Kim Changhoon</title>
+  <meta name="description" content="SENTRY — a low-cost MEMS-accelerometer system that screens small bridges for abnormal vibration, with temperature/humidity compensation and an explainable autoencoder anomaly detector. Korea Code Fair 2026." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script>
+    (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#detail-main">Skip to content</a>
+
+  <header class="detail-nav">
+    <div class="container detail-nav__inner">
+      <a class="detail-back" href="../index.html#projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        Back to portfolio
+      </a>
+      <div class="nav__actions">
+        <a class="detail-brand" href="../index.html#top">CK<span>.</span></a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+          <span class="icon-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
+          <span class="icon-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container detail" id="detail-main">
+    <p class="eyebrow">Project · Korea Code Fair 2026</p>
+    <h1 class="detail__title">SENTRY — Low-Cost Bridge Anomaly Detection</h1>
+    <div class="detail__meta">
+      <span>Developer (with an ML mentor)</span>
+      <span>한국코드페어 (Korea Code Fair) 2026</span>
+      <span>Python · PyTorch · Raspberry Pi</span>
+    </div>
+
+    <p class="detail__lead">SENTRY is a low-cost, always-on screening system that flags abnormal vibration in small and medium bridges. Original title: <em>"온습도 변화에 강인한 저비용 교량 진동 이상 탐지 시스템"</em> — a bridge vibration anomaly-detection system robust to temperature and humidity change. It is the most substantial project I'm currently building, developed for the 2026 Korea Code Fair as the first stage of a roadmap toward ISEF.</p>
+
+    <div class="detail__body">
+      <h2>The problem</h2>
+      <p>Small and medium bridges — pedestrian overpasses and minor road bridges — are a monitoring blind spot. Class-3 bridges alone are about <strong>64.5%</strong> of all bridges in Korea, yet they mostly rely on periodic <em>visual</em> inspection. Damage like corrosion, cracking and fatigue accumulates continuously, but inspections only sample the structure every few years, so changes between inspections can go unseen. The 2023 Jeongja Bridge collapse (Bundang, 1 death) and the 2022 Fern Hollow Bridge collapse (Pittsburgh) both involved damage that built up undetected between inspections — showing that "passed its last inspection" is not enough.</p>
+
+      <h2>What SENTRY does</h2>
+      <p>SENTRY is a <strong>first-line screening (auxiliary) system, not a replacement</strong> for precise inspection. Using a low-cost MEMS accelerometer (ADXL355Z), a temperature/humidity sensor (DHT22) and a Raspberry Pi 3 Model A+, it continuously watches a bridge's vibration, removes the part of the change that weather explains, and flags the remaining anomaly candidates — so limited inspection budget can be aimed at the bridges that most need a precise look.</p>
+
+      <h2>How it works</h2>
+      <ul class="bullets">
+        <li><strong>Vibration sensing &amp; features:</strong> a 3-axis MEMS accelerometer samples at 200&nbsp;Hz; FFT/STFT extract per-window spectral features (RMS, peak frequency and power, band energy) and track the bridge's first natural frequency.</li>
+        <li><strong>Environmental compensation:</strong> a healthy bridge's natural frequency naturally drifts with temperature and humidity. A multivariate regression learns that normal relationship, and anomaly detection runs on the <em>residual</em> — sharply cutting false alarms caused by weather rather than damage.</li>
+        <li><strong>Unsupervised autoencoder:</strong> trained only on normal-state residual features; a reconstruction error above a 99th-percentile threshold marks an anomaly candidate. Because it never needs damage data, it can start screening from day one.</li>
+        <li><strong>Explainable, band-wise alarms:</strong> instead of one opaque score, SENTRY reports <em>which</em> frequency band or mode drove the anomaly (band-wise reconstruction-error contribution, with optional SHAP) — so an inspector knows where to look first.</li>
+      </ul>
+
+      <h2>Validation</h2>
+      <p>SENTRY is validated on two tracks: the public <strong>Z24 Bridge Benchmark</strong> (KU Leuven), a widely used vibration-based SHM dataset with progressive-damage tests, and a <strong>custom foam-board bridge model</strong> where mass-distribution changes simulate structural change. The environmental-compensation step is cross-checked against the openLAB Research Bridge long-term monitoring dataset, so the same pipeline is tested on both public data and hardware I built and recorded myself.</p>
+
+      <h2>My role</h2>
+      <p>I designed and built the system end to end — the sensing hardware, the Python data logger, the signal-processing and environmental-compensation pipeline, the autoencoder detector, and the experiments — working alongside a machine-learning mentor. The full work description below documents the motivation, design, and methodology in detail.</p>
+    </div>
+
+    <div class="doc">
+      <div class="doc__head">
+        <h2>Work description (작품설명서)</h2>
+        <a class="icon-link" href="../docs/sentry-report.pdf" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          Open in new tab
+        </a>
+      </div>
+      <iframe class="doc__embed" src="../docs/sentry-report.pdf#view=FitH" title="SENTRY — work description (작품설명서)" loading="lazy"></iframe>
+      <p class="doc__note">Full work description submitted to the 2026 Korea Code Fair. Core source code (data logger, Z24 benchmark, anomaly-detection pipeline) is part of the competition submission.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p class="footer__brand">Kim Changhoon<span class="footer__dot">.</span></p>
+        <p class="footer__meta">&copy; <span id="footer-year">2026</span> &middot; Built as a static site with HTML, CSS &amp; JavaScript.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a class="footer__top" href="../index.html#projects">
+          Back to portfolio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

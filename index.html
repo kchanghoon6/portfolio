@@ -119,8 +119,39 @@
     <div class="section__head reveal">
       <p class="eyebrow">Selected work</p>
       <h2 class="section-title">Featured projects</h2>
-      <p class="section-desc">A few projects I'm most proud of, spanning robotics, perception, and embedded ML.</p>
+      <p class="section-desc">A few projects I'm most proud of, spanning structural-health AI, sports analytics, and embedded ML.</p>
     </div>
+
+    <article class="card proj-card proj-hero reveal" data-category="ML DL statistics">
+      <a class="cover proj-hero__cover" href="pages/sentry.html" aria-label="Open SENTRY bridge anomaly detection details">
+        <img src="src/img/covers/sentry.svg" alt="" loading="lazy" />
+        <span class="cover__tag">Structural Health</span>
+      </a>
+      <div class="card__body proj-hero__body">
+        <p class="proj-hero__kicker">Korea Code Fair 2026 · Flagship</p>
+        <div class="proj-card__head">
+          <h3 class="proj-card__title proj-hero__title">SENTRY — Low-Cost Bridge Anomaly Detection</h3>
+          <span class="proj-card__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </span>
+        </div>
+        <p class="proj-card__impact">Continuous vibration screening for small bridges, robust to temperature &amp; humidity.</p>
+        <p class="proj-card__desc">A low-cost MEMS-accelerometer system that flags abnormal bridge vibration. It learns how weather shifts a healthy bridge's natural frequency and compensates for it, then an autoencoder detects anomalies in the residual — with explainable, band-wise alarms that prioritize inspection. Validated on the public Z24 bridge benchmark and a custom bridge model.</p>
+        <ul class="tags">
+          <li class="tag">Python</li>
+          <li class="tag">PyTorch</li>
+          <li class="tag">Autoencoder</li>
+          <li class="tag">Signal Processing</li>
+          <li class="tag">Raspberry Pi</li>
+        </ul>
+        <div class="proj-card__links">
+          <a class="icon-link" href="pages/sentry.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            Details &amp; report
+          </a>
+        </div>
+      </div>
+    </article>
 
     <div class="grid grid-3 proj-featured-grid">
       <article class="card proj-card proj-card--featured reveal" data-category="statistics ML">
@@ -265,9 +296,83 @@
         <button class="filter" data-filter="ML" aria-pressed="false">ML</button>
         <button class="filter" data-filter="DL" aria-pressed="false">DL</button>
         <button class="filter" data-filter="robotics" aria-pressed="false">robotics</button>
+        <button class="filter" data-filter="webdev" aria-pressed="false">webdev</button>
       </div>
 
       <div class="grid grid-3 proj-archive-grid" id="proj-archive-grid">
+        <article class="card proj-card reveal" data-category="ML DL statistics">
+          <a class="cover" href="pages/sentry.html" aria-label="Open SENTRY details">
+            <img src="src/img/covers/sentry.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Structural Health</span>
+          </a>
+          <div class="card__body">
+            <h3 class="proj-card__title">SENTRY — Bridge Anomaly Detection</h3>
+            <p class="proj-card__impact">Low-cost vibration screening for small bridges.</p>
+            <p class="proj-card__desc">A MEMS-accelerometer + autoencoder system that flags abnormal bridge vibration, with temperature/humidity compensation and explainable, band-wise alarms. Korea Code Fair 2026.</p>
+            <ul class="tags">
+              <li class="tag">Python</li>
+              <li class="tag">PyTorch</li>
+              <li class="tag">Autoencoder</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="pages/sentry.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Details &amp; report
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="webdev">
+          <a class="cover" href="pages/csiasc.html" aria-label="Open csiasc.com details">
+            <img src="src/img/covers/cssc.png" alt="" loading="lazy" />
+            <span class="cover__tag">Webdev</span>
+          </a>
+          <div class="card__body">
+            <h3 class="proj-card__title">csiasc.com — Student Court Platform</h3>
+            <p class="proj-card__impact">A self-governance court &amp; petition site for my school.</p>
+            <p class="proj-card__desc">A Flask web app for CSIA's student self-governance court (자치법정) and the 청심신문고 petition system — case records, rules, member voting, petitions, and an admin dashboard. Built end-to-end; the live site is currently offline.</p>
+            <ul class="tags">
+              <li class="tag">Flask</li>
+              <li class="tag">Python</li>
+              <li class="tag">SQLite</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="pages/csiasc.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Details &amp; screenshots
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal" data-category="webdev">
+          <a class="cover" href="https://ywc.kr" target="_blank" rel="noopener noreferrer" aria-label="Visit ywc.kr">
+            <img src="src/img/covers/ywc.svg" alt="" loading="lazy" />
+            <span class="cover__tag">Webdev · Live</span>
+          </a>
+          <div class="card__body">
+            <h3 class="proj-card__title">ywc.kr — Youth Web Coalition</h3>
+            <p class="proj-card__impact">A live platform curating 1,600+ opportunities for students.</p>
+            <p class="proj-card__desc">Founder and developer of YWC — a Flask platform with four modes (Competitions, Pre-college, Volunteering, CSIA) cataloguing 594 competitions, 868 pre-college programs, and more, with heavy hands-on data curation. Live at ywc.kr.</p>
+            <ul class="tags">
+              <li class="tag">Flask</li>
+              <li class="tag">SQLAlchemy</li>
+              <li class="tag">JavaScript</li>
+            </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="https://ywc.kr" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Visit site
+              </a>
+              <a class="icon-link" href="pages/ywc.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Details
+              </a>
+            </div>
+          </div>
+        </article>
+
         <article class="card proj-card reveal" data-category="statistics ML">
           <a class="cover" href="pages/whsdsc.html" aria-label="Open Wharton Data Science Competition details">
             <img src="src/img/covers/whsdsc.svg" alt="" loading="lazy" />
@@ -769,6 +874,21 @@
 
     <ul class="grid grid-3 award__grid">
       <li class="reveal">
+        <article class="card">
+          <div class="card__body award__item">
+            <span class="icon-well">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </span>
+            <div class="award__text">
+              <h3 class="award__title">USA Computing Olympiad — Silver Division</h3>
+              <p class="award__issuer">USACO competitive programming</p>
+              <p class="award__year">2026</p>
+            </div>
+          </div>
+        </article>
+      </li>
+
+      <li class="reveal" data-reveal-delay="80">
         <article class="card">
           <div class="card__body award__item">
             <span class="icon-well">

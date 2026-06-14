@@ -421,6 +421,27 @@ html[data-theme='dark'] .theme-toggle .icon-moon { display: block; }
 }
 .doc__note { margin-top: 0.6rem; font-size: 0.8rem; color: var(--muted-2); }
 
+/* Screenshot gallery (used by webdev detail pages) */
+.shots { display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-top: 1.5rem; }
+@media (min-width: 640px) { .shots { grid-template-columns: 1fr 1fr; } }
+.shots figure { margin: 0; }
+.shots img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+}
+.shots figcaption { margin-top: 0.5rem; font-size: 0.82rem; color: var(--muted); }
+
+/* Status pill + visit button for detail pages */
+.detail__status {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.78rem; font-weight: 600; font-family: var(--font-mono);
+  padding: 0.2rem 0.6rem; border-radius: var(--radius-pill);
+}
+.detail__status--live { color: #15803d; background: rgba(34, 197, 94, 0.12); }
+.detail__status--offline { color: var(--muted); background: var(--surface-2); }
+.detail__status::before { content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: currentColor; }
+.detail__visit { margin-top: 1.9rem; }
+
 /* =======================================================================
    SECTION STYLES  (appended below during assembly)
    ======================================================================= */
@@ -719,6 +740,36 @@ html[data-theme='dark'] .theme-toggle .icon-moon { display: block; }
   margin-top: 1.5rem;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+/* SENTRY flagship hero card — wide, cover + content side by side */
+.proj-hero {
+  overflow: hidden;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+.proj-hero__cover { display: block; }
+.proj-hero__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--brand);
+  margin-bottom: 0.55rem;
+}
+.proj-hero__title { font-size: 1.3rem; }
+@media (min-width: 820px) {
+  .proj-hero { flex-direction: row; align-items: stretch; }
+  .proj-hero__cover {
+    width: 50%; flex: none;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  .proj-hero__cover img { height: 100%; }
+  .proj-hero__body {
+    flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 1.9rem 2.1rem;
+  }
 }
 
 /* ---- ABOUT ---- */

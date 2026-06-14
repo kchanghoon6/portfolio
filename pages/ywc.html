@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ywc.kr — Youth Web Coalition · Kim Changhoon</title>
+  <meta name="description" content="ywc.kr — a live Flask platform I founded that curates 1,600+ competitions, pre-college programs, volunteering and AP resources for CSIA students." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script>
+    (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#detail-main">Skip to content</a>
+
+  <header class="detail-nav">
+    <div class="container detail-nav__inner">
+      <a class="detail-back" href="../index.html#projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        Back to portfolio
+      </a>
+      <div class="nav__actions">
+        <a class="detail-brand" href="../index.html#top">CK<span>.</span></a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+          <span class="icon-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
+          <span class="icon-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container detail" id="detail-main">
+    <p class="eyebrow">Project · Web development</p>
+    <h1 class="detail__title">ywc.kr — Youth Web Coalition</h1>
+    <div class="detail__meta">
+      <span>Founder &amp; developer</span>
+      <span>Flask · SQLAlchemy · SQLite · Vanilla JS</span>
+      <span class="detail__status detail__status--live">live</span>
+    </div>
+
+    <p class="detail__lead">YWC is a live information platform I founded and built for students at CheongShim International Academy — a single place that catalogues opportunities and college-prep resources across four modes, backed by heavy, hands-curated data.</p>
+
+    <div class="detail__stats">
+      <div class="detail__stat"><b>594</b><span>Competitions</span></div>
+      <div class="detail__stat"><b>868</b><span>Pre-college programs</span></div>
+      <div class="detail__stat"><b>111</b><span>Volunteering listings</span></div>
+      <div class="detail__stat"><b>40</b><span>AP subjects</span></div>
+    </div>
+
+    <div class="detail__body">
+      <h2>Four modes</h2>
+      <ul class="bullets">
+        <li><strong>Competitions</strong> — 594 curated competitions across 9 categories and 32 subcategories, with eligibility and pathways.</li>
+        <li><strong>Pre-college</strong> — 868 summer/pre-college programs across 40 universities in 4 countries and 20 fields.</li>
+        <li><strong>Volunteering</strong> — 111 volunteering opportunities across categories and regions.</li>
+        <li><strong>CSIA</strong> — 40 AP subjects plus clubs and a roadmap tailored to the school.</li>
+      </ul>
+
+      <h2>Data quality is the hard part</h2>
+      <p>The value of YWC is in trustworthy data, so the competition list went through many QA cycles — for example pruning from ~900 down to 594 by removing unverified, duplicate, ineligible (e.g. college-only or US-only) or undersized entries, and correcting hundreds of fields (organizers, URLs, age ranges, eligibility). I built the catalogue, the seed pipelines, and the four-mode browsing experience.</p>
+
+      <h2>Tech</h2>
+      <p>Flask + SQLAlchemy + SQLite on the backend, vanilla JavaScript and CSS on the front end. The platform is live and in active use.</p>
+
+      <div class="detail__visit">
+        <a class="btn btn--primary" href="https://ywc.kr" target="_blank" rel="noopener noreferrer">
+          Visit ywc.kr
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p class="footer__brand">Kim Changhoon<span class="footer__dot">.</span></p>
+        <p class="footer__meta">&copy; <span id="footer-year">2026</span> &middot; Built as a static site with HTML, CSS &amp; JavaScript.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a class="footer__top" href="../index.html#projects">
+          Back to portfolio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

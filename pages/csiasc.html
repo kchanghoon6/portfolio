@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>csiasc.com — Student Self-Governance Court · Kim Changhoon</title>
+  <meta name="description" content="csiasc.com — a Flask web platform I built for my school's student self-governance court (자치법정) and the 청심신문고 petition system." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script>
+    (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#detail-main">Skip to content</a>
+
+  <header class="detail-nav">
+    <div class="container detail-nav__inner">
+      <a class="detail-back" href="../index.html#projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        Back to portfolio
+      </a>
+      <div class="nav__actions">
+        <a class="detail-brand" href="../index.html#top">CK<span>.</span></a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+          <span class="icon-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
+          <span class="icon-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container detail" id="detail-main">
+    <p class="eyebrow">Project · Web development</p>
+    <h1 class="detail__title">csiasc.com — Student Self-Governance Court</h1>
+    <div class="detail__meta">
+      <span>Builder · 자치법정 TF club</span>
+      <span>Flask · SQLite</span>
+      <span class="detail__status detail__status--offline">site offline</span>
+    </div>
+
+    <p class="detail__lead">A web platform I built end-to-end for my school's <strong>student self-governance court</strong> (학생자치법정) and the <strong>청심신문고</strong> student petition system at CheongShim International Academy. It digitizes how cases, rules, petitions and votes are managed, replacing scattered paper and message-board processes.</p>
+
+    <div class="detail__body">
+      <h2>What it does</h2>
+      <ul class="bullets">
+        <li><strong>Cases &amp; rules:</strong> public, searchable records of court cases and the school's self-governance rules.</li>
+        <li><strong>청심신문고 petitions &amp; voting:</strong> students submit petitions and vote, giving the student body a structured voice.</li>
+        <li><strong>Member accounts:</strong> registration and login for students and court members.</li>
+        <li><strong>Admin dashboard:</strong> staff manage cases, rules, members, reviews and petitions from one place.</li>
+        <li><strong>Responsive:</strong> works on phones for on-the-go access.</li>
+      </ul>
+
+      <h2>Tech</h2>
+      <p>Built with <strong>Flask</strong> and SQLite, deployed with gunicorn. I joined the 자치법정 TF club through this site. The production site (csiasc.com) is <strong>currently offline</strong>; the screenshots below show the running application.</p>
+
+      <h2>Screens</h2>
+      <div class="shots">
+        <figure><img src="../src/img/webdev/cssc/01_homepage.png" alt="csiasc.com homepage" loading="lazy" /><figcaption>Homepage</figcaption></figure>
+        <figure><img src="../src/img/webdev/cssc/02_cases.png" alt="Case records list" loading="lazy" /><figcaption>Court case records</figcaption></figure>
+        <figure><img src="../src/img/webdev/cssc/18_petition_form.png" alt="청심신문고 petition form" loading="lazy" /><figcaption>청심신문고 petition</figcaption></figure>
+        <figure><img src="../src/img/webdev/cssc/11_admin_dashboard.png" alt="Admin dashboard" loading="lazy" /><figcaption>Admin dashboard</figcaption></figure>
+        <figure><img src="../src/img/webdev/cssc/04_about.png" alt="About page" loading="lazy" /><figcaption>About</figcaption></figure>
+        <figure><img src="../src/img/webdev/cssc/22_mobile_home.png" alt="Mobile home screen" loading="lazy" /><figcaption>Mobile view</figcaption></figure>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p class="footer__brand">Kim Changhoon<span class="footer__dot">.</span></p>
+        <p class="footer__meta">&copy; <span id="footer-year">2026</span> &middot; Built as a static site with HTML, CSS &amp; JavaScript.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a class="footer__top" href="../index.html#projects">
+          Back to portfolio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

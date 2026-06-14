@@ -421,6 +421,27 @@ html[data-theme='dark'] .theme-toggle .icon-moon { display: block; }
 }
 .doc__note { margin-top: 0.6rem; font-size: 0.8rem; color: var(--muted-2); }
 
+/* Screenshot gallery (used by webdev detail pages) */
+.shots { display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-top: 1.5rem; }
+@media (min-width: 640px) { .shots { grid-template-columns: 1fr 1fr; } }
+.shots figure { margin: 0; }
+.shots img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+}
+.shots figcaption { margin-top: 0.5rem; font-size: 0.82rem; color: var(--muted); }
+
+/* Status pill + visit button for detail pages */
+.detail__status {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.78rem; font-weight: 600; font-family: var(--font-mono);
+  padding: 0.2rem 0.6rem; border-radius: var(--radius-pill);
+}
+.detail__status--live { color: #15803d; background: rgba(34, 197, 94, 0.12); }
+.detail__status--offline { color: var(--muted); background: var(--surface-2); }
+.detail__status::before { content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: currentColor; }
+.detail__visit { margin-top: 1.9rem; }
+
 /* =======================================================================
    SECTION STYLES  (appended below during assembly)
    ======================================================================= */

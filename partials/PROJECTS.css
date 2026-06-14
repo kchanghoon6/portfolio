@@ -60,3 +60,33 @@
   color: var(--muted);
   font-size: 0.95rem;
 }
+
+/* SENTRY flagship hero card — wide, cover + content side by side */
+.proj-hero {
+  overflow: hidden;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+.proj-hero__cover { display: block; }
+.proj-hero__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--brand);
+  margin-bottom: 0.55rem;
+}
+.proj-hero__title { font-size: 1.3rem; }
+@media (min-width: 820px) {
+  .proj-hero { flex-direction: row; align-items: stretch; }
+  .proj-hero__cover {
+    width: 50%; flex: none;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  .proj-hero__cover img { height: 100%; }
+  .proj-hero__body {
+    flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 1.9rem 2.1rem;
+  }
+}
