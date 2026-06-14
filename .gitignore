@@ -11,3 +11,6 @@ _src_nextjs/.next/
 
 # Backups
 *.prev.jpg
+
+# Stray macOS screenshots
+Screenshot *.png

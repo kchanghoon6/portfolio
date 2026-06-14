@@ -10,8 +10,8 @@ opt-in dark mode.
 index.html              # the whole page
 css/styles.css          # built stylesheet (foundation + all sections)
 js/main.js              # theme toggle, nav, scroll-spy, reveal, project filter
-src-img/profile.jpg     # profile photo
-src-img/covers/*.svg    # project cover art
+src/img/profile.jpg     # profile photo
+src/img/covers/*.svg    # project cover art
 assets/                 # favicons / icons
 .nojekyll               # tell GitHub Pages to serve files as-is
 
@@ -34,7 +34,7 @@ python3 assemble.py
 ```
 
 This regenerates `index.html` and `css/styles.css`. To change cover art, replace the
-SVGs in `src-img/covers/` (or drop in an image/`<video>` — each card's `.cover` slot
+SVGs in `src/img/covers/` (or drop in an image/`<video>` — each card's `.cover` slot
 accepts `<img>` or `<video>`).
 
 ## Preview locally
