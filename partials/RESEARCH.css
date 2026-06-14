@@ -1,32 +1,27 @@
-/* Research interests — section layout */
-.research__grid { margin-top: 2.5rem; }
+/* Activity — section layout */
+.activity-list { margin-top: 2.5rem; }
 
-.research__card-body {
+/* A single prominent activity card; stacks on mobile, goes horizontal on wider screens */
+.activity-card { overflow: hidden; }
+.activity-card__cover { display: block; }
+.activity-card__body {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.85rem;
+  justify-content: center;
 }
 
-.research__title {
-  font-size: 1.18rem;
-  letter-spacing: -0.02em;
-}
-
-.research__desc {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.card:hover .research__icon {
-  background: var(--brand);
-  color: var(--brand-fg);
-}
-.research__icon {
-  transition: background-color 0.18s ease, color 0.18s ease;
+@media (min-width: 760px) {
+  .activity-card { flex-direction: row; align-items: stretch; }
+  .activity-card__cover {
+    width: 44%;
+    flex: none;
+    aspect-ratio: auto;          /* fill the card height instead of 16:9 */
+    border-radius: 0;            /* card clips via overflow:hidden */
+  }
+  .activity-card__cover img { height: 100%; }
+  .activity-card__body { flex: 1; padding: 1.8rem 2rem; }
 }
 
 @media (min-width: 1024px) {
-  .research__grid { margin-top: 3rem; }
+  .activity-list { margin-top: 3rem; max-width: 60rem; }
 }

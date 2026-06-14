@@ -235,12 +235,14 @@ h1, h2, h3, h4 { font-weight: 650; line-height: 1.18; letter-spacing: -0.02em; }
 /* Cover media slot (image OR video) — sits at the top of media cards */
 .cover {
   position: relative;
+  display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: linear-gradient(135deg, var(--brand) 0%, var(--violet) 100%);
   border-top-left-radius: var(--radius-lg);
   border-top-right-radius: var(--radius-lg);
 }
+a.cover { cursor: pointer; }
 .cover img,
 .cover video {
   width: 100%; height: 100%;
@@ -344,6 +346,80 @@ html[data-theme='dark'] .filter[aria-pressed='true'] {
 .theme-toggle .icon-moon { display: none; }
 html[data-theme='dark'] .theme-toggle .icon-sun { display: none; }
 html[data-theme='dark'] .theme-toggle .icon-moon { display: block; }
+
+/* ============================ DETAIL PAGES ============================= */
+/* Shared by the standalone activity/project detail pages under /pages/.    */
+.detail-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.detail-nav__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; height: 3.75rem;
+}
+.detail-back {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.9rem; font-weight: 550; color: var(--muted);
+  transition: color 0.16s ease;
+}
+.detail-back:hover { color: var(--fg); }
+.detail-back svg { width: 1.05rem; height: 1.05rem; }
+.detail-brand { font-family: var(--font-mono); font-weight: 600; color: var(--fg); }
+.detail-brand span { color: var(--brand); }
+
+.detail { padding-block: clamp(2.5rem, 5vw, 3.75rem) 4.5rem; max-width: 58rem; }
+.detail__title { font-size: clamp(1.8rem, 4.2vw, 2.6rem); margin-top: 0.7rem; }
+.detail__meta {
+  margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem;
+  color: var(--muted); font-size: 0.9rem;
+}
+.detail__meta .icon-link { font-size: 0.9rem; }
+.detail__lead {
+  margin-top: 1.5rem; font-size: 1.12rem; line-height: 1.6; color: var(--fg-soft);
+}
+.detail__body > p { margin-top: 1rem; color: var(--muted); line-height: 1.7; }
+.text-link, .detail__body a:not(.icon-link) {
+  color: var(--brand); text-decoration: underline;
+  text-underline-offset: 2px; text-decoration-thickness: 1px;
+}
+.text-link:hover, .detail__body a:not(.icon-link):hover { color: var(--brand-strong); }
+.detail__body h2 { margin-top: 2.25rem; font-size: 1.2rem; }
+.detail__body ul.bullets { margin-top: 0.85rem; display: grid; gap: 0.5rem; }
+.detail__body ul.bullets li {
+  position: relative; padding-left: 1.1rem; color: var(--muted); line-height: 1.6;
+}
+.detail__body ul.bullets li::before {
+  content: ""; position: absolute; left: 0; top: 0.6rem;
+  width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--brand);
+}
+
+.detail__stats {
+  margin-top: 1.75rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;
+}
+@media (min-width: 640px) { .detail__stats { grid-template-columns: repeat(4, 1fr); } }
+.detail__stat {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.1rem;
+}
+.detail__stat b { display: block; font-size: 1.6rem; letter-spacing: -0.02em; }
+.detail__stat span { color: var(--muted); font-size: 0.78rem; }
+
+/* Embedded document viewers */
+.doc { margin-top: 2.75rem; }
+.doc__head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 0.8rem;
+}
+.doc__head h2 { font-size: 1.12rem; }
+.doc__embed {
+  width: 100%; height: min(82vh, 760px); min-height: 480px;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.doc__note { margin-top: 0.6rem; font-size: 0.8rem; color: var(--muted-2); }
 
 /* =======================================================================
    SECTION STYLES  (appended below during assembly)

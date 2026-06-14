@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wharton High School Data Science Competition · Kim Changhoon</title>
+  <meta name="description" content="Student Team Leader for the 2026 Wharton High School Data Science Competition — ice hockey performance prediction using a Poisson GLM, expected goals, and win-probability modeling." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script>
+    (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#detail-main">Skip to content</a>
+
+  <header class="detail-nav">
+    <div class="container detail-nav__inner">
+      <a class="detail-back" href="../index.html#projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        Back to portfolio
+      </a>
+      <div class="nav__actions">
+        <a class="detail-brand" href="../index.html#top">CK<span>.</span></a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+          <span class="icon-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
+          <span class="icon-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container detail" id="detail-main">
+    <p class="eyebrow">Project · Competition</p>
+    <h1 class="detail__title">2026 Wharton High School Data Science Competition</h1>
+    <div class="detail__meta">
+      <span>Student Team Leader · team of 3</span>
+      <span>Wharton Global Youth Program (WSABI)</span>
+      <span>Feb–Mar 2026</span>
+      <a class="icon-link" href="https://github.com/kchanghoon6/WHSDSC_2026" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
+        github.com/kchanghoon6/WHSDSC_2026
+      </a>
+    </div>
+
+    <p class="detail__lead">A team-based sports-analytics competition run by the Wharton Sports Analytics &amp; Business Initiative and the Wharton Global Youth Program. As Student Team Leader, I led a three-person team that stepped into the role of analytics staff for a simulated <em>World Hockey League</em>, predicting tournament outcomes from a full season of game data.</p>
+
+    <div class="detail__body">
+      <h2>The challenge</h2>
+      <p>We were given one simulated WHL season — 32 teams and 82 games each, for 1,312 games — where every game is broken down by the home and away teams' offensive lines and defensive pairings. The prompt set four tasks: (1a) power-rank the 32 teams and predict first-round matchup win probabilities, (1b) rank the top 10 teams by offensive-line quality disparity, (1c) communicate that disparity in a single visualization, and (1d) document the methodology.</p>
+
+      <h2>What we built</h2>
+      <ul class="bullets">
+        <li><strong>Power rankings &amp; win probabilities:</strong> a Poisson GLM estimating each team's attack and defensive-allowance effects to produce expected goals per matchup, then Round-1 home-win probabilities from the Skellam (goal-differential) distribution.</li>
+        <li><strong>Offensive-line quality disparity:</strong> an expected-goals rate (xG/60) for each offensive line, with a first-line-to-second-line ratio per team; regression-based rate estimates reduced usage and opponent confounding, and bootstrap confidence intervals flagged which disparities were robust.</li>
+        <li><strong>Visualization:</strong> a single scatter plot relating team strength to offensive-line disparity, labelling a readable subset of teams and marking whether each team's 95% CI crosses the no-disparity threshold of 1.0.</li>
+        <li><strong>Evaluation:</strong> model performance assessed with log loss and Brier score under 5-fold cross-validation, plus pipeline QA checks (expected row counts, valid joins, output bounds) for reproducibility.</li>
+      </ul>
+
+      <h2>My role &amp; outcome</h2>
+      <p>As Student Team Leader I coordinated the three-person team and owned the submission and analysis pipeline (Python). Our team participated in the competition and did not advance past Phase 1; the full code is published on <a class="text-link" href="https://github.com/kchanghoon6/WHSDSC_2026" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+    </div>
+
+    <div class="doc">
+      <div class="doc__head">
+        <h2>Certificate of participation</h2>
+        <a class="icon-link" href="../docs/whsdsc-credential.pdf" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          Open in new tab
+        </a>
+      </div>
+      <iframe class="doc__embed" src="../docs/whsdsc-credential.pdf#view=FitH" title="Wharton High School Data Science Competition — certificate of participation" loading="lazy"></iframe>
+      <p class="doc__note">Issued by The Wharton School of the University of Pennsylvania (Wharton Sports Analytics &amp; Business Initiative).</p>
+    </div>
+
+    <div class="doc">
+      <div class="doc__head">
+        <h2>Phase 1 submission — prompt &amp; our analysis</h2>
+        <a class="icon-link" href="../docs/whsdsc-phase1a-submission.pdf" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          Open in new tab
+        </a>
+      </div>
+      <iframe class="doc__embed" src="../docs/whsdsc-phase1a-submission.pdf#view=FitH" title="Wharton High School Data Science Competition — Phase 1 competition prompt and team submission" loading="lazy"></iframe>
+      <p class="doc__note">Excerpt of the Phase 1 submission: the competition prompt and our team's answers and methodology. Registration and team-contact pages have been removed to protect personal information.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p class="footer__brand">Kim Changhoon<span class="footer__dot">.</span></p>
+        <p class="footer__meta">&copy; <span id="footer-year">2026</span> &middot; Built as a static site with HTML, CSS &amp; JavaScript.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a class="footer__top" href="../index.html#projects">
+          Back to portfolio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
