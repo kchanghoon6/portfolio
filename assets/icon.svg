@@ -1,26 +1,5 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @media (prefers-color-scheme: light) {
-      .background { fill: black; }
-      .foreground { fill: white; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .background { fill: white; }
-      .foreground { fill: black; }
-    }
-  </style>
-  <g clip-path="url(#clip0_7960_43945)">
-    <rect class="background" width="180" height="180" rx="37" />
-    <g style="transform: scale(95%); transform-origin: center">
-      <path class="foreground"
-        d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z" />
-      <path class="foreground"
-        d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z" />
-    </g>
-  </g>
-  <defs>
-    <clipPath id="clip0_7960_43945">
-      <rect width="180" height="180" fill="white" />
-    </clipPath>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="CK — Kim Changhoon">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#4338ca"/></linearGradient></defs>
+  <rect width="100" height="100" rx="24" fill="url(#bg)"/>
+  <g transform="translate(17.00,65.61) scale(0.4288,-0.4288)" fill="#ffffff"><path d="M67.00 4.00Q61.81 1.31 56.20 -0.05Q50.59 -1.42 44.48 -1.42Q26.27 -1.42 15.62 8.77Q4.98 18.95 4.98 36.38Q4.98 53.86 15.62 64.03Q26.27 74.22 44.48 74.22Q50.59 74.22 56.20 72.84Q61.81 71.48 67.00 68.80L67.00 53.72Q61.77 57.28 56.69 58.94Q51.61 60.59 46.00 60.59Q35.94 60.59 30.17 54.14Q24.42 47.70 24.42 36.38Q24.42 25.09 30.17 18.64Q35.94 12.20 46.00 12.20Q51.61 12.20 56.69 13.86Q61.77 15.53 67.00 19.09L67.00 4.00ZM82.58 72.91L101.37 72.91L101.37 46.30L128.47 72.91L150.29 72.91L115.19 38.38L153.90 0.00L130.37 0.00L101.37 28.72L101.37 0.00L82.58 0.00L82.58 72.91Z"/></g>
 </svg>
