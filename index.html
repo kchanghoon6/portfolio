@@ -43,6 +43,7 @@
     <a class="nav__brand" href="#top">CK<span class="nav__dot">.</span></a>
 
     <nav class="nav__links" aria-label="Primary">
+      <span class="nav__indicator" aria-hidden="true"></span>
       <a class="nav__link" href="#projects">Projects</a>
       <a class="nav__link" href="#about">About</a>
       <a class="nav__link" href="#activity">Activity</a>
@@ -69,6 +70,8 @@
     </div>
   </div>
 
+  <span class="nav__progress" id="nav-progress" aria-hidden="true"></span>
+
   <div class="nav__mobile" id="nav-mobile" hidden>
     <nav class="container" aria-label="Mobile menu">
       <a class="nav__link" href="#projects">Projects</a>
@@ -84,14 +87,41 @@
 
   <main id="top">
     <section class="hero" aria-label="Introduction">
-  <div class="hero__wash" aria-hidden="true"></div>
+  <!-- Layered "instrument" backdrop: engineering grid + drifting aurora + a live anomaly-signal trace -->
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__aurora"></div>
+    <svg class="hero__signal" viewBox="0 0 1200 200" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="hero__signal-line" pathLength="1"
+        d="M0,134 C60,134 90,112 150,114 C210,116 240,150 300,148 C360,146 390,118 450,122 C510,126 540,146 600,140 C660,134 690,122 750,126 C810,130 840,144 900,138 C960,132 990,100 1050,108 C1110,116 1140,140 1200,134"
+        stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <circle class="hero__signal-dot hero__signal-dot--1" cx="1050" cy="108" r="3.5" fill="var(--violet)" />
+      <circle class="hero__signal-dot hero__signal-dot--2" cx="900" cy="138" r="3" fill="var(--brand)" />
+    </svg>
+  </div>
+
   <div class="container hero__inner">
-    <div class="hero__content reveal">
-      <p class="eyebrow hero__kicker">Machine Learning · Data Science · Full-Stack</p>
-      <h1 class="hero__name">Kim Changhoon</h1>
-      <p class="hero__headline">I build machine-learning and data systems — and ship the software around them to real users.</p>
-      <p class="hero__subtext">I'm a high-school student at CheongShim International Academy working across applied ML, statistics and causal inference, and full-stack web. I like taking a problem end to end — from raw data and modeling to a product people actually use.</p>
-      <div class="hero__actions">
+    <div class="hero__content">
+      <span class="hero__status reveal" data-reveal-delay="0">
+        <span class="hero__status-dot"></span>
+        Open to research &amp; collaboration
+      </span>
+
+      <p class="eyebrow hero__kicker reveal" data-reveal-delay="60">Machine Learning · Data Science · Full-Stack</p>
+
+      <h1 class="hero__name reveal" data-reveal-delay="120">Kim Changhoon</h1>
+
+      <p class="hero__rotator reveal" data-reveal-delay="180" aria-hidden="true">
+        <span class="hero__rotator-key">build:</span>
+        <span class="hero__rotator-track"
+          data-rotate='["bridge anomaly detection","causal inference &amp; A/B testing","sports analytics models","autonomous delivery robots","full-stack web platforms"]'>bridge anomaly detection</span><span class="hero__caret"></span>
+      </p>
+
+      <p class="hero__headline reveal" data-reveal-delay="240">I build machine-learning and data systems — and ship the software around them to <span class="hero__mark">real users<svg class="hero__mark-line" viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3,9 C40,4 96,3 140,6 C168,8 186,7 197,4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span>.</p>
+
+      <p class="hero__subtext reveal" data-reveal-delay="300">I'm a high-school student at CheongShim International Academy working across applied ML, statistics and causal inference, and full-stack web. I like taking a problem end to end — from raw data and modeling to a product people actually use.</p>
+
+      <div class="hero__actions reveal" data-reveal-delay="360">
         <a class="btn btn--primary" href="#projects">
           View Projects
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
@@ -105,11 +135,32 @@
           GitHub
         </a>
       </div>
+
+      <ul class="hero__stats reveal" data-reveal-delay="420">
+        <li class="hero__stat">
+          <b>USACO</b>
+          <span>Silver Division</span>
+        </li>
+        <li class="hero__stat">
+          <b>SENTRY</b>
+          <span>Korea Code Fair '26</span>
+        </li>
+        <li class="hero__stat">
+          <b>ywc.kr</b>
+          <span>live platform</span>
+        </li>
+      </ul>
     </div>
-    <div class="hero__photo-wrap reveal" data-reveal-delay="120">
+
+    <div class="hero__photo-wrap reveal" data-reveal-delay="200">
       <div class="hero__photo-glow" aria-hidden="true"></div>
+      <div class="hero__photo-ring" aria-hidden="true"></div>
       <div class="hero__photo-frame">
         <img src="src/img/profile.jpg" alt="Portrait of Kim Changhoon" class="hero__photo" width="720" height="900" loading="eager" />
+      </div>
+      <div class="hero__photo-chip" aria-hidden="true">
+        <span class="hero__chip-pulse"></span>
+        <span class="hero__chip-text"><b>Now</b> building SENTRY</span>
       </div>
     </div>
   </div>

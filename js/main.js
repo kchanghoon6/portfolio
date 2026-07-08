@@ -28,6 +28,34 @@
     });
   }
 
+  /* ----------------------- Hero "focus" typewriter ---------------------- */
+  var prefersReduced = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rotator = document.querySelector('.hero__rotator-track[data-rotate]');
+  if (rotator) {
+    var words = [];
+    try { words = JSON.parse(rotator.getAttribute('data-rotate')); } catch (e) { words = []; }
+    if (words.length > 1 && !prefersReduced) {
+      var wi = 0, ci = words[0].length, deleting = true;
+      var step = function () {
+        var word = words[wi];
+        if (deleting) {
+          ci--;
+          if (ci <= 0) { ci = 0; deleting = false; wi = (wi + 1) % words.length; return after(320); }
+          rotator.textContent = word.slice(0, ci);
+          after(40);
+        } else {
+          ci++;
+          rotator.textContent = word.slice(0, ci);
+          if (ci >= word.length) { deleting = true; return after(1700); }
+          after(72);
+        }
+      };
+      var after = function (ms) { setTimeout(step, ms); };
+      after(1700); // hold the initial word before cycling
+    }
+  }
+
   /* --------------------------- Mobile menu ------------------------------ */
   var navToggle = document.getElementById('nav-toggle');
   var navMobile = document.getElementById('nav-mobile');
@@ -63,6 +91,25 @@
     if (el && sections.indexOf(el) === -1) sections.push(el);
   });
 
+  /* Sliding "magic-line" indicator under the active desktop link */
+  var indicator = document.querySelector('.nav__indicator');
+  var linksWrap = document.querySelector('.nav__links');
+
+  function moveIndicator(link) {
+    if (!indicator || !linksWrap || !link) return;
+    var lr = link.getBoundingClientRect();
+    if (!lr.width) { indicator.classList.remove('is-on'); return; }
+    var wr = linksWrap.getBoundingClientRect();
+    indicator.style.setProperty('--ind-w', lr.width + 'px');
+    indicator.style.setProperty('--ind-x', (lr.left - wr.left) + 'px');
+    indicator.classList.add('is-on');
+  }
+  function syncIndicator() {
+    var a = linksWrap ? linksWrap.querySelector('.nav__link.is-active') : null;
+    if (a) moveIndicator(a);
+    else if (indicator) indicator.classList.remove('is-on');
+  }
+
   function setActive(id) {
     navLinks.forEach(function (l) {
       var on = l.getAttribute('href') === '#' + id;
@@ -70,7 +117,19 @@
       if (on) l.setAttribute('aria-current', 'true');
       else l.removeAttribute('aria-current');
     });
+    syncIndicator();
   }
+
+  // Hover follows the pointer; snaps back to the active link on leave.
+  if (indicator && linksWrap) {
+    Array.prototype.slice.call(linksWrap.querySelectorAll('.nav__link'))
+      .forEach(function (l) {
+        l.addEventListener('mouseenter', function () { moveIndicator(l); });
+      });
+    linksWrap.addEventListener('mouseleave', syncIndicator);
+    window.addEventListener('resize', syncIndicator);
+  }
+
   if (sections.length && 'IntersectionObserver' in window) {
     var spy = new IntersectionObserver(function (entries) {
       var vis = entries.filter(function (e) { return e.isIntersecting; })
@@ -120,6 +179,24 @@
       });
     });
   }
+
+  /* -------------------- Scroll progress + condensed nav ----------------- */
+  var siteNav = document.getElementById('site-nav');
+  var progress = document.getElementById('nav-progress');
+  var scrollTicking = false;
+  function onNavScroll() {
+    var st = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+    var ratio = Math.min(1, Math.max(0, st / max));
+    if (progress) progress.style.setProperty('--nav-progress', ratio.toFixed(4));
+    if (siteNav) siteNav.classList.toggle('is-scrolled', st > 24);
+    scrollTicking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!scrollTicking) { scrollTicking = true; window.requestAnimationFrame(onNavScroll); }
+  }, { passive: true });
+  window.addEventListener('resize', onNavScroll);
+  onNavScroll();
 
   /* Footer year */
   var y = document.getElementById('footer-year');

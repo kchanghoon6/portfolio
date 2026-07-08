@@ -1,52 +1,222 @@
 /* ============================== HERO =================================== */
+/* Animated conic ring angle (used by the photo rim) */
+@property --ring-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .hero {
   position: relative;
   overflow: hidden;
-  padding-top: clamp(7rem, 12vh, 9rem);
+  padding-top: clamp(7.5rem, 13vh, 9.5rem);
   padding-bottom: clamp(3.5rem, 8vw, 6rem);
 }
 
-/* Faint decorative brand wash behind the hero */
-.hero__wash {
+/* ---- Layered "instrument" backdrop ---- */
+.hero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background:
-    radial-gradient(60rem 32rem at 15% -10%, var(--brand-soft) 0%, transparent 60%),
-    radial-gradient(48rem 30rem at 100% 0%, color-mix(in srgb, var(--violet) 14%, transparent) 0%, transparent 55%);
-  opacity: 0.85;
+  overflow: hidden;
+}
+
+/* Faint engineering grid, strongest toward the top-right, fading behind the copy */
+.hero__grid {
+  position: absolute;
+  inset: -1px;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 46px 46px;
+  opacity: 0.7;
+  -webkit-mask-image: radial-gradient(115% 120% at 82% 18%, #000 0%, transparent 60%);
+          mask-image: radial-gradient(115% 120% at 82% 18%, #000 0%, transparent 60%);
+}
+
+/* Two soft brand blobs, slowly drifting for a living, atmospheric feel */
+.hero__aurora {
+  position: absolute;
+  inset: -25% -10% -10%;
+  filter: blur(72px);
+}
+.hero__aurora::before,
+.hero__aurora::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.hero__aurora::before {
+  width: 44rem; height: 34rem;
+  top: -10rem; left: -8rem;
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--brand) 32%, transparent), transparent 66%);
+  animation: heroAuroraA 19s ease-in-out infinite alternate;
+}
+.hero__aurora::after {
+  width: 40rem; height: 32rem;
+  top: -6rem; right: -9rem;
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--violet) 30%, transparent), transparent 64%);
+  animation: heroAuroraB 24s ease-in-out infinite alternate;
+}
+@keyframes heroAuroraA {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(4rem, 2rem, 0) scale(1.12); }
+}
+@keyframes heroAuroraB {
+  0%   { transform: translate3d(0, 0, 0) scale(1.05); }
+  100% { transform: translate3d(-3.5rem, 2.5rem, 0) scale(0.95); }
+}
+
+/* A calm "signal" trace, kept low and to the bottom-right so it never sits behind the copy */
+.hero__signal {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: clamp(110px, 16vw, 190px);
+  opacity: 0.4;
+  /* Diagonal fade: visible toward the bottom-right, gone under the left text column */
+  -webkit-mask-image: linear-gradient(to top left, #000 16%, transparent 62%);
+          mask-image: linear-gradient(to top left, #000 16%, transparent 62%);
+}
+.hero__signal-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: heroSignalDraw 3.2s cubic-bezier(0.22, 0.7, 0.2, 1) 0.35s forwards;
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--brand) 40%, transparent));
+}
+@keyframes heroSignalDraw { to { stroke-dashoffset: 0; } }
+
+.hero__signal-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0.75;
+  animation: heroDot 3.4s ease-in-out infinite;
+}
+.hero__signal-dot--2 { animation-delay: 1.2s; }
+@keyframes heroDot {
+  0%, 100% { transform: scale(0.7); opacity: 0.35; }
+  50%      { transform: scale(1.15); opacity: 0.9; }
 }
 
 .hero__inner {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: clamp(2.25rem, 5vw, 3.5rem);
+  gap: clamp(2.5rem, 5vw, 3.75rem);
   align-items: center;
 }
 
 /* ---- Text column ---- */
+/* Live status pill */
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--fg-soft);
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+}
+.hero__status-dot {
+  width: 0.52rem;
+  height: 0.52rem;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  animation: heroStatusPulse 2.4s ease-out infinite;
+}
+@keyframes heroStatusPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+  70%  { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
 .hero__kicker { margin-bottom: 1rem; }
 
 .hero__name {
-  font-size: clamp(2.4rem, 6.5vw, 3.75rem);
-  letter-spacing: -0.035em;
-  line-height: 1.04;
+  font-size: clamp(2.55rem, 6.8vw, 4rem);
+  letter-spacing: -0.038em;
+  line-height: 1.02;
+}
+
+/* Typewriter "focus" readout */
+.hero__rotator {
+  margin-top: 1.05rem;
+  min-height: 1.7em;
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 1.7vw, 1.18rem);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.hero__rotator-key {
+  color: var(--brand);
+  font-weight: 600;
+  margin-right: 0.55rem;
+}
+.hero__rotator-track {
+  color: var(--fg-soft);
+  font-weight: 550;
+}
+.hero__caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.05em;
+  margin-left: 0.12em;
+  vertical-align: -0.16em;
+  background: var(--brand);
+  border-radius: 1px;
+  animation: heroCaret 1.05s steps(1) infinite;
+}
+@keyframes heroCaret {
+  0%, 50%       { opacity: 1; }
+  50.01%, 100%  { opacity: 0; }
 }
 
 .hero__headline {
-  margin-top: 1.1rem;
+  margin-top: 1.2rem;
   max-width: 34rem;
-  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  font-size: clamp(1.22rem, 2.6vw, 1.62rem);
   font-weight: 550;
-  line-height: 1.28;
+  line-height: 1.3;
   letter-spacing: -0.02em;
   color: var(--fg-soft);
 }
 
+/* Hand-drawn marker underline on the payoff phrase */
+.hero__mark {
+  position: relative;
+  white-space: nowrap;
+  color: var(--brand-strong);
+  font-weight: 650;
+}
+.hero__mark-line {
+  position: absolute;
+  left: -3%;
+  bottom: -0.32em;
+  width: 106%;
+  height: 0.5em;
+  color: var(--violet);
+  overflow: visible;
+}
+.hero__mark-line path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: heroSignalDraw 0.9s ease-out 1.15s forwards;
+}
+
 .hero__subtext {
-  margin-top: 1.1rem;
+  margin-top: 1.15rem;
   max-width: 36rem;
   color: var(--muted);
   font-size: 1.02rem;
@@ -60,6 +230,45 @@
   gap: 0.75rem;
 }
 
+/* Credential strip */
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3rem 2.1rem;
+  max-width: 34rem;
+  margin-top: 2.1rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+}
+.hero__stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding-left: 0.85rem;
+}
+.hero__stat::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: 2px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(var(--brand), var(--violet));
+}
+.hero__stat b {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.hero__stat span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 /* ---- Photo column ---- */
 .hero__photo-wrap {
   position: relative;
@@ -69,14 +278,28 @@
 
 .hero__photo-glow {
   position: absolute;
-  inset: -12% -10% -6%;
+  inset: -14% -12% -8%;
   z-index: 0;
   pointer-events: none;
   background: linear-gradient(150deg, var(--brand) 0%, var(--violet) 100%);
-  opacity: 0.16;
-  filter: blur(34px);
+  opacity: 0.18;
+  filter: blur(36px);
   border-radius: var(--radius-lg);
 }
+
+/* Animated gradient rim just outside the frame */
+.hero__photo-ring {
+  position: absolute;
+  inset: -4px;
+  z-index: 0;
+  border-radius: calc(var(--radius-lg) + 4px);
+  background: conic-gradient(from var(--ring-angle),
+    var(--brand), var(--violet), color-mix(in srgb, var(--brand-soft) 70%, var(--brand)), var(--brand));
+  opacity: 0.9;
+  filter: blur(0.4px);
+  animation: heroRingSpin 9s linear infinite;
+}
+@keyframes heroRingSpin { to { --ring-angle: 360deg; } }
 
 .hero__photo-frame {
   position: relative;
@@ -96,7 +319,47 @@
   border-radius: calc(var(--radius-lg) - 0.4rem);
 }
 
-/* ---- Responsive: two-column from 900px ---- */
+/* Floating "now" chip */
+.hero__photo-chip {
+  position: absolute;
+  z-index: 2;
+  left: -0.65rem;
+  bottom: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--fg-soft);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  animation: heroChipFloat 5.5s ease-in-out infinite;
+}
+.hero__chip-text b { color: var(--brand); font-weight: 600; margin-right: 0.15rem; }
+.hero__chip-pulse {
+  width: 0.46rem;
+  height: 0.46rem;
+  border-radius: 50%;
+  background: var(--violet);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--violet) 55%, transparent);
+  animation: heroChipPulse 2.4s ease-out infinite;
+}
+@keyframes heroChipPulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--violet) 50%, transparent); }
+  70%  { box-shadow: 0 0 0 5px color-mix(in srgb, var(--violet) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--violet) 0%, transparent); }
+}
+@keyframes heroChipFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ---- Responsive ---- */
 @media (min-width: 640px) {
   .hero__photo-wrap { width: clamp(260px, 42vw, 320px); }
 }
@@ -110,4 +373,29 @@
     justify-self: end;
     width: clamp(280px, 30vw, 360px);
   }
+}
+
+/* Smaller screens: keep the floating chip from spilling off-canvas */
+@media (max-width: 420px) {
+  .hero__photo-chip { left: 0.4rem; bottom: 0.6rem; font-size: 0.68rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__aurora::before,
+  .hero__aurora::after,
+  .hero__signal-blip,
+  .hero__signal-dot,
+  .hero__status-dot,
+  .hero__caret,
+  .hero__photo-ring,
+  .hero__photo-chip,
+  .hero__chip-pulse {
+    animation: none !important;
+  }
+  .hero__signal-line,
+  .hero__mark-line path {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+  .hero__caret { opacity: 1; }
 }
