@@ -114,10 +114,9 @@
 /* Interactive version timeline */
 .sentry-version-explorer { position: relative; }
 .sentry-version-track {
-  position: sticky; top: 6.95rem; z-index: 30; overflow-x: auto;
+  overflow-x: auto;
   margin-inline: calc(clamp(1rem, 3vw, 1.5rem) * -1); padding-inline: clamp(1rem, 3vw, 1.5rem);
-  background: color-mix(in srgb, var(--bg-alt) 94%, transparent);
-  border-block: 1px solid var(--border); backdrop-filter: blur(14px); scrollbar-width: thin;
+  background: var(--bg-alt); border-block: 1px solid var(--border); scrollbar-width: thin;
 }
 .sentry-version-rail {
   --timeline-progress: 66.666%; position: relative; display: grid; grid-template-columns: repeat(3, minmax(14rem, 1fr));
@@ -309,7 +308,6 @@
   .sentry-hero__credit { display: none; }
   .sentry-case { min-height: 21rem; }
   .sentry-case img { min-height: 21rem; }
-  .sentry-version-track { top: 6.9rem; }
   .sentry-version-panel { border-radius: var(--radius); }
   .sentry-version-panel__head h3 { max-width: 20ch; }
   .sentry-version-graph-grid__wide { grid-column: auto; }

@@ -205,10 +205,13 @@
         var span = tabs.length > 1 ? (activeIndex / (tabs.length - 1)) * 66.666 : 0;
         rail.style.setProperty('--timeline-progress', span.toFixed(3) + '%');
       }
-      if (scrollTab) {
-        tab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: prefersReduced ? 'auto' : 'smooth' });
-      } else if (trackScroller && trackScroller.scrollWidth > trackScroller.clientWidth) {
-        trackScroller.scrollLeft = Math.max(0, tab.offsetLeft - (trackScroller.clientWidth - tab.offsetWidth) / 2);
+      if (trackScroller && trackScroller.scrollWidth > trackScroller.clientWidth) {
+        var targetLeft = Math.max(0, tab.offsetLeft - (trackScroller.clientWidth - tab.offsetWidth) / 2);
+        if (scrollTab && trackScroller.scrollTo) {
+          trackScroller.scrollTo({ left: targetLeft, behavior: prefersReduced ? 'auto' : 'smooth' });
+        } else {
+          trackScroller.scrollLeft = targetLeft;
+        }
       }
       if (moveFocus) tab.focus();
     }
