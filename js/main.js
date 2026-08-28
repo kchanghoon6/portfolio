@@ -177,6 +177,59 @@
     reveals.forEach(function (r) { r.classList.add('is-visible'); });
   }
 
+  /* --------------------- Interactive version timeline ------------------ */
+  var versionTimelines = Array.prototype.slice.call(document.querySelectorAll('[data-version-timeline]'));
+  versionTimelines.forEach(function (timeline) {
+    var tabs = Array.prototype.slice.call(timeline.querySelectorAll('[role="tab"][data-version-target]'));
+    var panels = Array.prototype.slice.call(timeline.querySelectorAll('[role="tabpanel"]'));
+    var rail = timeline.querySelector('.sentry-version-rail');
+    var trackScroller = timeline.querySelector('.sentry-version-track');
+    if (!tabs.length || !panels.length) return;
+
+    function activateVersion(tab, moveFocus, scrollTab) {
+      var targetId = tab.getAttribute('data-version-target');
+      var activeIndex = tabs.indexOf(tab);
+      tabs.forEach(function (candidate) {
+        var selected = candidate === tab;
+        candidate.classList.toggle('is-active', selected);
+        candidate.setAttribute('aria-selected', String(selected));
+        candidate.setAttribute('tabindex', selected ? '0' : '-1');
+      });
+      panels.forEach(function (panel) {
+        var selected = panel.id === targetId;
+        panel.hidden = !selected;
+        panel.tabIndex = selected ? 0 : -1;
+        panel.classList.toggle('is-active', selected);
+      });
+      if (rail) {
+        var span = tabs.length > 1 ? (activeIndex / (tabs.length - 1)) * 66.666 : 0;
+        rail.style.setProperty('--timeline-progress', span.toFixed(3) + '%');
+      }
+      if (scrollTab) {
+        tab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: prefersReduced ? 'auto' : 'smooth' });
+      } else if (trackScroller && trackScroller.scrollWidth > trackScroller.clientWidth) {
+        trackScroller.scrollLeft = Math.max(0, tab.offsetLeft - (trackScroller.clientWidth - tab.offsetWidth) / 2);
+      }
+      if (moveFocus) tab.focus();
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () { activateVersion(tab, false, true); });
+      tab.addEventListener('keydown', function (event) {
+        var nextIndex = null;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = tabs.length - 1;
+        if (nextIndex === null) return;
+        event.preventDefault();
+        activateVersion(tabs[nextIndex], true, true);
+      });
+    });
+
+    activateVersion(tabs.find(function (tab) { return tab.getAttribute('aria-selected') === 'true'; }) || tabs[0], false, false);
+  });
+
   /* --------------------------- Project filter --------------------------- */
   var filters = Array.prototype.slice.call(document.querySelectorAll('.filter[data-filter]'));
   var grid = document.getElementById('proj-archive-grid');
