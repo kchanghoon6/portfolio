@@ -38,6 +38,11 @@
   --brand-soft: #eef0ff;      /* tinted brand background               */
   --violet: #7c3aed;
   --brand-fg: #ffffff;
+  --media-fg: #ffffff;        /* copy placed over photographic media */
+  --media-muted: rgba(255, 255, 255, 0.76);
+  --media-line: rgba(255, 255, 255, 0.22);
+  --media-overlay: rgba(9, 12, 20, 0.62);
+  --media-overlay-soft: rgba(9, 12, 20, 0.18);
 
   /* Effects */
   --ring: rgba(79, 70, 229, 0.45);
@@ -1067,6 +1072,11 @@ html[data-theme='dark'] .theme-toggle .icon-moon { display: block; }
   overflow: hidden;
   margin-top: clamp(1.75rem, 4vw, 2.5rem);
   margin-bottom: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+.proj-hero[data-card-link] { cursor: pointer; }
+.proj-hero[data-card-link]:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 4px;
 }
 .proj-hero__cover { display: block; }
 .proj-hero__kicker {

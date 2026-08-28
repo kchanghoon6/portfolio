@@ -67,6 +67,11 @@
   margin-top: clamp(1.75rem, 4vw, 2.5rem);
   margin-bottom: clamp(1.1rem, 2.5vw, 1.5rem);
 }
+.proj-hero[data-card-link] { cursor: pointer; }
+.proj-hero[data-card-link]:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 4px;
+}
 .proj-hero__cover { display: block; }
 .proj-hero__kicker {
   font-family: var(--font-mono);

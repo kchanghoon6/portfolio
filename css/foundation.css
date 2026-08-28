@@ -38,6 +38,11 @@
   --brand-soft: #eef0ff;      /* tinted brand background               */
   --violet: #7c3aed;
   --brand-fg: #ffffff;
+  --media-fg: #ffffff;        /* copy placed over photographic media */
+  --media-muted: rgba(255, 255, 255, 0.76);
+  --media-line: rgba(255, 255, 255, 0.22);
+  --media-overlay: rgba(9, 12, 20, 0.62);
+  --media-overlay-soft: rgba(9, 12, 20, 0.18);
 
   /* Effects */
   --ring: rgba(79, 70, 229, 0.45);

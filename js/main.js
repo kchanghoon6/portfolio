@@ -29,8 +29,28 @@
   }
 
   /* ----------------------- Hero "focus" typewriter ---------------------- */
-  var prefersReduced = window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionQuery = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  var prefersReduced = motionQuery ? motionQuery.matches : false;
+  var motionVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-motion-video]'));
+
+  function syncMotionVideos(reduce) {
+    motionVideos.forEach(function (video) {
+      if (reduce) {
+        video.pause();
+        video.currentTime = 0;
+      } else {
+        var play = video.play();
+        if (play && typeof play.catch === 'function') play.catch(function () {});
+      }
+    });
+  }
+  if (motionVideos.length) {
+    syncMotionVideos(prefersReduced);
+    if (motionQuery && motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', function (event) { syncMotionVideos(event.matches); });
+    }
+  }
+
   var rotator = document.querySelector('.hero__rotator-track[data-rotate]');
   if (rotator) {
     var words = [];
@@ -179,6 +199,24 @@
       });
     });
   }
+
+  /* ------------------------ Whole-card project links -------------------- */
+  var linkedCards = Array.prototype.slice.call(document.querySelectorAll('[data-card-link]'));
+  linkedCards.forEach(function (card) {
+    function openCard() {
+      var href = card.getAttribute('data-card-link');
+      if (href) window.location.href = href;
+    }
+    card.addEventListener('click', function (event) {
+      if (event.defaultPrevented || event.target.closest('a, button')) return;
+      openCard();
+    });
+    card.addEventListener('keydown', function (event) {
+      if (event.key !== 'Enter' || event.target !== card) return;
+      event.preventDefault();
+      openCard();
+    });
+  });
 
   /* -------------------- Scroll progress + condensed nav ----------------- */
   var siteNav = document.getElementById('site-nav');
