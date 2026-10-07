@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="../css/sentry.css?v=20261008" />
+  <link rel="stylesheet" href="../css/sentry.css?v=20261008b" />
   <script>
     (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
   </script>
@@ -60,13 +60,19 @@
 
   <main>
     <!-- ============================ OVERVIEW ============================ -->
-    <section class="sx-hero" id="overview" aria-labelledby="sx-title">
+    <section class="sx-hero sx-hero--banner" id="overview" aria-labelledby="sx-title">
       <div class="container sx-hero__bento">
         <div class="tile sx-intro reveal">
+          <div class="sx-intro__media" aria-hidden="true">
+            <video width="1280" height="720" autoplay muted loop playsinline preload="metadata" poster="../src/img/sentry/hero-poster.jpg" data-motion-video>
+              <source src="../src/video/sentry-bridge-hero.mp4" type="video/mp4" />
+            </video>
+            <span class="sx-intro__veil"></span>
+          </div>
           <span class="sx-chip">Korea Code Fair 2026 · ISEF-affiliated · Finals round</span>
           <h1 class="sx-intro__title" id="sx-title">SENTRY</h1>
           <p class="sx-intro__lead">Low-cost bridge vibration anomaly detection that stays reliable as <strong>temperature and humidity change</strong>.</p>
-          <p class="sx-intro__team">Team project — Kim Changhoon and one teammate, with a faculty advisor.</p>
+          <p class="sx-intro__team">Team project — I did most of the work, with one teammate and a faculty advisor.</p>
           <div class="sx-intro__actions">
             <a class="btn btn--primary" href="#documents" data-open-doc="r3">
               Read the report
@@ -78,6 +84,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
             </a>
           </div>
+          <a class="sx-intro__credit" href="https://mixkit.co/free-stock-video/aerial-view-of-a-highway-bridge-100215/" target="_blank" rel="noopener noreferrer">Footage: Mixkit</a>
         </div>
 
         <a class="tile sx-poster-tile reveal" data-reveal-delay="80" href="#poster" aria-label="Go to the finals poster">
@@ -88,7 +95,7 @@
         </a>
 
         <div class="sx-facts">
-          <div class="tile sx-fact sx-fact--dark reveal" data-reveal-delay="120">
+          <div class="tile sx-fact reveal" data-reveal-delay="120">
             <span class="sx-fact__k">v2 · aluminum model</span>
             <span class="sx-fact__v">840 / 840</span>
             <span class="sx-fact__s">structural-change windows detected across 27 conditions</span>
@@ -301,7 +308,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20261008" defer></script>
+  <script src="../js/main.js?v=20261008b" defer></script>
   <script src="../js/sentry.js?v=20261008" defer></script>
 </body>
 </html>

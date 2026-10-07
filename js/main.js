@@ -46,6 +46,10 @@
   }
   if (motionVideos.length) {
     syncMotionVideos(prefersReduced);
+    // Browsers may skip autoplay for a tab that loaded in the background
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && !(motionQuery && motionQuery.matches)) syncMotionVideos(false);
+    });
     if (motionQuery && motionQuery.addEventListener) {
       motionQuery.addEventListener('change', function (event) { syncMotionVideos(event.matches); });
     }

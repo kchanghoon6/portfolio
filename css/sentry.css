@@ -419,3 +419,75 @@
   }
   .sx-group { min-width: 0; margin-bottom: 1.25rem; }
 }
+
+/* ------------------------- Hero video (intro tile) ----------------------- */
+/* A short aerial bridge clip behind the intro copy. The tile stays dark in
+   both themes, so its copy is always light. Paused under reduced motion
+   (main.js: video[data-motion-video]).                                      */
+.sx-intro {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 27rem;
+  border-color: transparent;
+  background: #0d1512;
+  color: #fff;
+}
+.sx-intro__media { position: absolute; inset: 0; z-index: -1; }
+.sx-intro__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+.sx-intro__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(6, 10, 9, 0.82) 0%, rgba(6, 10, 9, 0.55) 48%, rgba(6, 10, 9, 0.12) 100%),
+    linear-gradient(0deg, rgba(6, 10, 9, 0.55) 0%, rgba(6, 10, 9, 0) 45%);
+}
+.sx-intro .sx-chip {
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+.sx-intro .sx-intro__title { color: #fff; }
+.sx-intro .sx-intro__lead { color: rgba(255, 255, 255, 0.82); }
+.sx-intro .sx-intro__lead strong { color: #fff; }
+.sx-intro .sx-intro__team { color: rgba(255, 255, 255, 0.66); }
+.sx-intro .btn--primary { background: #fff; color: #111214; }
+.sx-intro .btn--primary:hover { background: rgba(255, 255, 255, 0.86); }
+.sx-intro .btn--soft {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+.sx-intro .btn--soft:hover { background: rgba(255, 255, 255, 0.24); }
+.sx-intro__credit {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 0.85rem;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+.sx-intro__credit:hover { color: #fff; }
+
+/* Variant A — banner: the video tile spans the full width */
+@media (min-width: 900px) {
+  .sx-hero--banner .sx-hero__bento {
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+      "intro intro"
+      "facts poster";
+  }
+  .sx-hero--banner .sx-intro { min-height: 31rem; justify-content: flex-end; }
+  .sx-hero--banner .sx-intro__actions { margin-top: 0; padding-top: 1.75rem; }
+  .sx-hero--banner .sx-intro__title { font-size: clamp(3.4rem, 7vw, 5.25rem); }
+  .sx-hero--banner .sx-intro__lead { max-width: 38rem; }
+  .sx-hero--banner .sx-poster-tile { flex-direction: row; align-items: stretch; gap: 0.25rem; }
+  .sx-hero--banner .sx-poster-tile__paper { flex: 0 0 46%; padding: 0.5rem; overflow: hidden; align-items: flex-start; }
+  .sx-hero--banner .sx-poster-tile__cap { flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 0.4rem 0.4rem 0.3rem 0.6rem; }
+}
