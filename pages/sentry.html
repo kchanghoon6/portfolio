@@ -4,379 +4,285 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SENTRY - Bridge Anomaly Detection · Kim Changhoon</title>
-  <meta name="description" content="How SENTRY evolved from a foam-board proof of concept into a low-cost, weather-aware bridge vibration screening system with automated excitation, real-time monitoring, and explainable anomaly detection." />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="SENTRY: a low-cost bridge vibration anomaly detection system that stays reliable as temperature and humidity change. Korea Code Fair 2026 project, validated on model bridges, full-scale public data and two real footbridges, with the original submissions in English and Korean." />
+  <meta name="theme-color" content="#f3f3f5" />
   <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="../css/sentry.css?v=20260828-3" />
+  <link rel="stylesheet" href="../css/sentry.css?v=20261008" />
   <script>
     (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
   </script>
 </head>
-<body>
-  <a class="skip-link" href="#sentry-main">Skip to content</a>
+<body class="home sentry-page">
+  <a class="skip-link" href="#overview">Skip to content</a>
 
-  <header class="detail-nav sentry-nav">
-    <div class="container detail-nav__inner">
-      <a class="detail-back" href="../index.html#projects">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-        Back to portfolio
-      </a>
+  <header class="nav" id="site-nav">
+    <div class="nav__pill">
+      <a class="nav__brand" href="../index.html#top">CK<span class="nav__dot">.</span></a>
+
+      <nav class="nav__links" aria-label="Sections">
+        <a class="nav__link" href="#overview">Overview</a>
+        <a class="nav__link" href="#experiments">Experiments</a>
+        <a class="nav__link" href="#poster">Poster</a>
+        <a class="nav__link" href="#documents">Documents</a>
+      </nav>
+
       <div class="nav__actions">
-        <a class="detail-brand" href="../index.html#top">CK<span>.</span></a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme">
           <span class="icon-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
           <span class="icon-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
         </button>
+
+        <a class="nav__cta" href="../index.html#projects">
+          <span aria-hidden="true">←</span> Portfolio
+        </a>
+
+        <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Open menu">
+          <svg class="nav__icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+          <svg class="nav__icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
       </div>
+    </div>
+
+    <div class="nav__mobile" id="nav-mobile" hidden>
+      <nav aria-label="Mobile menu">
+        <a class="nav__link" href="#overview">Overview</a>
+        <a class="nav__link" href="#experiments">Experiments</a>
+        <a class="nav__link" href="#poster">Poster</a>
+        <a class="nav__link" href="#documents">Documents</a>
+        <a class="nav__link" href="../index.html#projects">← Back to portfolio</a>
+      </nav>
     </div>
   </header>
 
-  <main class="sentry" id="sentry-main">
-    <section class="sentry-hero" aria-labelledby="sentry-title">
-      <video class="sentry-hero__video" width="1280" height="720" autoplay muted loop playsinline preload="metadata" poster="../src/img/sentry/hero-poster.jpg" data-motion-video aria-hidden="true">
-        <source src="../src/video/sentry-bridge-hero.mp4" type="video/mp4" />
-      </video>
-      <div class="sentry-hero__veil" aria-hidden="true"></div>
-      <div class="container sentry-hero__content">
-        <p class="sentry-hero__eyebrow">Korea Code Fair 2026 · Structural health monitoring</p>
-        <h1 id="sentry-title">SENTRY</h1>
-        <p class="sentry-hero__headline">A low-cost bridge screening system that learns what weather changes, then flags what weather cannot explain.</p>
-        <div class="sentry-hero__meta" aria-label="Project summary">
-          <span>MEMS sensing</span>
-          <span>Environmental residuals</span>
-          <span>Unsupervised autoencoder</span>
-          <span>Real-time dashboard</span>
+  <main>
+    <!-- ============================ OVERVIEW ============================ -->
+    <section class="sx-hero" id="overview" aria-labelledby="sx-title">
+      <div class="container sx-hero__bento">
+        <div class="tile sx-intro reveal">
+          <span class="sx-chip">Korea Code Fair 2026 · ISEF-affiliated · Finals round</span>
+          <h1 class="sx-intro__title" id="sx-title">SENTRY</h1>
+          <p class="sx-intro__lead">Low-cost bridge vibration anomaly detection that stays reliable as <strong>temperature and humidity change</strong>.</p>
+          <p class="sx-intro__team">Team project — Kim Changhoon and one teammate, with a faculty advisor.</p>
+          <div class="sx-intro__actions">
+            <a class="btn btn--primary" href="#documents" data-open-doc="r3">
+              Read the report
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            </a>
+            <a class="btn btn--soft" href="#poster">Poster</a>
+            <a class="btn btn--soft" href="../docs/sentry/r3-en.pdf" target="_blank" rel="noopener">
+              PDF
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </div>
         </div>
-        <a class="sentry-hero__scroll" href="#overview">Read the build story
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+
+        <a class="tile sx-poster-tile reveal" data-reveal-delay="80" href="#poster" aria-label="Go to the finals poster">
+          <span class="sx-poster-tile__paper">
+            <img src="../docs/sentry/pages/poster-en/1.webp" alt="First page of the SENTRY finals poster" width="1500" height="2120" loading="eager" />
+          </span>
+          <span class="sx-poster-tile__cap"><b>Finals poster</b><span>A0 · 2 pages</span></span>
         </a>
-      </div>
-      <p class="sentry-hero__credit"><a href="https://mixkit.co/free-stock-video/aerial-view-of-a-highway-bridge-100215/" target="_blank" rel="noopener noreferrer">Footage: Mixkit · Aerial View of a Highway Bridge</a></p>
-    </section>
 
-    <nav class="sentry-index" aria-label="On this page">
-      <div class="container sentry-index__inner">
-        <span class="sentry-index__label">SENTRY / build log</span>
-        <div class="sentry-index__links">
-          <a href="#overview">Overview</a>
-          <a href="#problem">Problem</a>
-          <a href="#system">System</a>
-          <a href="#evolution">Evolution</a>
-          <a href="#validation">Validation</a>
-          <a href="#outcome">Outcome</a>
+        <div class="sx-facts">
+          <div class="tile sx-fact sx-fact--dark reveal" data-reveal-delay="120">
+            <span class="sx-fact__k">v2 · aluminum model</span>
+            <span class="sx-fact__v">840 / 840</span>
+            <span class="sx-fact__s">structural-change windows detected across 27 conditions</span>
+          </div>
+          <div class="tile sx-fact reveal" data-reveal-delay="160">
+            <span class="sx-fact__k">v3 · real bridge E</span>
+            <span class="sx-fact__v">≤ 1%</span>
+            <span class="sx-fact__s">1.74 Hz peak reproduced over 4 days (68 h)</span>
+          </div>
+          <div class="tile sx-fact reveal" data-reveal-delay="200">
+            <span class="sx-fact__k">v3 · real bridge C</span>
+            <span class="sx-fact__v">200 kg</span>
+            <span class="sx-fact__s">added load detected; frequency drop matched the prediction</span>
+          </div>
         </div>
       </div>
-    </nav>
+    </section>
 
-    <section class="sentry-section" id="overview">
+    <!-- =========================== EXPERIMENTS ========================== -->
+    <section class="section" id="experiments" aria-labelledby="sx-exp-title">
       <div class="container">
-        <div class="sentry-intro reveal">
+        <div class="sx-head reveal">
           <div>
-            <p class="eyebrow">Project brief</p>
-            <h2>Continuous screening between inspections.</h2>
+            <p class="eyebrow">Experiments</p>
+            <h2 class="section-title" id="sx-exp-title">Three test beds, one method</h2>
+            <p class="section-desc">Each stage answered a limitation of the one before and was submitted to a later round of the fair. The figures are the original poster panels — not redrawn.</p>
           </div>
-          <p>SENTRY is not a replacement for a structural inspection. It is a first-line filter for small and medium bridges: a sensor node watches vibration, models the change that temperature and humidity normally cause, and sends the remaining signal through an unsupervised anomaly detector. The output is an alarm, its severity relative to the threshold, and the feature group that drove it.</p>
-        </div>
-        <div class="sentry-metrics reveal" aria-label="SENTRY headline metrics">
-          <article><strong>₩190K</strong><span>core instrumentation</span></article>
-          <article><strong>500 Hz</strong><span>vibration sampling in v2</span></article>
-          <article><strong>27</strong><span>factorial test conditions</span></article>
-          <article><strong>840/840</strong><span>damage windows detected</span></article>
-        </div>
-        <p class="sentry-caveat reveal">The 840/840 result is from the controlled aluminum bridge model, not a field claim about real bridges. SENTRY remains a screening prototype whose alarms must be confirmed by qualified inspection.</p>
-      </div>
-    </section>
-
-    <section class="sentry-section sentry-section--alt" id="problem">
-      <div class="container">
-        <header class="sentry-section__head reveal">
-          <p class="eyebrow">01 · Why it exists</p>
-          <h2>The dangerous interval is the time between checks.</h2>
-          <p>Periodic inspection is necessary, but corrosion, fatigue, and boundary-condition changes accumulate continuously. SENTRY began with a simple question: can a low-cost node make that interval observable?</p>
-        </header>
-
-        <div class="sentry-case-grid reveal">
-          <figure class="sentry-case sentry-case--wide">
-            <img src="../src/img/sentry/collapse-jeongja.png" width="600" height="382" alt="Collapsed pedestrian deck of Jeongja Bridge in Bundang" loading="lazy" />
-            <figcaption><span>2023 · Bundang, Korea</span><strong>Jeongja Bridge</strong><p>Long-term corrosion and damage accumulated in the cantilever walkway. One person died and one was injured.</p></figcaption>
-          </figure>
-          <figure class="sentry-case">
-            <img src="../src/img/sentry/collapse-fern-hollow.png" width="1280" height="853" alt="Fern Hollow Bridge after its 2022 collapse in Pittsburgh" loading="lazy" />
-            <figcaption><span>2022 · Pittsburgh, USA</span><strong>Fern Hollow Bridge</strong><p>Corrosion had been documented, but repair was delayed before the bridge failed during service.</p></figcaption>
-          </figure>
+          <div class="sx-seg" role="group" aria-label="Figure language" data-lang-switch>
+            <button type="button" data-lang="en" aria-pressed="true">English</button>
+            <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+          </div>
         </div>
 
-        <div class="sentry-data-split reveal">
-          <figure class="sentry-figure sentry-figure--native">
-            <div class="sentry-viz" role="img" aria-label="Of 37,543 bridges in Korea's 2025 national inventory, 24,226 or 64.5 percent are Class 3 facilities.">
-              <div class="sentry-viz__head"><div><span>2025 national inventory</span><strong>Bridge facilities by class</strong></div><em class="sentry-viz__tag">37,543 total</em></div>
-              <div class="sentry-inventory"><div class="sentry-inventory__donut"><div><strong>64.5%</strong><span>Class 3</span></div></div><div class="sentry-inventory__legend"><article><i></i><span>Class 3 facilities</span><strong>24,226</strong></article><article><i></i><span>Class 1 + 2 facilities</span><strong>13,317</strong></article><p class="sentry-viz__note">Source: Korea Authority of Land &amp; Infrastructure Safety</p></div></div>
+        <div class="sx-exp">
+          <article class="tile sx-x reveal">
+            <figure class="sx-x__fig">
+              <img src="../docs/sentry/panels/v1-en.webp" data-src-en="../docs/sentry/panels/v1-en.webp" data-src-ko="../docs/sentry/panels/v1-ko.webp" alt="Poster panel: stage 1 foam-board bridge experiment" loading="lazy" />
+            </figure>
+            <div class="sx-x__body">
+              <span class="sx-badge">v1 · Round 1 · June 2026</span>
+              <h3 class="sx-x__title">Foam-board model bridge</h3>
+              <ul class="sx-x__list">
+                <li>Proof that the whole pipeline — collect, compensate, detect, explain — runs on a ~₩190k node.</li>
+                <li>Compensation cut false alarms in the humidity segment <b>17.5% → 9.1%</b>.</li>
+                <li>Under simulated damage, threshold exceedance rose <b>4.5% → 29.7%</b>.</li>
+              </ul>
+              <button class="sx-x__doc" type="button" data-open-doc="r1">Round 1 report <span>16 pp. · EN · 한국어</span></button>
             </div>
-            <figcaption><strong>24,226 of 37,543 bridges</strong> are Class 3 facilities in the 2025 national inventory, about 64.5 percent.</figcaption>
-          </figure>
-          <div class="sentry-data-copy">
-            <p class="sentry-kicker">A monitoring blind spot</p>
-            <h3>High-precision SHM does not scale down cheaply.</h3>
-            <p>Permanent structural-health-monitoring systems usually depend on precision accelerometers, dedicated acquisition hardware, or optical sensing infrastructure. That makes sense for major bridges, but leaves a wide gap between visual inspection and high-end continuous monitoring.</p>
-            <div class="sentry-quote">Screen continuously, inspect precisely.</div>
-          </div>
-        </div>
+          </article>
 
-        <figure class="sentry-figure sentry-figure--band sentry-figure--native reveal">
-          <div class="sentry-viz sentry-inspection">
-            <table><caption>Minimum statutory inspection frequency by safety grade</caption><thead><tr><th>Inspection type</th><th>Grade A</th><th>Grades B–C</th><th>Grades D–E</th></tr></thead><tbody><tr><td>Regular safety inspection</td><td>At least once every 6 months</td><td>At least once every 6 months</td><td>At least 3 times per year</td></tr><tr><td>Precision safety diagnosis</td><td>At least once every 6 years</td><td>At least once every 5 years</td><td>At least once every 4 years</td></tr></tbody></table>
-          </div>
-          <figcaption>Statutory inspection remains periodic. SENTRY is designed for the interval, not as a substitute for the inspection itself.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="sentry-section" id="system">
-      <div class="container">
-        <header class="sentry-section__head reveal">
-          <p class="eyebrow">02 · The system</p>
-          <h2>One loop from impact to inspection priority.</h2>
-          <p>The deployed path is intentionally legible: sense, clean, compensate, reconstruct, explain, repeat.</p>
-        </header>
-
-        <figure class="sentry-figure sentry-figure--hero sentry-figure--native reveal">
-          <div class="sentry-viz"><div class="sentry-viz__head"><div><span>v2 continuous loop</span><strong>From a controlled impact to an inspection cue</strong></div><em class="sentry-viz__tag">~0.7 s refresh</em></div><div class="sentry-flow-wrap"><div class="sentry-flow" role="img" aria-label="Impact, measure, extract features, remove environmental effects, score reconstruction error, and explain the contributing feature group."><article><span>01</span><strong>Impact</strong><p>40 ms fixed solenoid pulse</p></article><article><span>02</span><strong>Measure</strong><p>500 Hz vibration plus T and RH</p></article><article><span>03</span><strong>Transform</strong><p>Eight log and ratio features</p></article><article><span>04</span><strong>Compensate</strong><p>Remove healthy environmental drift</p></article><article><span>05</span><strong>Score</strong><p>8→3→8 reconstruction error</p></article><article><span>06</span><strong>Explain</strong><p>Amplitude, band, or combined cue</p></article></div></div></div>
-          <figcaption>v2 system loop. Routine windows flow through continuously; only an exceeded threshold opens the explanation and review path.</figcaption>
-        </figure>
-
-        <div class="sentry-steps reveal">
-          <article><span>01</span><h3>Excite</h3><p>A solenoid tapper applies a 40 ms pulse every five seconds at a fixed location.</p></article>
-          <article><span>02</span><h3>Measure</h3><p>ADXL355Z acceleration at 500 Hz plus nearby DHT22 temperature and humidity.</p></article>
-          <article><span>03</span><h3>Transform</h3><p>A two-second post-impact window becomes eight log- and ratio-normalized features.</p></article>
-          <article><span>04</span><h3>Compensate</h3><p>Regression removes the feature shift explained by the measured environment.</p></article>
-          <article><span>05</span><h3>Detect</h3><p>An 8→3→8 autoencoder reconstructs healthy residuals and scores the mismatch.</p></article>
-          <article><span>06</span><h3>Explain</h3><p>Feature-group contributions point toward amplitude change, a frequency band, or both.</p></article>
-        </div>
-
-        <div class="sentry-diagram-pair reveal">
-          <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz"><div class="sentry-viz__head"><div><span>v2 test geometry</span><strong>600 mm aluminum multi-span rig</strong></div><em class="sentry-viz__tag">repeatable setup</em></div><div class="sentry-rig-wrap"><div class="sentry-rig" role="img" aria-label="Aluminum test rig with masses at 150 and 450 millimeters, ADXL355 at 240 millimeters, solenoid tapper at 300 millimeters, and DHT22 at 400 millimeters."><div class="sentry-rig__deck"></div><div class="sentry-rig__tower sentry-rig__tower--left"></div><div class="sentry-rig__tower sentry-rig__tower--right"></div><i class="sentry-rig__node" style="--x:25%"></i><i class="sentry-rig__node" style="--x:40%"></i><i class="sentry-rig__node" style="--x:50%"></i><i class="sentry-rig__node" style="--x:66.7%"></i><i class="sentry-rig__node" style="--x:75%"></i><div class="sentry-rig__label" style="--x:25%;--y:16%"><strong>Mass W1</strong><span>x = 150 mm · 0/250/500 g</span></div><div class="sentry-rig__label" style="--x:40%;--y:58%"><strong>ADXL355Z</strong><span>x = 240 mm · underside</span></div><div class="sentry-rig__label" style="--x:50%;--y:14%"><strong>Auto tapper</strong><span>x = 300 mm · 40 ms</span></div><div class="sentry-rig__label" style="--x:66.7%;--y:60%"><strong>DHT22</strong><span>x = 400 mm · base rail</span></div><div class="sentry-rig__label" style="--x:75%;--y:16%"><strong>Mass W2</strong><span>x = 450 mm · 0/250/500 g</span></div><div class="sentry-rig__scale"><span>0</span><span>150</span><span>300</span><span>450</span><span>600 mm</span></div></div></div></div><figcaption>Fixed strike, sensor, environment probe, and mass locations turn the prototype into a repeatable experiment.</figcaption></figure>
-          <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz"><div class="sentry-viz__head"><div><span>v2 detector</span><strong>Learn healthy residuals, score what remains</strong></div><em class="sentry-viz__tag">8→3→8 AE</em></div><div class="sentry-ae-wrap"><div class="sentry-ae" role="img" aria-label="Eight environmentally compensated features pass through an encoder, a three-node latent layer, and a decoder. Reconstruction error is compared with the 99th percentile healthy threshold."><div class="sentry-ae__stage"><div><strong>Residual input</strong><span>8 compensated features</span></div></div><div class="sentry-ae__stage"><div><strong>Encoder</strong><span>8 → 5</span></div></div><div class="sentry-ae__stage sentry-ae__stage--latent"><div><strong>Latent</strong><span>3 nodes</span></div></div><div class="sentry-ae__stage"><div><strong>Decoder</strong><span>5 → 8</span></div></div><div class="sentry-ae__stage sentry-ae__stage--score"><div><strong>Error r</strong><span>||x − x̂||²</span></div></div><div class="sentry-ae__stage sentry-ae__stage--normal"><div><strong>Healthy</strong><span>r ≤ τ</span></div></div><div class="sentry-ae__stage sentry-ae__stage--alert"><div><strong>Review cue</strong><span>r &gt; τ</span></div></div></div></div></div><figcaption>The threshold is the 99th percentile of normal reconstruction error. Training uses healthy residuals only.</figcaption></figure>
-        </div>
-
-        <div class="sentry-table-wrap reveal">
-          <table class="sentry-table">
-            <caption>Core hardware and why each part exists</caption>
-            <thead><tr><th>Component</th><th>Role</th><th>Design choice</th></tr></thead>
-            <tbody>
-              <tr><td>ADXL355Z</td><td>3-axis vibration sensing</td><td>Low-noise MEMS sensor for modal and energy features</td></tr>
-              <tr><td>DHT22</td><td>Temperature and RH</td><td>Measures environmental drift near the accelerometer</td></tr>
-              <tr><td>Raspberry Pi 5</td><td>Collection, control, analysis, UI</td><td>Runs the entire real-time path on one edge device</td></tr>
-              <tr><td>Aluminum model</td><td>Repeatable structural testbed</td><td>Sharper resonance and bolt-defined boundary conditions</td></tr>
-              <tr><td>Solenoid tapper</td><td>Automated excitation</td><td>Removes variation in strike force, location, and timing</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="sentry-component-grid reveal">
-          <figure><img src="../src/img/sentry/sensor-adxl355z.jpg" width="1200" height="1076" alt="ADXL355Z MEMS accelerometer board" loading="lazy" /><figcaption>ADXL355Z</figcaption></figure>
-          <figure><img src="../src/img/sentry/sensor-dht22.jpg" width="1200" height="844" alt="DHT22 temperature and humidity sensor" loading="lazy" /><figcaption>DHT22</figcaption></figure>
-          <figure><img src="../src/img/sentry/raspberry-pi-3.jpg" width="1200" height="1144" alt="Raspberry Pi 3 Model A Plus used in the first prototype" loading="lazy" /><figcaption>Pi 3A+ · v1</figcaption></figure>
-          <figure class="sentry-component-grid__wide"><img src="../src/img/sentry/prototype-v2.jpg" width="2048" height="1596" alt="Second-generation aluminum bridge rig with sensors, auto tapper, and Raspberry Pi 5" loading="lazy" /><figcaption>Complete aluminum rig · v2</figcaption></figure>
-          <figure><img src="../src/img/sentry/auto-tapper.jpg" width="1610" height="2048" alt="Solenoid auto tapper mounted over the aluminum bridge deck" loading="lazy" /><figcaption>40 ms auto tapper</figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="sentry-section sentry-section--alt" id="evolution">
-      <div class="container">
-        <header class="sentry-section__head reveal">
-          <p class="eyebrow">03 · Interactive build history</p>
-          <h2>Follow the decisions, not just the dates.</h2>
-          <p>Each point opens the evidence available at that moment: the hardware, the plots, what the result meant, and why the next version had to be different.</p>
-        </header>
-
-        <div class="sentry-version-explorer" data-version-timeline>
-          <div class="sentry-version-track" aria-label="Scrollable SENTRY version timeline">
-            <div class="sentry-version-rail" role="tablist" aria-label="SENTRY development versions">
-              <button class="sentry-version-tab" id="timeline-tab-baseline" type="button" role="tab" aria-selected="false" aria-controls="version-baseline" tabindex="-1" data-version-target="version-baseline">
-                <span class="sentry-version-tab__index">01</span><span class="sentry-version-tab__dot" aria-hidden="true"></span>
-                <time>May 2026</time><strong>Research baseline</strong><small>Does weather move a healthy bridge enough to create false alarms?</small>
-              </button>
-              <button class="sentry-version-tab" id="timeline-tab-v1" type="button" role="tab" aria-selected="false" aria-controls="version-v1" tabindex="-1" data-version-target="version-v1">
-                <span class="sentry-version-tab__index">02</span><span class="sentry-version-tab__dot" aria-hidden="true"></span>
-                <time>Jun 03–12</time><strong>Version 1 · Foam</strong><small>Close the first sensor-to-alarm loop and expose its weak points.</small>
-              </button>
-              <button class="sentry-version-tab is-active" id="timeline-tab-v2" type="button" role="tab" aria-selected="true" aria-controls="version-v2" tabindex="0" data-version-target="version-v2">
-                <span class="sentry-version-tab__index">03</span><span class="sentry-version-tab__dot" aria-hidden="true"></span>
-                <time>Jul 11–26</time><strong>Version 2 · Aluminum</strong><small>Turn a prototype into a controlled instrument and interrogate 27 conditions.</small>
-              </button>
+          <article class="tile sx-x reveal" data-reveal-delay="80">
+            <figure class="sx-x__fig">
+              <img src="../docs/sentry/panels/openlab-en.webp" data-src-en="../docs/sentry/panels/openlab-en.webp" data-src-ko="../docs/sentry/panels/openlab-ko.webp" alt="Poster panel: openLAB full-scale bridge analysis" loading="lazy" />
+            </figure>
+            <div class="sx-x__body">
+              <span class="sx-badge">Full-scale data · openLAB, TU Dresden</span>
+              <h3 class="sx-x__title">A 45 m research bridge, public data</h3>
+              <ul class="sx-x__list">
+                <li>The autoencoder alone stayed at 0.1× its threshold while the frequency rose 6–8% in October — blind to the season.</li>
+                <li>With a frequency channel, autumn false alarms fell <b>26% → 0%</b> after temperature compensation.</li>
+              </ul>
+              <button class="sx-x__doc" type="button" data-open-doc="r3" data-page="8">Round 3 report, §2.7 <span>EN · 한국어</span></button>
             </div>
-          </div>
+          </article>
 
-          <div class="sentry-version-panels">
-            <article class="sentry-version-panel" id="version-baseline" role="tabpanel" aria-labelledby="timeline-tab-baseline" tabindex="-1" hidden>
-              <header class="sentry-version-panel__head">
-                <div><span class="sentry-version-badge">Research baseline</span><p class="sentry-kicker">Question before hardware</p><h3>First prove that environment can imitate structural change.</h3></div>
-                <p>Nine months of undamaged openLAB bridge data tested whether temperature and humidity could push a healthy signal across an anomaly threshold.</p>
-              </header>
+          <article class="tile sx-x sx-x--wide reveal">
+            <figure class="sx-x__fig">
+              <img src="../docs/sentry/panels/v2-en.webp" data-src-en="../docs/sentry/panels/v2-en.webp" data-src-ko="../docs/sentry/panels/v2-ko.webp" alt="Poster panel: stage 2 aluminum model bridge experiment" loading="lazy" />
+            </figure>
+            <div class="sx-x__body">
+              <span class="sx-badge">v2 · Round 2 · July 2026</span>
+              <h3 class="sx-x__title">Aluminum model bridge, 27 conditions</h3>
+              <ul class="sx-x__list">
+                <li>Low-damping aluminum and a solenoid auto-tapper fixed the two problems of v1: blurred peaks and uneven manual taps.</li>
+                <li>All <b>840</b> structural-change windows detected (recall 100%); false alarms <b>4/90</b> (4.4%); ROC-AUC 0.996.</li>
+                <li>Band contributions tell bolt loosening (40–80 Hz ratio, 76–90%) from added mass (amplitude/energy, 73–80%).</li>
+              </ul>
+              <button class="sx-x__doc" type="button" data-open-doc="r2">Round 2 report <span>38 pp. · EN · 한국어</span></button>
+            </div>
+          </article>
 
-              <div class="sentry-version-stats">
-                <article><strong>45 m</strong><span>three-span research bridge</span></article>
-                <article><strong>263 + 263</strong><span>train and evaluation samples</span></article>
-                <article><strong>1.90 → 1.52%</strong><span>evaluation FAR after temperature residuals</span></article>
-                <article><strong>0</strong><span>known damage cases in this baseline</span></article>
-              </div>
-
-              <div class="sentry-version-layout">
-                <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz" role="img" aria-label="Class 3 bridges represent 64.5 percent of Korea's 2025 national inventory."><div class="sentry-viz__head"><div><span>deployment scale</span><strong>Most facilities are not flagship bridges</strong></div><em class="sentry-viz__tag">2025</em></div><div class="sentry-inventory"><div class="sentry-inventory__donut"><div><strong>64.5%</strong><span>Class 3</span></div></div><div class="sentry-inventory__legend"><article><i></i><span>Class 3</span><strong>24,226</strong></article><article><i></i><span>Class 1 + 2</span><strong>13,317</strong></article></div></div></div><figcaption>The deployment problem is a scale problem: most monitored facilities are not flagship bridges.</figcaption></figure>
-                <div class="sentry-version-copy"><p class="sentry-kicker">What changed in my thinking</p><h4>A detector cannot treat every frequency shift as damage.</h4><p>Temperature compensation removed one false alarm in 263 evaluation samples. The effect was modest and humidity added no measurable benefit here, but it established the architecture: model the healthy environmental drift first, then detect what remains.</p><ul><li>Keep the compensation step testable and separate from the detector.</li><li>Treat field alarms as screening candidates, never diagnoses.</li><li>Build a controlled rig to obtain known structural-change labels.</li></ul></div>
-              </div>
-
-              <div class="sentry-table-wrap">
-                <table class="sentry-table">
-                  <caption>openLAB undamaged-baseline check</caption>
-                  <thead><tr><th>Model</th><th>Train</th><th>Evaluate</th><th>Train anomaly ratio</th><th>Evaluation FAR</th></tr></thead>
-                  <tbody><tr><td>Uncorrected AE</td><td>263</td><td>263</td><td>1.1%</td><td>1.90%</td></tr><tr><td>Temperature residual AE</td><td>263</td><td>263</td><td>1.1%</td><td>1.52%</td></tr><tr><td>Temperature + RH residual AE</td><td>263</td><td>263</td><td>1.1%</td><td>1.52%</td></tr></tbody>
-                </table>
-              </div>
-
-            </article>
-
-            <article class="sentry-version-panel" id="version-v1" role="tabpanel" aria-labelledby="timeline-tab-v1" tabindex="-1" hidden>
-              <header class="sentry-version-panel__head">
-                <div><span class="sentry-version-badge">Version 1 · June</span><p class="sentry-kicker">Proof of concept</p><h3>Close the complete loop as quickly as possible.</h3></div>
-                <p>A 55 cm foam-board bridge connected low-cost sensing, spectral features, environmental residuals, and an unsupervised reconstruction alarm for the first time.</p>
-              </header>
-
-              <div class="sentry-version-hero">
-                <figure><img src="../src/img/sentry/prototype-v1.jpg" width="1800" height="779" alt="First-generation foam-board bridge prototype" loading="lazy" /><figcaption>Foam board, manual excitation, Pi 3A+, ADXL355Z, and DHT22.</figcaption></figure>
-                <div class="sentry-version-stats sentry-version-stats--stack"><article><strong>55 cm</strong><span>foam-board span</span></article><article><strong>200 Hz</strong><span>sampling, four-second windows</span></article><article><strong>9</strong><span>mass and environment conditions</span></article><article><strong>0.370</strong><span>best F1 after T·RH residuals</span></article></div>
-              </div>
-
-              <div class="sentry-version-findings">
-                <article><span>Built</span><h4>Sensor → feature → residual → alarm</h4><p>The edge pipeline worked end to end on inexpensive hardware.</p></article>
-                <article><span>Observed</span><h4>Useful signal, weak repeatability</h4><p>F1 improved from 0.075 to 0.370, but damage-window recall stayed low.</p></article>
-                <article><span>Diagnosed</span><h4>The rig dominated the result</h4><p>Foam damping blurred peaks and hand strikes added more variance than the mass change.</p></article>
-              </div>
-
-              <div class="sentry-version-graph-grid">
-                <figure class="sentry-figure sentry-figure--native sentry-version-graph-grid__wide"><div class="sentry-viz sentry-chart" role="img" aria-label="Version 1 anomaly score timeline. Most windows remain near zero, but the symmetric mass condition contains a single manual-impact spike near 7,650."><div class="sentry-chart__title"><strong>Anomaly score over the 16-minute run</strong><span>manual excitation · v1</span></div><div class="sentry-chart__plot"><div class="sentry-chart__y"><span>8k</span><span>6k</span><span>4k</span><span>2k</span><span>0</span></div><svg viewBox="0 0 900 260" preserveAspectRatio="none" aria-hidden="true"><path class="series-alt" d="M0 252 L100 251 L170 249 L250 251 L330 248 L420 250 L510 249 L590 251 L680 249 L760 250 L900 251"/><path class="series-soft" d="M0 253 L90 252 L180 250 L260 251 L350 249 L440 252 L530 251 L620 249 L710 251 L900 252"/><path class="series-main" d="M0 252 L120 251 L240 251 L360 249 L480 251 L600 250 L705 251 L742 251 L744 8 L748 252 L900 251"/><circle cx="744" cy="8" r="5"/></svg><div class="sentry-chart__x"><span>0 min</span><span>4</span><span>8</span><span>12</span><span>16 min</span></div></div><div class="sentry-chart__legend"><span><i></i>No mass</span><span><i></i>Left +100 g</span><span><i></i>Both sides +100 g</span></div></div><figcaption>A single extreme spike reveals that hand-strike variation dominated the apparent anomaly score.</figcaption></figure>
-                <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz" role="img" aria-label="Model metrics for the raw, temperature-residual, and temperature-plus-humidity-residual autoencoders. The best F1 rises from 0.075 to 0.370."><div class="sentry-chart__title"><strong>Compensation model metrics</strong><span>0–1 scale</span></div><div class="sentry-bar-chart"><div class="sentry-bar-group" data-label="Raw AE"><i class="sentry-bar" style="--v:.092"></i><i class="sentry-bar" style="--v:.500"></i><i class="sentry-bar" style="--v:.041"></i><i class="sentry-bar" style="--v:.075"></i></div><div class="sentry-bar-group" data-label="Temp residual"><i class="sentry-bar" style="--v:.048"></i><i class="sentry-bar" style="--v:.892"></i><i class="sentry-bar" style="--v:.197"></i><i class="sentry-bar" style="--v:.323"></i></div><div class="sentry-bar-group" data-label="T + RH residual"><i class="sentry-bar" style="--v:.063"></i><i class="sentry-bar" style="--v:.888"></i><i class="sentry-bar" style="--v:.234"></i><i class="sentry-bar" style="--v:.370"></i></div></div><div class="sentry-chart__legend"><span><i></i>FAR</span><span><i></i>Precision</span><span><i></i>Recall</span><span><i></i>F1</span></div><div class="sentry-bar-values"><article><strong>0.075</strong><span>Raw F1</span></article><article><strong>0.323</strong><span>Temperature F1</span></article><article><strong>0.370</strong><span>T + RH F1</span></article></div></div><figcaption>Residual models improved precision and F1, but recall remained the limiting metric.</figcaption></figure>
-                <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz sentry-chart" role="img" aria-label="Version 1 spectra for no mass, left-side mass, and symmetric mass. Peaks are broad and unstable, especially below 15 hertz and near 40 to 46 hertz."><div class="sentry-chart__title"><strong>Power spectral density</strong><span>0–50 Hz</span></div><div class="sentry-chart__plot"><div class="sentry-chart__y"><span>high</span><span></span><span></span><span></span><span>low</span></div><svg viewBox="0 0 900 260" preserveAspectRatio="none" aria-hidden="true"><path class="series-alt" d="M0 246 C35 220 65 214 100 218 C170 220 205 160 248 176 C305 215 360 226 420 230 C510 232 575 205 640 185 C700 170 760 110 820 118 C855 120 880 145 900 160"/><path class="series-soft" d="M0 250 C45 210 105 225 150 205 C180 150 215 122 250 96 C280 112 300 172 330 190 C390 210 440 230 500 225 C575 210 625 185 690 175 C760 152 815 120 900 158"/><path class="series-main" d="M0 245 C8 18 38 8 62 40 C90 85 112 170 145 198 C180 205 210 145 250 170 C290 210 340 232 410 235 C500 236 565 225 650 212 C720 205 765 150 810 190 C850 220 880 230 900 234"/></svg><div class="sentry-chart__x"><span>0 Hz</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50 Hz</span></div></div><div class="sentry-chart__legend"><span><i></i>Both sides +100 g</span><span><i></i>No mass</span><span><i></i>Left +100 g</span></div></div><figcaption>Broad, unstable spectra made a material and excitation redesign unavoidable.</figcaption></figure>
-              </div>
-
-              <div class="sentry-version-compare">
-                <div><p class="sentry-kicker">Compared with the research baseline</p><h4>The question moved from “is compensation useful?” to “can the hardware produce repeatable evidence?”</h4></div>
-                <div class="sentry-version-compare__columns"><article><span>Before</span><strong>Public, healthy bridge data</strong><p>Good for testing environmental false alarms, but no controlled damage labels.</p></article><article><span>Version 1</span><strong>Known mass changes on owned hardware</strong><p>End-to-end validation became possible, while the rig itself exposed the next bottleneck.</p></article></div>
-              </div>
-
-              <details class="sentry-details sentry-version-more">
-                <summary>Open the v1 setup and supporting diagnostics</summary>
-                <div class="sentry-version-diagram-grid">
-                  <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz"><div class="sentry-viz__head"><div><span>v1 test geometry</span><strong>55 cm foam-board span</strong></div><em class="sentry-viz__tag">manual strike</em></div><div class="sentry-rig-wrap"><div class="sentry-rig" role="img" aria-label="Foam bridge with optional 100 gram masses at one-quarter and three-quarter span, ADXL355Z at midspan, and DHT22 beside the bridge."><div class="sentry-rig__deck"></div><i class="sentry-rig__node" style="--x:25%"></i><i class="sentry-rig__node" style="--x:50%"></i><i class="sentry-rig__node" style="--x:75%"></i><div class="sentry-rig__label" style="--x:25%;--y:18%"><strong>Left mass</strong><span>L / 4 · 0 or 100 g</span></div><div class="sentry-rig__label" style="--x:50%;--y:60%"><strong>ADXL355Z</strong><span>L / 2 · underside</span></div><div class="sentry-rig__label" style="--x:75%;--y:18%"><strong>Right mass</strong><span>3L / 4 · 0 or 100 g</span></div><div class="sentry-rig__scale"><span>0</span><span>L / 4</span><span>L / 2</span><span>3L / 4</span><span>55 cm</span></div></div></div></div><figcaption>v1 used hand excitation and a highly damped foam structure.</figcaption></figure>
-                  <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz"><div class="sentry-viz__head"><div><span>v1 detector</span><strong>First end-to-end reconstruction loop</strong></div><em class="sentry-viz__tag">healthy-only training</em></div><div class="sentry-ae-wrap"><div class="sentry-ae" role="img" aria-label="Version 1 feature window enters encoder blocks, a latent representation, decoder blocks, and reconstruction loss. Frequency-band error is reported with the anomaly score."><div class="sentry-ae__stage"><div><strong>Feature window</strong><span>spectrum + bands</span></div></div><div class="sentry-ae__stage"><div><strong>Encoder</strong><span>compress</span></div></div><div class="sentry-ae__stage sentry-ae__stage--latent"><div><strong>Latent</strong><span>healthy pattern</span></div></div><div class="sentry-ae__stage"><div><strong>Decoder</strong><span>reconstruct</span></div></div><div class="sentry-ae__stage sentry-ae__stage--score"><div><strong>Loss</strong><span>anomaly score</span></div></div><div class="sentry-ae__stage"><div><strong>Band error</strong><span>0–12 / 12–25 / 25–50</span></div></div><div class="sentry-ae__stage sentry-ae__stage--alert"><div><strong>Alarm</strong><span>score &gt; threshold</span></div></div></div></div></div><figcaption>The architecture worked, but hardware variation limited the evidence quality.</figcaption></figure>
-                  <figure class="sentry-figure"><img src="../src/img/sentry/module-v1.jpg" width="2048" height="1536" alt="Completed first-generation Raspberry Pi sensor module" loading="lazy" /><figcaption>Complete v1 sensor module.</figcaption></figure>
-                  <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz"><div class="sentry-chart__title"><strong>Peak frequency by condition</strong><span>Hz</span></div><div class="sentry-metric-bars" role="img" aria-label="Average peak frequency is 22.6 hertz with no mass, 22.8 hertz with 100 grams on the left, and 20.6 hertz with 100 grams on both sides."><article><span>No mass</span><div class="sentry-metric-bars__track"><i style="--v:90.4%"></i></div><strong>22.6</strong></article><article><span>Left +100 g</span><div class="sentry-metric-bars__track"><i style="--v:91.2%"></i></div><strong>22.8</strong></article><article><span>Both +100 g</span><div class="sentry-metric-bars__track"><i style="--v:82.4%"></i></div><strong>20.6</strong></article></div></div><figcaption>The symmetric mass condition produced an 8.9% peak shift.</figcaption></figure>
-                  <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz"><div class="sentry-chart__title"><strong>Mean anomaly score</strong><span>condition average</span></div><div class="sentry-metric-bars" role="img" aria-label="Mean anomaly score is 0.23 with no mass, 0.37 with 100 grams on the left, and 0.30 with 100 grams on both sides."><article><span>No mass</span><div class="sentry-metric-bars__track"><i style="--v:46%"></i></div><strong>0.23</strong></article><article><span>Left +100 g</span><div class="sentry-metric-bars__track"><i style="--v:74%"></i></div><strong>0.37</strong></article><article><span>Both +100 g</span><div class="sentry-metric-bars__track"><i style="--v:60%"></i></div><strong>0.30</strong></article></div></div><figcaption>Asymmetric loading raised the average score most.</figcaption></figure>
-                  <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz"><div class="sentry-chart__title"><strong>Residual error by frequency band</strong><span>share of total</span></div><div class="sentry-stack-chart" role="img" aria-label="Residual error shares for no mass, left-side mass, and symmetric mass across 0 to 12, 12 to 25, and 25 to 50 hertz."><article><span>No mass</span><div class="sentry-stack"><i style="--v:65%">65</i><i style="--v:31%">31</i><i style="--v:4%"></i></div></article><article><span>Left +100 g</span><div class="sentry-stack"><i style="--v:53%">53</i><i style="--v:42%">42</i><i style="--v:5%"></i></div></article><article><span>Both +100 g</span><div class="sentry-stack"><i style="--v:35%">35</i><i style="--v:51%">51</i><i style="--v:14%">14</i></div></article></div><div class="sentry-chart__legend"><span><i></i>0–12 Hz</span><span><i></i>12–25 Hz</span><span><i></i>25–50 Hz</span></div></div><figcaption>The symmetric condition moves contribution toward the band containing the first resonance.</figcaption></figure>
-                  <figure class="sentry-figure sentry-figure--native"><div class="sentry-viz"><div class="sentry-chart__title"><strong>Normalized band energy</strong><span>distribution</span></div><div class="sentry-stack-chart" role="img" aria-label="Normalized band-energy distributions remain dominated by 25 to 50 hertz across all three mass conditions."><article><span>No mass</span><div class="sentry-stack"><i style="--v:9%"></i><i style="--v:15%">15</i><i style="--v:76%">76</i></div></article><article><span>Left +100 g</span><div class="sentry-stack"><i style="--v:7%"></i><i style="--v:14%">14</i><i style="--v:79%">79</i></div></article><article><span>Both +100 g</span><div class="sentry-stack"><i style="--v:9%"></i><i style="--v:15%">15</i><i style="--v:76%">76</i></div></article></div><div class="sentry-chart__legend"><span><i></i>0–12 Hz</span><span><i></i>12–25 Hz</span><span><i></i>25–50 Hz</span></div></div><figcaption>Energy alone changed less clearly than the residual-error contribution.</figcaption></figure>
-                </div>
-              </details>
-            </article>
-
-            <article class="sentry-version-panel is-active" id="version-v2" role="tabpanel" aria-labelledby="timeline-tab-v2" tabindex="0">
-              <header class="sentry-version-panel__head">
-                <div><span class="sentry-version-badge">Version 2 · July</span><p class="sentry-kicker">Controlled instrument</p><h3>Make every structural change compete against a stable baseline.</h3></div>
-                <p>The redesign replaced foam and hand strikes with an aluminum multi-span model, fixed boundary conditions, a 40 ms solenoid tapper, faster sampling, and a nonlinear autoencoder.</p>
-              </header>
-
-              <div class="sentry-version-hero">
-                <figure><img src="../src/img/sentry/prototype-v2.jpg" width="2048" height="1596" alt="Second-generation aluminum bridge prototype" loading="lazy" /><figcaption>Aluminum rig with automated excitation and repeatable mass and bolt conditions.</figcaption></figure>
-                <div class="sentry-version-stats sentry-version-stats--stack"><article><strong>500 Hz</strong><span>sampling, two-second windows</span></article><article><strong>27</strong><span>factorial test conditions</span></article><article><strong>1,380</strong><span>analysis windows</span></article><article><strong>840 / 840</strong><span>structural-change windows detected</span></article></div>
-              </div>
-
-              <div class="sentry-version-compare sentry-version-compare--primary">
-                <div><p class="sentry-kicker">Version 1 → Version 2</p><h4>The prototype became an experiment I could trust.</h4><p>Every upgrade traces to a visible failure mode in v1 rather than a cosmetic preference.</p></div>
-                <div class="sentry-table-wrap"><table class="sentry-table sentry-table--compare"><thead><tr><th>Dimension</th><th>v1</th><th>v2</th></tr></thead><tbody><tr><td>Structure</td><td>Foam board · high damping</td><td>Aluminum multi-span · sharper resonance</td></tr><tr><td>Excitation</td><td>Manual strike</td><td>40 ms auto tap every 5 s</td></tr><tr><td>Sampling</td><td>200 Hz · 4 s window</td><td>500 Hz · 2 s after impact</td></tr><tr><td>Experiment</td><td>9 conditions</td><td>27 conditions · 1,380 windows</td></tr><tr><td>Model</td><td>Raw-scale linear reconstruction</td><td>Log/ratio features · nonlinear 8→3→8 AE</td></tr><tr><td>Result</td><td>18.8–29.7% damage recall</td><td>100% damage recall · 0.998 F1</td></tr></tbody></table></div>
-              </div>
-
-              <div class="sentry-version-graph-grid">
-                <figure class="sentry-figure sentry-figure--native sentry-version-graph-grid__wide"><div class="sentry-viz"><div class="sentry-viz__head"><div><span>score ÷ threshold · log scale</span><strong>Structural-change windows clear the decision line</strong></div><em class="sentry-viz__tag">27 conditions</em></div><div class="sentry-log-chart" role="img" aria-label="Representative median score-to-threshold ratios. Normal windows stay around 0.003 to 0.038. M500 is 5.8 times threshold, M1000 is 22.6 times, one loosened bolt is 71.5 times, and two loosened bolts are 61.5 times."><div class="sentry-log-chart__axis"><span>0.01×</span><span>0.1×</span><span>1× threshold</span><span>10×</span><span>100×</span></div><div class="sentry-log-row sentry-log-row--normal"><span>Healthy range</span><div class="sentry-log-row__track"><i class="sentry-log-row__mark" style="--x:12%" data-value="0.003–0.038×"></i></div></div><div class="sentry-log-row"><span>Mass · 500 g</span><div class="sentry-log-row__track"><i class="sentry-log-row__mark" style="--x:69%" data-value="5.8×"></i></div></div><div class="sentry-log-row"><span>Mass · 1,000 g</span><div class="sentry-log-row__track"><i class="sentry-log-row__mark" style="--x:84%" data-value="22.6×"></i></div></div><div class="sentry-log-row"><span>1 bolt loose</span><div class="sentry-log-row__track"><i class="sentry-log-row__mark sentry-log-row__mark--end" style="--x:96%" data-value="71.5×"></i></div></div><div class="sentry-log-row"><span>2 bolts loose</span><div class="sentry-log-row__track"><i class="sentry-log-row__mark sentry-log-row__mark--end" style="--x:95%" data-value="61.5×"></i></div></div></div><p class="sentry-viz__note">Representative medians across the environmental blocks. Threshold = 1.0×.</p></div><figcaption>All 840 structural-change windows exceeded threshold; four of 90 normal evaluation windows did.</figcaption></figure>
-                <figure class="sentry-figure sentry-figure--native sentry-version-graph-grid__wide"><div class="sentry-viz"><div class="sentry-viz__head"><div><span>reconstruction-error share</span><strong>Different changes leave different residual signatures</strong></div><em class="sentry-viz__tag">feature attribution</em></div><div class="sentry-stack-chart" role="img" aria-label="Mass changes contribute 83 percent amplitude and energy residuals and 14 percent 40 to 80 hertz band residual. Bolt loosening contributes 15 percent amplitude and energy and 83 percent band residual. Combined change contributes 51 percent amplitude and energy and 46 percent band residual."><article><span>Mass change</span><div class="sentry-stack"><i style="--v:83%">83%</i><i style="--v:14%">14%</i><i style="--v:3%"></i></div></article><article><span>Bolt loosening</span><div class="sentry-stack"><i style="--v:15%">15%</i><i style="--v:83%">83%</i><i style="--v:2%"></i></div></article><article><span>Combined</span><div class="sentry-stack"><i style="--v:51%">51%</i><i style="--v:46%">46%</i><i style="--v:3%"></i></div></article></div><div class="sentry-chart__legend"><span><i></i>Amplitude / energy</span><span><i></i>40–80 Hz ratio</span><span><i></i>Other features</span></div></div><figcaption>The contribution profile separates load-type and boundary-condition change families.</figcaption></figure>
-              </div>
-
-              <div class="sentry-result-cards">
-                <article><strong>100%</strong><span>recall</span><p>840 of 840 structural-change windows detected.</p></article><article><strong>4.4%</strong><span>normal FAR</span><p>Four of 90 normal evaluation windows exceeded threshold.</p></article><article><strong>0.998</strong><span>F1</span><p>Precision 0.995 with recall 1.000.</p></article>
-              </div>
-
-              <div class="sentry-version-findings">
-                <article><span>Mass</span><h4>83% amplitude / energy</h4><p>Added mass mainly changes the amplitude and energy residual groups.</p></article><article><span>Bolt</span><h4>83% 40–80 Hz band</h4><p>Loosened connections shift the mid-band energy-ratio residual.</p></article><article><span>Combined</span><h4>Both signatures remain</h4><p>The alarm contains 51% amplitude/energy and 46% band contribution.</p></article>
-              </div>
-
-            </article>
-          </div>
+          <article class="tile sx-x sx-x--wide sx-x--new reveal">
+            <figure class="sx-x__fig">
+              <img src="../docs/sentry/panels/v3-en.webp" data-src-en="../docs/sentry/panels/v3-en.webp" data-src-ko="../docs/sentry/panels/v3-ko.webp" alt="Poster panel: stage 3 real-bridge experiment" loading="lazy" />
+            </figure>
+            <div class="sx-x__body">
+              <span class="sx-badge">v3 · Round 3 · September 2026</span>
+              <h3 class="sx-x__title">Two real footbridges</h3>
+              <ul class="sx-x__list">
+                <li>Five overpasses screened by 30-minute ambient recordings; E (1.74 Hz) and C (3.81 Hz) chosen for their sharp peaks.</li>
+                <li><b>Bridge E</b>, Paju: the 1.74 Hz peak held within <b>1%</b> for 68 h, with no consecutive-window alarms.</li>
+                <li><b>Bridge C</b>, Changwon: a <b>200 kg</b> load dropped the frequency 0.6% and it recovered on removal — the added-mass prediction; alarms fired only while loaded.</li>
+              </ul>
+              <button class="sx-x__doc" type="button" data-open-doc="r3" data-page="10">Round 3 report <span>40 pp. · EN · 한국어</span></button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="sentry-section" id="validation">
+    <!-- ============================== POSTER ============================ -->
+    <section class="section" id="poster" aria-labelledby="sx-poster-title">
       <div class="container">
-        <header class="sentry-section__head reveal"><p class="eyebrow">04 · Experimental record</p><h2>The timeline explains why. This section preserves exactly how it was tested.</h2><p>Three evidence layers answer different questions: environmental drift on a real bridge, end-to-end feasibility on v1, and controlled structural-change discrimination on v2.</p></header>
-
-        <div class="sentry-validation-stack reveal"><article><span>01</span><h3>openLAB</h3><p>Nine months of undamaged data from a 45 m research bridge.</p></article><article><span>02</span><h3>Foam v1</h3><p>Nine combinations of mass distribution and environment.</p></article><article><span>03</span><h3>Aluminum v2</h3><p>27 combinations of environment, added mass, and bolt loosening.</p></article></div>
-
-        <div class="sentry-table-wrap reveal"><table class="sentry-table"><caption>27-condition factorial design</caption><thead><tr><th>Factor</th><th>Levels</th><th>How it was applied</th></tr></thead><tbody><tr><td>Environment (T·H)</td><td>No change · humidity · temperature + RH</td><td>Ambient, humidifier enclosure, or controlled heating with measured DHT22 values</td></tr><tr><td>Mass (M)</td><td>0 · 500 · 1,000 g</td><td>Asymmetric 500 g at x=150 mm or symmetric 500 g at x=150/450 mm</td></tr><tr><td>Bolt (B)</td><td>0 · 1 · 2 loosened</td><td>Predefined deck-connector bolts loosened by half a turn, stepwise</td></tr></tbody></table></div>
-
-        <details class="sentry-details reveal"><summary>Open the complete v2 condition table</summary><div class="sentry-table-wrap"><table class="sentry-table sentry-table--dense"><thead><tr><th>Condition group</th><th>Median peak</th><th>Shift vs 101 Hz</th><th>Mean score</th><th>Over threshold</th></tr></thead><tbody><tr><td>Baseline · Tx-Hx-M0-B0</td><td>101.0 Hz</td><td>0.0%</td><td>0.03</td><td>0/30</td></tr><tr><td>Humidity · Tx-Ho-M0-B0</td><td>101.0 Hz</td><td>0.0%</td><td>0.07</td><td>0/30</td></tr><tr><td>Temperature + RH · To-Ho-M0-B0</td><td>90.0 Hz</td><td>-10.9%</td><td>4.13</td><td>4/30</td></tr><tr><td>M500-B0</td><td>36.0 Hz</td><td>-64.4%</td><td>33.2</td><td>105/105</td></tr><tr><td>M1000-B0</td><td>36.0 Hz</td><td>-64.4%</td><td>128.4</td><td>105/105</td></tr><tr><td>M0-B1</td><td>64.0 Hz</td><td>-36.6%</td><td>264.7</td><td>105/105</td></tr><tr><td>M0-B2</td><td>40.0 Hz</td><td>-60.4%</td><td>370.3</td><td>105/105</td></tr><tr><td>M500-B1</td><td>44.0 Hz</td><td>-56.4%</td><td>75.4</td><td>105/105</td></tr><tr><td>M1000-B1</td><td>81.0 Hz</td><td>-19.8%</td><td>108.3</td><td>105/105</td></tr><tr><td>M500-B2</td><td>66.0 Hz</td><td>-34.7%</td><td>307.1</td><td>105/105</td></tr><tr><td>M1000-B2</td><td>53.0 Hz</td><td>-47.5%</td><td>323.4</td><td>105/105</td></tr></tbody></table></div></details>
-
-        <div class="sentry-mode-note reveal"><p class="sentry-kicker">Interpretation limit</p><h3>Peak frequency alone is not a severity meter.</h3><p>Several conditions jump between vibration modes instead of moving down one frequency axis. M1000-B1 lands at 81 Hz while M500-B1 lands at 44 Hz. The detector therefore evaluates a multivariate residual pattern rather than assuming that more damage always means a lower single peak.</p></div>
-      </div>
-    </section>
-
-    <section class="sentry-dashboard" aria-labelledby="dashboard-title">
-      <div class="container">
-        <header class="sentry-section__head reveal">
-          <p class="eyebrow">05 · Operator view</p>
-          <h2 id="dashboard-title">A result that can be acted on.</h2>
-          <p>The Pi 5 serves a live dashboard with waveform, impact spectrum, threshold ratio, peak frequency, RMS, environment, and contribution bands.</p>
-        </header>
-      </div>
-      <figure class="sentry-dashboard__figure reveal">
-        <div class="sentry-dashboard-native" role="img" aria-label="English SENTRY operator dashboard showing normal status, anomaly score ratio 0.38, peak frequency 101 hertz, RMS 0.078 g, temperature 24.1 degrees Celsius, humidity 66.7 percent, eight analyzed impacts, waveform, spectrum, and feature contributions.">
-          <div class="container"><div class="sentry-dashboard-native__top"><div><h3>SENTRY live monitor</h3><p>Edge node connected · collecting controlled impacts</p></div><span class="sentry-dashboard-native__status">Within baseline</span></div><div class="sentry-dashboard-native__metrics"><article><span>Score / threshold</span><strong>0.38×</strong></article><article><span>Peak frequency</span><strong>101 Hz</strong></article><article><span>RMS</span><strong>0.078 g</strong></article><article><span>Temperature</span><strong>24.1 °C</strong></article><article><span>Humidity</span><strong>66.7%</strong></article><article><span>Impacts analyzed</span><strong>8</strong></article></div><div class="sentry-dashboard-native__plots"><article><span>Latest z-axis response</span><svg viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L4 15 L8 145 L12 35 L16 125 L20 52 L24 112 L28 62 L33 103 L38 70 L44 96 L50 74 L58 90 L66 77 L76 86 L88 79 L102 84 L118 80 L138 82 L160 80 L190 81 L230 80 L280 81 L350 80 L430 80 L520 81 L600 80"/></svg></article><article><span>Impact spectrum · 0–125 Hz</span><svg viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 150 L25 149 L55 148 L80 144 L104 150 L125 136 L138 82 L146 148 L178 145 L215 149 L260 147 L300 149 L338 145 L365 82 L375 148 L410 146 L452 149 L485 145 L510 36 L518 149 L550 146 L600 148"/></svg></article></div><div class="sentry-dashboard-native__contribution"><span>Feature contribution</span><div class="sentry-stack"><i style="--v:16%">16%</i><i style="--v:5%"></i><i style="--v:79%">79%</i></div><p>Autoencoder 8→3→8 · environmental residuals enabled · 0–125 Hz analysis band</p></div></div>
-        </div>
-        <figcaption class="container">The interface refreshes about every 0.7 seconds after a measurement. “Within baseline”, “review”, and “anomaly candidate” are defined by the score-to-threshold ratio.</figcaption>
-      </figure>
-    </section>
-
-    <section class="sentry-section sentry-section--alt" id="outcome">
-      <div class="container">
-        <div class="sentry-outcome reveal">
+        <div class="sx-head reveal">
           <div>
-            <p class="eyebrow">06 · Outcome</p>
-            <h2>What is complete, and what remains.</h2>
+            <p class="eyebrow">Poster</p>
+            <h2 class="section-title" id="sx-poster-title">The finals poster</h2>
+            <p class="section-desc">Two A0 pages presented at the finals. The English edition was produced from the original slide file, so the layout is identical.</p>
           </div>
-          <div class="sentry-outcome__columns">
-            <article><h3>Built</h3><ul><li>Low-cost sensing and automated excitation hardware</li><li>Environmental residual pipeline and nonlinear autoencoder</li><li>Real-time edge dashboard and contribution analysis</li><li>Public-data, v1, and v2 validation trail</li></ul></article>
-            <article><h3>Not yet claimed</h3><ul><li>Field reliability on an in-service bridge</li><li>Damage-type diagnosis from one sensor</li><li>Cross-bridge severity calibration</li><li>Replacement of statutory inspection</li></ul></article>
-          </div>
-        </div>
-
-        <div class="sentry-next reveal">
-          <p class="sentry-kicker">Next build</p>
-          <h3>Move from a controlled model to a sensor network.</h3>
-          <p>The next technical steps are multi-point sensing, wireless time synchronization, longer seasonal baselines, and a field pilot where SENTRY's alarms can be compared against professional inspection findings.</p>
-        </div>
-
-        <div class="sentry-artifacts reveal">
-          <div><p class="sentry-kicker">Source artifacts</p><h3>The original documents remain available as evidence, not as the page.</h3></div>
-          <div class="sentry-artifacts__links">
-            <a class="btn btn--outline" href="https://docs.google.com/document/d/1QH3lZLRlorDKHvEpJbrveUdAfJU_11RzUro6iYMS6IU/edit?tab=t.ckiwcisl6gyd" target="_blank" rel="noopener noreferrer">Open work description v1</a>
-            <a class="btn btn--primary" href="https://docs.google.com/document/d/1QH3lZLRlorDKHvEpJbrveUdAfJU_11RzUro6iYMS6IU/edit?tab=t.dlfiakik83sd" target="_blank" rel="noopener noreferrer">Open work description v2</a>
-            <a class="btn btn--ghost" href="../docs/sentry-report.pdf" target="_blank" rel="noopener noreferrer">PDF archive</a>
+          <div class="sx-head__side">
+            <div class="sx-seg" role="group" aria-label="Poster language" data-lang-switch>
+              <button type="button" data-lang="en" aria-pressed="true">English</button>
+              <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+            </div>
+            <a class="sx-link" href="../docs/sentry/poster-en.pdf" data-href-en="../docs/sentry/poster-en.pdf" data-href-ko="../docs/sentry/poster-ko.pdf" target="_blank" rel="noopener">Download PDF ↓</a>
           </div>
         </div>
 
-        <p class="sentry-source-note reveal">Project visuals and data figures come from the SENTRY team's v1 and v2 work descriptions. Hero footage: <a href="https://mixkit.co/free-stock-video/aerial-view-of-a-highway-bridge-100215/" target="_blank" rel="noopener noreferrer">“Aerial View of a Highway Bridge”</a>, used under the Mixkit Stock Video Free License.</p>
+        <div class="sx-poster">
+          <button class="tile sx-poster__page reveal" type="button" data-open-doc="poster" data-page="1" aria-label="Open poster page 1 in the reader">
+            <span class="sx-paper"><img src="../docs/sentry/pages/poster-en/1.webp" data-src-en="../docs/sentry/pages/poster-en/1.webp" data-src-ko="../docs/sentry/pages/poster-ko/1.webp" alt="Poster page 1: problem, method, flowchart and differences" width="1500" height="2120" loading="lazy" /></span>
+          </button>
+          <button class="tile sx-poster__page reveal" type="button" data-open-doc="poster" data-page="2" data-reveal-delay="80" aria-label="Open poster page 2 in the reader">
+            <span class="sx-paper"><img src="../docs/sentry/pages/poster-en/2.webp" data-src-en="../docs/sentry/pages/poster-en/2.webp" data-src-ko="../docs/sentry/pages/poster-ko/2.webp" alt="Poster page 2: experiments, results and conclusion" width="1500" height="2120" loading="lazy" /></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ DOCUMENTS =========================== -->
+    <section class="section" id="documents" aria-labelledby="sx-docs-title">
+      <div class="container">
+        <div class="sx-head reveal">
+          <div>
+            <p class="eyebrow">Documents</p>
+            <h2 class="section-title" id="sx-docs-title">Read the submissions</h2>
+            <p class="section-desc">Everything submitted to the three rounds, in English and in the original Korean. Pages line up one-to-one, so any page can be checked against its source.</p>
+          </div>
+        </div>
+
+        <div class="tile sx-reader reveal" id="sx-reader" tabindex="-1">
+          <aside class="sx-reader__side" aria-label="Documents">
+            <div class="sx-group">
+              <p class="sx-group__h"><b>Round 3 · Finals</b><span>Sep 2026</span></p>
+              <button class="sx-item" type="button" data-doc="r3">Project report <span>40 pp.</span></button>
+              <button class="sx-item" type="button" data-doc="poster">Poster <span>2 pp.</span></button>
+              <button class="sx-item" type="button" data-doc="s3">Project summary <span>1 p.</span></button>
+            </div>
+            <div class="sx-group">
+              <p class="sx-group__h"><b>Round 2 · Preliminary</b><span>Jul 2026</span></p>
+              <button class="sx-item" type="button" data-doc="r2">Project report <span>38 pp.</span></button>
+              <button class="sx-item" type="button" data-doc="s2">Project summary <span>1 p.</span></button>
+              <button class="sx-item" type="button" data-doc="slides">Presentation slides <span>KO</span></button>
+            </div>
+            <div class="sx-group">
+              <p class="sx-group__h"><b>Round 1 · Written review</b><span>Jun 2026</span></p>
+              <button class="sx-item" type="button" data-doc="r1">Project report <span>16 pp.</span></button>
+              <button class="sx-item" type="button" data-doc="s1">Project summary <span>1 p.</span></button>
+            </div>
+          </aside>
+
+          <div class="sx-reader__main">
+            <div class="sx-bar">
+              <p class="sx-bar__title"><b data-reader-title>Project report</b><span data-reader-round>Round 3 · Finals</span></p>
+              <div class="sx-seg sx-seg--sm" role="group" aria-label="Reader language" data-reader-lang>
+                <button type="button" data-lang="en" aria-pressed="true">English</button>
+                <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+                <button type="button" data-lang="both" aria-pressed="false" class="sx-seg__both">Side by side</button>
+              </div>
+              <div class="sx-pager">
+                <button type="button" data-step="-1" aria-label="Previous page">‹</button>
+                <span aria-live="polite"><span data-page-now>1</span> / <span data-page-total>16</span></span>
+                <button type="button" data-step="1" aria-label="Next page">›</button>
+              </div>
+              <a class="sx-dl" href="../docs/sentry/r3-en.pdf" target="_blank" rel="noopener" data-reader-pdf>PDF ↓</a>
+            </div>
+
+            <div class="sx-desk" data-reader-desk>
+              <figure class="sx-sheet" data-sheet="a">
+                <img alt="" width="1000" height="1413" />
+                <figcaption><span data-sheet-label>English translation</span><span>p. <span data-sheet-page>1</span></span></figcaption>
+              </figure>
+              <figure class="sx-sheet" data-sheet="b" hidden>
+                <img alt="" width="1000" height="1413" />
+                <figcaption><span>Original · 한국어</span><span>p. <span data-sheet-page>1</span></span></figcaption>
+              </figure>
+            </div>
+
+            <div class="sx-thumbs" data-reader-thumbs role="list" aria-label="Pages"></div>
+            <p class="sx-reader__note" data-reader-note></p>
+          </div>
+        </div>
+
+        <p class="sx-fine reveal">English editions are translations of the original Korean submissions. Layout, figures, tables and page numbers are reproduced from the originals; only the text is translated, and Korean labels drawn inside figures remain as in the original. Names of the teammate and advisor are withheld. The presentation slides are offered in Korean only, as most of their headings are part of the slide artwork.</p>
       </div>
     </section>
   </main>
@@ -385,7 +291,7 @@
     <div class="container footer__inner">
       <div class="footer__left">
         <p class="footer__brand">Kim Changhoon<span class="footer__dot">.</span></p>
-        <p class="footer__meta">&copy; <span id="footer-year">2026</span> · Built as a static site with HTML, CSS &amp; JavaScript.</p>
+        <p class="footer__meta">&copy; <span id="footer-year">2026</span> &middot; SENTRY, Korea Code Fair 2026</p>
       </div>
       <nav class="footer__nav" aria-label="Footer">
         <a class="footer__top" href="../index.html#projects">Back to portfolio
@@ -395,6 +301,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=20260828-2" defer></script>
+  <script src="../js/main.js?v=20261008" defer></script>
+  <script src="../js/sentry.js?v=20261008" defer></script>
 </body>
 </html>

@@ -14,3 +14,9 @@ _src_nextjs/.next/
 
 # Stray macOS screenshots
 Screenshot *.png
+
+# SENTRY docs pipeline: regenerable build outputs
+tools/sentry-docs/.build/
+tools/sentry-docs/units.json
+tools/sentry-docs/tm/all.json
+__pycache__/

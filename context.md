@@ -24,20 +24,24 @@ inflated, never decorative-for-its-own-sake.
 
 ## 2. Aesthetic direction
 
-**"Light, precise, instrument-like."** A calm white editorial base with an indigo/violet
-accent, plus a thin layer of *live measurement* signals that hint at the anomaly-detection
-and experimentation work without ever shouting.
+**"Bento, but un-AI."** The home page is a grey canvas (`--page`) holding white, softly
+rounded tiles — an intro tile, a tall portrait tile, and a few fact tiles — with one dark tile
+for emphasis. Indigo stays the accent but is used sparingly (small badges, the brand dot).
+*Chosen 2026-10 from three drafts (Mono / Bento / Editorial); the earlier "live signal panel"
+hero — grid, aurora, waveform, ring, typewriter — was retired as too busy.*
 
 Committed choices:
 
 - **Light is the default.** Dark is opt-in via the toggle and stored in `localStorage`; the
   system colour scheme is intentionally **ignored** for the initial theme.
-- **Restraint over density.** Generous whitespace, one accent hue family, sharp hierarchy.
-- **Motion is ambient, not attention-seeking** — slow drifts and one-time draws, never bounce
-  or spin-for-fun.
-- **Avoid the AI-slop look:** no purple-gradient-on-white hero blobs as the whole idea, no
-  glassmorphism everywhere, no stock iconography. Decoration must *mean* something (the hero
-  waveform is a signal trace because he builds signal models).
+- **The grid is the visual idea.** No ambient background effects; structure, whitespace, and
+  type carry the page.
+- **No hover theatrics.** Hover never lifts, scales, zooms, or nudges anything — it only changes
+  colour, border, or background. This was an explicit request: lift-on-hover reads as
+  generic AI-built UI.
+- **Exactly one dark tile per view** (`--invert-bg`): the hero "Now building" tile and the
+  closing Contact tile. Don't add more — it stops being emphasis.
+- **Real content only.** Fact tiles show verifiable things (SENTRY / USACO Silver / ywc.kr).
 
 ---
 
@@ -62,13 +66,12 @@ All tokens live in `css/foundation.css` under `:root` (light) and `html[data-the
 Indigo `--brand` is the primary accent; `--violet` is the secondary, used almost exclusively
 in **gradients paired with brand** (buttons stay solid brand).
 
-Only three deliberate exceptions to the token set exist — don't add a fourth:
+Only two deliberate exceptions to the token set exist — don't add a third:
 
 - **Green** (`#22c55e` / `#15803d`) as a *liveness* signal only: the hero status dot and the
   `.detail__status--live` pill on project pages.
 - **Fixed white/black overlays** in `.cover__tag`, which sits on top of arbitrary cover art
   and therefore can't follow the theme.
-- **`#000` inside `mask-image` gradients**, where the colour is a mask stencil, not a paint.
 
 ### Type
 
@@ -76,36 +79,55 @@ Only three deliberate exceptions to the token set exist — don't add a fourth:
   tight tracking (`-0.02em`; hero name `-0.038em`).
 - `--font-mono`: **Geist Mono**. Mono is a *semantic* signal, not decoration — it marks
   metadata and machine-ish text: eyebrows, tags, filter pills, venues, years, the nav brand,
-  the hero status pill / `build:` readout / stat values.
+  the hero status chip and the fact-tile keys.
 - Body copy sits at `--muted` with `line-height: 1.6–1.7` and a `max-width` (~34–68ch).
 
 ### Geometry & effects
 
 `--radius` `.85rem` · `--radius-sm` `.55rem` · `--radius-lg` `1.15rem` · `--radius-pill` ·
-`--maxw` `72rem`. Three shadow tiers (`--shadow-sm/md/lg`) — cards rest at `sm` and lift to
-`lg` on hover. Focus is always `2px solid var(--brand)` with offset.
+`--maxw` `72rem`. Home-only: `--radius-tile` `1.75rem` (28px tiles) and `--radius-inner`
+`1.25rem` (media inset inside a tile). Three shadow tiers (`--shadow-sm/md/lg`); home tiles
+use **no shadow**, only `--tile-border`. Focus is always `2px solid var(--brand)` with offset.
+
+### Home (bento) tokens
+
+| Role | Light | Dark |
+| --- | --- | --- |
+| `--page` (canvas behind tiles) | `#f3f3f5` | `#0b0c0f` |
+| `--tile-border` | `rgba(17,18,20,.07)` | `rgba(255,255,255,.07)` |
+| `--invert-bg` / `--invert-fg` | `#111214` / `#fff` | `#232637` / `#fff` |
+| `--invert-muted` | `rgba(255,255,255,.6)` | `rgba(255,255,255,.62)` |
+| `--invert-accent` (dot on the dark tile) | `#a5b4fc` | `#a5b4fc` |
+
+Tiles themselves use `--surface`. These tokens were **added**, not substituted: existing token
+values are unchanged so the detail pages (notably `pages/sentry.html` + `css/sentry.css`,
+which lean heavily on `--bg`, `--surface`, `--radius*`) render exactly as before.
 
 ---
 
 ## 4. Layout & rhythm
 
 - `.container` — `max-width: var(--maxw)`, responsive inline padding.
-- `.section` — `padding-block: clamp(3.5rem, 7vw, 6.5rem)`.
-- `.section--alt` — tinted `--bg-alt` band with top/bottom borders. **Alternates** down the
-  page for rhythm: About, Skills, and Awards are banded; Projects, Activity, Writing, and
-  Contact are not. Preserve the alternation when adding a section.
+- `.section` — `padding-block: clamp(3.5rem, 7vw, 6.5rem)`; tightened on home to
+  `clamp(3rem, 6vw, 5rem)`.
+- **Home has no `.section--alt` banding** — every section sits on `--page` and its content
+  lives in tiles. `.section--alt` still exists and is still used by the detail pages.
 - `.section__head` — `.eyebrow` (mono, uppercase, brand) + `.section-title` + optional
   `.section-desc`. Every section uses this; don't invent a new heading pattern.
 - Grids: `.grid-2` / `.grid-3` (1 col → 2 at 640px → 3 at 1024px). Breakpoints in use are
-  **640 / 768 / 900 / 1024** — reuse these rather than adding new ones.
+  **640 / 768 / 820 / 900 / 1024** — reuse these rather than adding new ones.
 
-**Section order:** Hero → Projects → About → Activity → Skills → Writing → Awards → Contact →
-Footer.
+**Section order:** Hero → Projects ("Work" in the nav) → About → Activity → Skills → Writing →
+Awards → Contact → Footer.
 
 > **Naming gotcha:** two partials don't match their section names —
 > `partials/RESEARCH.*` renders the **Activity** section (`#activity`), and
 > `partials/PUBLICATIONS.*` renders the **Writing** section (`#writing`). The `KEYS` list in
 > `assemble.py` is the source of truth for build order.
+
+> **Scoping:** home styles hang off `<body class="home">` (set in `index.template.html`).
+> Anything bento-specific belongs under `.home …` or a home-only class (`.tile`, `.hero__*`,
+> `.nav__pill`, `.contact__tile`) so it can't leak into `pages/`.
 
 ---
 
@@ -113,16 +135,19 @@ Footer.
 
 Defined once in `foundation.css`; section partials should compose these, not re-style them.
 
-- `.btn` + `--primary` (solid brand, lifts on hover) / `--outline` / `--ghost`.
-- `.card` — surface + border + `shadow-sm`; hover lifts `-4px`, borders brand-tinted, shadow
-  to `lg`. Used by projects, skills, awards, contact, activity.
-- `.cover` — 16:9 media slot at the top of a card, accepting `<img>` **or** `<video>`, with a
-  brand→violet gradient as the empty state and a `1.045` scale on card hover. Optional
-  `.cover__tag` pill.
-- `.tag` (mono chips) · `.filter` (pressable pills, `aria-pressed`) · `.icon-well` ·
-  `.icon-link` · `.detail-*` primitives for the standalone pages in `pages/`.
-- `.reveal` — fade + 14px rise, triggered by `IntersectionObserver`; stagger via
-  `data-reveal-delay="<ms>"`.
+- `.btn` + `--primary` / `--outline` / `--ghost`. On home, buttons are **pills**:
+  `--primary` is ink (`--fg` on `--bg`, so it inverts in dark mode) and `--soft` is a
+  `--page`-filled secondary. Hover changes background only.
+- `.card` — surface + border; hover tints the border. On home a card *is* a tile:
+  `--radius-tile`, `--tile-border`, no shadow, and its `.cover` is inset by `.75rem` with
+  `--radius-inner`.
+- `.tile` — the bare bento surface (white, hairline, 28px radius) for non-card blocks.
+- `.cover` — 16:9 media slot accepting `<img>` **or** `<video>`, brand→violet gradient as the
+  empty state, optional `.cover__tag` pill (a light chip on home). **No zoom on hover.**
+- `.tag` (chips — `--page`-filled on home) · `.filter` (pressable pills, `aria-pressed`;
+  active = ink) · `.icon-well` · `.icon-link` · `.detail-*` primitives for `pages/`.
+- `.reveal` — fade + 14px rise on scroll via `IntersectionObserver`; stagger with
+  `data-reveal-delay="<ms>"`. This is the only movement on the page.
 
 **Per-section class naming** is BEM-ish with a section prefix: `.hero__`, `.proj-card__`,
 `.about__`, `.activity-card__`, `.skills__`, `.pub__`, `.award__`, `.contact__`, `.footer__`,
@@ -130,72 +155,51 @@ Defined once in `foundation.css`; section partials should compose these, not re-
 
 ---
 
-## 6. The hero — "live signal panel"
+## 6. The hero — bento
 
-The hero is the site's signature and the one place with real visual investment. It layers a
-static editorial column against a slow, living backdrop.
+`.hero__bento` is a grid of tiles:
 
-**Backdrop (`.hero__bg`, three layers, all `pointer-events: none`):**
+| Breakpoint | Layout |
+| --- | --- |
+| < 640px | single column: intro → portrait (4:5) → three facts stacked |
+| 640–899px | intro full width; portrait left, facts stacked right |
+| ≥ 900px | `2fr / 1fr`: intro top-left, facts row (`1.25fr 1fr 1fr`) bottom-left, portrait spanning both rows on the right |
 
-1. `.hero__grid` — faint engineering graph paper, radially masked so it's strongest at the
-   top-right and gone behind the copy.
-2. `.hero__aurora` — two heavily blurred brand/violet blobs drifting on 19s / 24s alternating
-   loops. This is the atmosphere; it should never be crisp enough to notice as a shape.
-3. `.hero__signal` — a calm anomaly-trace line that self-draws once on load, with two pulsing
-   data points. It is **deliberately low-amplitude and diagonally masked**
-   (`linear-gradient(to top left, …)`) so it fades to nothing under the left text column and
-   only reads along the bottom-right. *An earlier version had a tall spike that collided with
-   the stat strip — do not reintroduce vertical spikes here.*
-
-**Foreground:**
-
-- `.hero__status` — mono pill with a pulsing green dot ("Open to research & collaboration").
-- `.hero__name` — the largest type on the site.
-- `.hero__rotator` — a mono `build:` readout that types/deletes through real project domains
-  with a blinking caret. Content lives in the `data-rotate` JSON attribute in the markup;
-  the driver is in `js/main.js`. Keep the entries **true to actual projects**.
-- `.hero__headline` with `.hero__mark` — a hand-drawn violet marker underline that draws
-  itself under "real users" (SVG path with `pathLength="1"`).
-- `.hero__stats` — a three-item credential strip (USACO / SENTRY / ywc.kr) with gradient
-  ticks. Facts only.
-- Photo: `.hero__photo-ring` is a conic gradient animated via an `@property --ring-angle`
-  registered custom property; `.hero__photo-chip` is a floating "Now building …" chip.
-
-Entrance is a **staggered reveal** (`data-reveal-delay` 0 → 420ms) so the hero assembles
-top-down on load.
+- **Intro tile** — status chip (static green dot, `--page` fill) → `Kim Changhoon` → one-line
+  lead with the key phrase in `<strong>` → pill actions (View work / Résumé / GitHub).
+- **Portrait tile** — `profile.jpg` cropped `object-position: 50% 28%`, with a frosted caption
+  bar ("CheongShim Int'l Academy · Student").
+- **Fact tiles** — mono uppercase key, large value, muted sub-line. `--now` is the dark tile and
+  links to `pages/sentry.html`; the ywc.kr tile links out. Keep exactly three.
 
 ---
 
 ## 7. Navbar
 
-Fixed, blurred, and translucent over `--bg`. Three behaviours, all in `js/main.js`:
+A single **floating pill**, centred `0.9rem` from the top (`.nav__pill`); the fixed header is
+`pointer-events: none` so only the pill catches clicks. Inside: `CK.` brand, links (Work /
+About / Activity / Skills / Writing / Awards), a round theme toggle, and an ink **Contact**
+pill. The scroll-spy marks the active link with a `--page` background — no sliding indicator.
+Past 24px of scroll the nav gains `.is-scrolled` (more opaque, `--shadow-md`).
 
-- **Condense on scroll** — past 24px it gains `.is-scrolled`: more opaque, border swapped for
-  `--shadow-md`, height `3.75rem → 3.35rem`.
-- **`.nav__progress`** — a brand→violet scroll-progress meter on the bottom edge, driven by
-  the `--nav-progress` custom property and revealed only once scrolled.
-- **`.nav__indicator`** — a sliding "magic line" that follows the scroll-spy's active link and
-  retargets to whichever link is hovered, snapping back on mouse-leave. Positioned by
-  `--ind-x` / `--ind-w`, measured from `getBoundingClientRect()`.
-
-Mobile (<768px) swaps the link row for a toggle + stacked panel; the indicator is desktop-only.
+Below 768px the links collapse: the pill keeps brand + toggle + Contact + menu button, and the
+menu drops a rounded tile panel (`.nav__mobile`) underneath.
 
 ---
 
 ## 8. Motion contract
 
-Ambient loops (aurora, status/chip pulses, ring spin, caret) run indefinitely but slowly.
-One-shot draws (signal trace, marker underline) fire once on load. Transitions sit at
-**0.16–0.32s** with `ease` or `cubic-bezier(0.5, 0, 0.1, 1)`.
+The home page has **no ambient animation**. The only motion is the scroll `.reveal` (fade +
+14px rise, staggered in the hero) and short colour/background/border transitions
+(**0.2–0.25s**, `ease`). Hover may never use `transform` — the build was checked to contain
+zero `:hover` rules that set a transform.
 
 **`prefers-reduced-motion: reduce` is a hard requirement.** `foundation.css` clamps all
-animation/transition durations and neutralises `.reveal`; `HERO.css` additionally disables
-every hero loop and forces the self-drawing paths to their finished state
-(`stroke-dashoffset: 0`), and the nav indicator drops its slide transition. **Any new
-animation must be added to a reduced-motion guard.**
+animation/transition durations and neutralises `.reveal`; `main.js` pauses any
+`video[data-motion-video]` (used on the SENTRY page). **Any new animation must be added to a
+reduced-motion guard.**
 
-Everything is also driven by CSS custom properties + `IntersectionObserver` only — no
-animation libraries, and no runtime dependencies at all.
+No animation libraries and no runtime dependencies.
 
 ---
 
@@ -205,6 +209,28 @@ animation libraries, and no runtime dependencies at all.
   `index.html` or `css/styles.css`** — they are build outputs and will be overwritten.
 - Commit the regenerated outputs together with the sources (GitHub Pages serves them directly).
 - Check **both themes and mobile** for any visual change; dark is not an afterthought here.
+- Changing a shared token value affects `pages/` too — prefer adding a home-scoped token.
 - Content must stay truthful — no invented awards, metrics, or affiliations.
-- Keep decoration behind the copy legible: background layers must never reduce text contrast
-  or collide with UI (see the hero signal note in §6).
+- No hover lift / scale / zoom, no background effects behind copy, one dark tile per view.
+
+---
+
+## 10. SENTRY project page (`pages/sentry.html`)
+
+Same bento language as home (`<body class="home sentry-page">`, floating nav pill, tiles);
+page-only styles live in `css/sentry.css` (prefix `.sx-`) and behaviour in `js/sentry.js`.
+Order: overview bento (intro · poster tile · three fact tiles) → **Experiments** (v1 foam
+board, openLAB data, v2 aluminum model, v3 two real footbridges) → **Poster** → **Documents**
+reader (English / 한국어 / side by side).
+
+- **Figures are the originals.** Experiment tiles show crops of the submitted poster, the
+  reader shows pages rendered from the submitted PDFs. Do not redraw diagrams for the site —
+  the owner explicitly rejected that.
+- **English + Korean, page for page.** English editions translate the text in place and keep
+  layout, figures and page numbers, so every page can be checked against the Korean original.
+  Each English page carries a translation notice.
+- **Team project.** SENTRY is a two-student team with a faculty advisor; say so wherever it
+  is described. The teammate's and advisor's names are withheld everywhere (masked in the
+  Korean forms, "[name withheld]" in English).
+- Assets in `docs/sentry/` are generated by `tools/sentry-docs/` (see its README) — edit the
+  translation memory there and rebuild instead of editing PDFs or images by hand.

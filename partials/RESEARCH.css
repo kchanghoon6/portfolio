@@ -3,6 +3,7 @@
 
 /* A single prominent activity card; stacks on mobile, goes horizontal on wider screens */
 .activity-card { overflow: hidden; }
+.activity-card .tags { margin-top: 0.9rem; }
 .activity-card__cover { display: block; }
 .activity-card__body {
   display: flex;
@@ -16,8 +17,8 @@
     width: 44%;
     flex: none;
     aspect-ratio: auto;          /* fill the card height instead of 16:9 */
-    border-radius: 0;            /* card clips via overflow:hidden */
   }
+  .home .activity-card__cover { margin: 0.75rem; }
   .activity-card__cover img { height: 100%; }
   .activity-card__body { flex: 1; padding: 1.8rem 2rem; }
 }

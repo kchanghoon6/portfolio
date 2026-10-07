@@ -55,7 +55,17 @@
   --radius-sm: 0.55rem;
   --radius-lg: 1.15rem;
   --radius-pill: 999px;
+  --radius-tile: 1.75rem;    /* home-page bento tiles                  */
+  --radius-inner: 1.25rem;   /* media inset inside a tile              */
   --maxw: 72rem;             /* 1152px content width                   */
+
+  /* Home page (bento) surfaces */
+  --page: #f3f3f5;           /* grey canvas the white tiles sit on     */
+  --tile-border: rgba(17, 18, 20, 0.07);
+  --invert-bg: #111214;      /* the one dark tile ("Now", Contact)     */
+  --invert-fg: #ffffff;
+  --invert-muted: rgba(255, 255, 255, 0.6);
+  --invert-accent: #a5b4fc;  /* light indigo that reads on the dark tile */
 
   /* Type */
   --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -85,6 +95,12 @@ html[data-theme='dark'] {
   --brand-fg: #0d0e12;
 
   --ring: rgba(129, 140, 248, 0.5);
+  --page: #0b0c0f;
+  --tile-border: rgba(255, 255, 255, 0.07);
+  --invert-bg: #232637;
+  --invert-fg: #ffffff;
+  --invert-muted: rgba(255, 255, 255, 0.62);
+  --invert-accent: #a5b4fc;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 8px 20px -8px rgba(0, 0, 0, 0.55);
   --shadow-lg: 0 24px 50px -20px rgba(0, 0, 0, 0.65);
@@ -201,7 +217,7 @@ h1, h2, h3, h4 { font-weight: 650; line-height: 1.18; letter-spacing: -0.02em; }
   background: var(--brand); color: var(--brand-fg);
   box-shadow: var(--shadow-sm);
 }
-.btn--primary:hover { background: var(--brand-strong); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn--primary:hover { background: var(--brand-strong); }
 .btn--outline {
   background: var(--surface); color: var(--fg);
   border-color: var(--border-strong);
@@ -227,12 +243,11 @@ h1, h2, h3, h4 { font-weight: 650; line-height: 1.18; letter-spacing: -0.02em; }
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
+/* Hover only tints the border — no lift, no shadow bloom (deliberately un-"AI") */
 .card:hover {
-  transform: translateY(-4px);
   border-color: color-mix(in srgb, var(--brand) 40%, var(--border));
-  box-shadow: var(--shadow-lg);
 }
 .card__body { padding: 1.4rem; }
 @media (min-width: 640px) { .card__body { padding: 1.6rem; } }
@@ -252,10 +267,7 @@ a.cover { cursor: pointer; }
 .cover video {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.card:hover .cover img,
-.card:hover .cover video { transform: scale(1.045); }
 .cover__tag {
   position: absolute; top: 0.7rem; left: 0.7rem;
   font-family: var(--font-mono);
@@ -446,6 +458,51 @@ html[data-theme='dark'] .theme-toggle .icon-moon { display: block; }
 .detail__status--offline { color: var(--muted); background: var(--surface-2); }
 .detail__status::before { content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: currentColor; }
 .detail__visit { margin-top: 1.9rem; }
+
+/* ============================ HOME (BENTO) ============================= */
+/* Scoped to <body class="home"> so the detail pages under /pages/ keep their
+   own layouts. Everything here sits white-on-grey: tiles on --page.        */
+.home { background: var(--page); }
+
+/* Generic tile: a white, softly rounded surface with a hairline edge */
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--tile-border);
+  border-radius: var(--radius-tile);
+}
+
+/* Cards become tiles; media sits inset with its own smaller radius */
+.home .card {
+  border-color: var(--tile-border);
+  border-radius: var(--radius-tile);
+  box-shadow: none;
+}
+.home .card:hover { border-color: color-mix(in srgb, var(--fg) 18%, transparent); }
+.home .card .cover {
+  border-radius: var(--radius-inner);
+  margin: 0.75rem 0.75rem 0;
+}
+.home .cover__tag {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 0;
+}
+
+/* Section heads: bigger, quieter */
+.home .section { padding-block: clamp(3rem, 6vw, 5rem); }
+.home .section-title { font-size: clamp(1.9rem, 4vw, 2.6rem); letter-spacing: -0.035em; }
+
+/* Pill buttons in ink */
+.home .btn { border-radius: var(--radius-pill); padding: 0.78rem 1.35rem; }
+.home .btn--primary { background: var(--fg); color: var(--bg); box-shadow: none; }
+.home .btn--primary:hover { background: var(--fg-soft); }
+.home .btn--soft { background: var(--page); color: var(--fg); }
+.home .btn--soft:hover { background: color-mix(in srgb, var(--fg) 8%, var(--page)); }
+
+/* Chips and filters */
+.home .tag { background: var(--page); border-color: transparent; color: var(--fg-soft); }
+.home .filter { background: var(--surface); border-color: var(--tile-border); font-family: var(--font-sans); font-size: 0.85rem; }
+.home .filter[aria-pressed='true'] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 
 /* =======================================================================
    SECTION STYLES  (appended below during assembly)

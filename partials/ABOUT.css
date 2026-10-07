@@ -1,6 +1,7 @@
 .about__grid {
   display: grid;
   gap: 2rem;
+  padding: clamp(1.75rem, 4.2vw, 3.25rem);
 }
 
 .about__body {
