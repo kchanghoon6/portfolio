@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Delivery Robot · Kim Changhoon</title>
+  <meta name="description" content="An in-progress campus delivery robot that carries school-store orders to dorm rooms: Raspberry Pi 5 + ESP32-S3, four-wheel drive, a conveyor and two-stage folding ramp for door-side drop-off, and an elevator-button presser — modeled in 3D with real part dimensions before the build." />
+  <meta name="theme-color" content="#f3f3f5" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/project.css?v=20261008c" />
+  <script>
+    (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
+  </script>
+</head>
+<body class="home project-page">
+  <a class="skip-link" href="#overview">Skip to content</a>
+
+  <header class="nav" id="site-nav">
+    <div class="nav__pill">
+      <a class="nav__brand" href="../index.html#top">CK<span class="nav__dot">.</span></a>
+
+      <nav class="nav__links" aria-label="Sections">
+        <a class="nav__link" href="#overview">Overview</a>
+        <a class="nav__link" href="#model">3D model</a>
+        <a class="nav__link" href="#design">Design</a>
+        <a class="nav__link" href="#progress">Progress</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+          <span class="icon-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
+          <span class="icon-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        </button>
+
+        <a class="nav__cta" href="../index.html#projects">
+          <span aria-hidden="true">←</span> Portfolio
+        </a>
+
+        <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Open menu">
+          <svg class="nav__icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+          <svg class="nav__icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav__mobile" id="nav-mobile" hidden>
+      <nav aria-label="Mobile menu">
+        <a class="nav__link" href="#overview">Overview</a>
+        <a class="nav__link" href="#model">3D model</a>
+        <a class="nav__link" href="#design">Design</a>
+        <a class="nav__link" href="#progress">Progress</a>
+        <a class="nav__link" href="../index.html#projects">← Back to portfolio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================ OVERVIEW ============================ -->
+    <section class="sx-hero sx-hero--banner" id="overview" aria-labelledby="rb-title">
+      <div class="container sx-hero__bento">
+        <div class="tile sx-intro rb-intro reveal">
+          <div class="sx-intro__media" aria-hidden="true">
+            <img src="../src/img/robot/model-render.webp" alt="" width="1800" height="1093" />
+            <span class="sx-intro__veil"></span>
+          </div>
+          <span class="sx-chip"><span class="rb-pulse" aria-hidden="true"></span>Robotics · In progress</span>
+          <h1 class="sx-intro__title" id="rb-title">Campus Delivery Robot</h1>
+          <p class="sx-intro__lead">A robot that carries school-store orders to dorm rooms and <strong>unloads them on its own</strong> — designed part by part, with real dimensions, before it is built.</p>
+          <p class="sx-intro__team">In progress · parts ordered October 2026 · assembly and testing next.</p>
+          <div class="sx-intro__actions">
+            <a class="btn btn--primary" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">
+              Open the 3D model
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+            <a class="btn btn--soft" href="#design">Design</a>
+            <a class="btn btn--soft" href="#progress">Progress</a>
+          </div>
+        </div>
+
+        <div class="sx-facts">
+          <div class="tile sx-fact reveal" data-reveal-delay="120">
+            <span class="sx-fact__k">Brains</span>
+            <span class="sx-fact__v">Pi 5 + ESP32</span>
+            <span class="sx-fact__s">high-level decisions on the Pi, real-time motor and sensor control on an ESP32-S3</span>
+          </div>
+          <div class="tile sx-fact reveal" data-reveal-delay="160">
+            <span class="sx-fact__k">Drop-off</span>
+            <span class="sx-fact__v">250 × 900</span>
+            <span class="sx-fact__s">mm conveyor belt plus a two-stage folding ramp (~24°)</span>
+          </div>
+          <div class="tile sx-fact reveal" data-reveal-delay="200">
+            <span class="sx-fact__k">3D model</span>
+            <span class="sx-fact__v">27 steps</span>
+            <span class="sx-fact__s">assembly animation built from purchased-part dimensions</span>
+          </div>
+        </div>
+
+        <a class="tile sx-poster-tile reveal" data-reveal-delay="80" href="#model" aria-label="Go to the interactive 3D model">
+          <span class="sx-poster-tile__paper rb-thumb">
+            <img src="../src/img/robot/model-thumb.webp" alt="3D model of the robot with its drop-off ramp unfolded" width="900" height="964" loading="eager" />
+          </span>
+          <span class="sx-poster-tile__cap"><b>Interactive model</b><span>WebGL · mm</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================== MODEL ============================= -->
+    <section class="section" id="model" aria-labelledby="rb-model-title">
+      <div class="container">
+        <div class="sx-head reveal">
+          <div>
+            <p class="eyebrow">3D model</p>
+            <h2 class="section-title" id="rb-model-title">Built in 3D before it's built for real</h2>
+            <p class="section-desc">Every purchased part is placed at its real size. The model plays the assembly in 27 steps — with the bolts, checks and purchase link for each part — and animates the drop-off sequence.</p>
+          </div>
+          <div class="sx-head__side">
+            <a class="sx-link" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">Open full screen ↗</a>
+          </div>
+        </div>
+
+        <div class="tile rb-model reveal">
+          <div class="rb-model__stage" data-embed>
+            <img class="rb-model__poster" src="../src/img/robot/model-render.webp" alt="Still frame of the interactive 3D model" width="1800" height="1093" loading="lazy" />
+            <div class="rb-model__cta">
+              <button class="btn btn--primary rb-model__load" type="button" data-embed-load="../models/delivery-robot/dropoff-3d.html">
+                Load the interactive model
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+              </button>
+              <a class="btn btn--soft rb-model__open" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">Open full screen ↗</a>
+              <span class="rb-model__hint">2.3 MB · drag to rotate, scroll to zoom, ← / → to step through the assembly</span>
+            </div>
+          </div>
+        </div>
+        <p class="sx-fine reveal">The model's interface is in Korean. It is a layout and assembly study, not a manufacturing drawing: strength, friction and motor torque have not been calculated yet, and the 0.5 kg payload is a test target, not a rating.</p>
+      </div>
+    </section>
+
+    <!-- ============================== DESIGN ============================ -->
+    <section class="section" id="design" aria-labelledby="rb-design-title">
+      <div class="container">
+        <div class="sx-head reveal">
+          <div>
+            <p class="eyebrow">Design</p>
+            <h2 class="section-title" id="rb-design-title">Four subsystems, one chassis</h2>
+            <p class="section-desc">A 264 × 520 mm two-deck chassis (348 mm across the wheels) carries a cargo box, a drop-off module and an elevator-button mast.</p>
+          </div>
+        </div>
+
+        <div class="rb-spec">
+          <article class="tile rb-card reveal">
+            <span class="rb-card__k">01 · Drive &amp; power</span>
+            <h3 class="rb-card__title">Four-wheel drive on a LiFePO4 pack</h3>
+            <ul class="sx-x__list">
+              <li>Four JGB37-520 encoder motors on Ø85 mm wheels, driven by a Cytron MDD10A.</li>
+              <li>12.8 V 9.9 Ah LiFePO4 pack with fused power branches.</li>
+              <li>An emergency stop and relay cut motor power independently of the computers.</li>
+            </ul>
+          </article>
+
+          <article class="tile rb-card rb-card--accent reveal" data-reveal-delay="80">
+            <span class="rb-card__k">02 · Drop-off module</span>
+            <h3 class="rb-card__title">Conveyor + two-stage folding ramp</h3>
+            <ul class="sx-x__list">
+              <li>A 250 mm green PVC belt (900 mm loop) driven by a 27 rpm worm-gear motor (~52 mm/s), top surface 219 mm above the floor.</li>
+              <li>A 250 + 250 mm ramp unfolds on two 12 rpm worm-gear axes to ~24°; a 100 N gas spring offsets its weight and a servo-released plunger locks it when stowed.</li>
+              <li>Limit switches and IR break-beams confirm the ramp position and that the package has fully left.</li>
+            </ul>
+          </article>
+
+          <article class="tile rb-card reveal">
+            <span class="rb-card__k">03 · Elevator button</span>
+            <h3 class="rb-card__title">A mast that presses lift buttons</h3>
+            <ul class="sx-x__list">
+              <li>A 2040 aluminum column puts the pusher tip at 950 mm.</li>
+              <li>A DS3218 servo drives a pushrod along a linear bushing; a compression spring limits the pressing force (stroke ≈ 34 mm).</li>
+            </ul>
+          </article>
+
+          <article class="tile rb-card reveal" data-reveal-delay="80">
+            <span class="rb-card__k">04 · Sensing &amp; safety</span>
+            <h3 class="rb-card__title">See the path, watch the drop zone</h3>
+            <ul class="sx-x__list">
+              <li>Pi Camera 3 and five VL53L1X ToF sensors at the front and sides; two more watch the floor behind for the drop-off.</li>
+              <li>A 130° USB camera with an LED strip photographs the delivered package by the door.</li>
+              <li>An INA226 current monitor stops a motor that stalls (2.5 A for 0.5–1 s).</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="tile rb-seq reveal">
+          <p class="rb-seq__h"><b>Drop-off sequence</b><span>as animated in the model</span></p>
+          <ol class="rb-seq__list">
+            <li><b>0</b>Stowed</li>
+            <li><b>1</b>Stop &amp; select</li>
+            <li><b>2</b>Unfold ramp</li>
+            <li><b>3</b>Convey</li>
+            <li><b>4</b>Confirm exit</li>
+            <li><b>5</b>Stow &amp; lock</li>
+            <li><b>6</b>Photo &amp; log</li>
+          </ol>
+        </div>
+
+        <article class="tile rb-card rb-card--plan reveal">
+          <span class="rb-card__k">Software · planned</span>
+          <h3 class="rb-card__title">Ordering to delivery</h3>
+          <p class="rb-card__p">Orders come in through a web app; the robot navigates the school by ArUco checkpoints, a rule engine adapts its behavior in real time, PPO reinforcement learning handles obstacle avoidance and routing, and a FastAPI dashboard oversees it live.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================= PROGRESS =========================== -->
+    <section class="section" id="progress" aria-labelledby="rb-progress-title">
+      <div class="container">
+        <div class="sx-head reveal">
+          <div>
+            <p class="eyebrow">Progress</p>
+            <h2 class="section-title" id="rb-progress-title">Where it stands</h2>
+          </div>
+        </div>
+
+        <div class="tile rb-road reveal">
+          <div class="sx-road">
+            <ol class="sx-road__stops sx-road__stops--4" style="--progress: 0.3333">
+              <li class="sx-stop is-done">
+                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
+                <p class="sx-stop__when">Sep 2026</p>
+                <p class="sx-stop__name">Layout <span>3D guide</span></p>
+                <div class="sx-stop__items">
+                  <p class="sx-note">Chassis, drive and electronics laid out in 3D; real battery dimensions fitted.</p>
+                </div>
+              </li>
+              <li class="sx-stop is-active" aria-current="step">
+                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
+                <p class="sx-stop__when">Oct 2026 · now</p>
+                <p class="sx-stop__name">Parts <span>drop-off module</span></p>
+                <div class="sx-stop__items">
+                  <p class="sx-note">Parts ordered from three suppliers; drop-off module and button mast modeled with purchased-part dimensions.</p>
+                </div>
+              </li>
+              <li class="sx-stop">
+                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
+                <p class="sx-stop__when">Next</p>
+                <p class="sx-stop__name">Build <span>bench tests</span></p>
+                <div class="sx-stop__items">
+                  <p class="sx-note">Assemble, then test the ramp, belt and stall cut-off before driving.</p>
+                </div>
+              </li>
+              <li class="sx-stop">
+                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
+                <p class="sx-stop__when">Then</p>
+                <p class="sx-stop__name">Campus <span>trials</span></p>
+                <div class="sx-stop__items">
+                  <p class="sx-note">Navigation, ordering and real deliveries on campus.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p class="footer__brand">Kim Changhoon<span class="footer__dot">.</span></p>
+        <p class="footer__meta">&copy; <span id="footer-year">2026</span> &middot; Campus Delivery Robot</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a class="footer__top" href="../index.html#projects">Back to portfolio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=20261008b" defer></script>
+  <script>
+    // Load the 2.3 MB WebGL model only when asked
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-embed-load]');
+      if (!btn) return;
+      var stage = btn.closest('[data-embed]');
+      var frame = document.createElement('iframe');
+      frame.src = btn.getAttribute('data-embed-load');
+      frame.title = 'Interactive 3D model of the delivery robot';
+      frame.className = 'rb-model__frame';
+      frame.setAttribute('loading', 'eager');
+      stage.innerHTML = '';
+      stage.appendChild(frame);
+      stage.classList.add('is-live');
+    });
+  </script>
+</body>
+</html>

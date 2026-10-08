@@ -11,12 +11,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="../css/sentry.css?v=20261008b" />
+  <link rel="stylesheet" href="../css/project.css?v=20261008c" />
   <script>
     (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
   </script>
 </head>
-<body class="home sentry-page">
+<body class="home project-page sentry-page">
   <a class="skip-link" href="#overview">Skip to content</a>
 
   <header class="nav" id="site-nav">
@@ -237,25 +237,39 @@
         </div>
 
         <div class="tile sx-reader reveal" id="sx-reader" tabindex="-1">
-          <aside class="sx-reader__side" aria-label="Documents">
-            <div class="sx-group">
-              <p class="sx-group__h"><b>Round 3 · Finals</b><span>Sep 2026</span></p>
-              <button class="sx-item" type="button" data-doc="r3">Project report <span>40 pp.</span></button>
-              <button class="sx-item" type="button" data-doc="poster">Poster <span>2 pp.</span></button>
-              <button class="sx-item" type="button" data-doc="s3">Project summary <span>1 p.</span></button>
-            </div>
-            <div class="sx-group">
-              <p class="sx-group__h"><b>Round 2 · Preliminary</b><span>Jul 2026</span></p>
-              <button class="sx-item" type="button" data-doc="r2">Project report <span>38 pp.</span></button>
-              <button class="sx-item" type="button" data-doc="s2">Project summary <span>1 p.</span></button>
-              <button class="sx-item" type="button" data-doc="slides">Presentation slides <span>KO</span></button>
-            </div>
-            <div class="sx-group">
-              <p class="sx-group__h"><b>Round 1 · Written review</b><span>Jun 2026</span></p>
-              <button class="sx-item" type="button" data-doc="r1">Project report <span>16 pp.</span></button>
-              <button class="sx-item" type="button" data-doc="s1">Project summary <span>1 p.</span></button>
-            </div>
-          </aside>
+          <nav class="sx-road" aria-label="Submissions by round">
+            <ol class="sx-road__stops" data-active-round="3">
+              <li class="sx-stop" data-round="1">
+                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
+                <p class="sx-stop__when">Jun 2026</p>
+                <p class="sx-stop__name">Round 1 <span>Written review</span></p>
+                <div class="sx-stop__items">
+                  <button class="sx-item" type="button" data-doc="r1">Project report <span>16 pp.</span></button>
+                  <button class="sx-item" type="button" data-doc="s1">Project summary <span>1 p.</span></button>
+                </div>
+              </li>
+              <li class="sx-stop" data-round="2">
+                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
+                <p class="sx-stop__when">Jul 2026</p>
+                <p class="sx-stop__name">Round 2 <span>Preliminary</span></p>
+                <div class="sx-stop__items">
+                  <button class="sx-item" type="button" data-doc="r2">Project report <span>38 pp.</span></button>
+                  <button class="sx-item" type="button" data-doc="s2">Project summary <span>1 p.</span></button>
+                  <button class="sx-item" type="button" data-doc="slides">Presentation slides <span>KO</span></button>
+                </div>
+              </li>
+              <li class="sx-stop" data-round="3">
+                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
+                <p class="sx-stop__when">Sep 2026</p>
+                <p class="sx-stop__name">Round 3 <span>Finals</span></p>
+                <div class="sx-stop__items">
+                  <button class="sx-item" type="button" data-doc="r3">Project report <span>40 pp.</span></button>
+                  <button class="sx-item" type="button" data-doc="poster">Poster <span>2 pp.</span></button>
+                  <button class="sx-item" type="button" data-doc="s3">Project summary <span>1 p.</span></button>
+                </div>
+              </li>
+            </ol>
+          </nav>
 
           <div class="sx-reader__main">
             <div class="sx-bar">
@@ -309,6 +323,6 @@
   </footer>
 
   <script src="../js/main.js?v=20261008b" defer></script>
-  <script src="../js/sentry.js?v=20261008" defer></script>
+  <script src="../js/sentry.js?v=20261008e" defer></script>
 </body>
 </html>

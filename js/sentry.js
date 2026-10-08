@@ -123,6 +123,17 @@
       if (b.getAttribute('data-doc') === state.doc) b.setAttribute('aria-current', 'true');
       else b.removeAttribute('aria-current');
     });
+    // Roadmap: active round, rounds before it, and the rail fill
+    var stops = $('.sx-road__stops', reader);
+    if (stops) {
+      stops.setAttribute('data-active-round', String(d.round));
+      $all('.sx-stop', stops).forEach(function (st) {
+        var r = Number(st.getAttribute('data-round'));
+        st.classList.toggle('is-active', r === d.round);
+        st.classList.toggle('is-done', r < d.round);
+      });
+      centerActiveStop(!firstRender);
+    }
 
     var koOnly = d.langs.indexOf('en') === -1;
     langBtns.forEach(function (b) {
@@ -159,6 +170,22 @@
     }
     thumbs.hidden = d.pages < 2;
     renderPage();
+  }
+
+  var firstRender = true;
+  function centerActiveStop(smooth) {
+    var road = $('.sx-road', reader);
+    var act = road && $('.sx-stop.is-active', road);
+    if (!road || !act || road.scrollWidth <= road.clientWidth) return;
+    var left = act.offsetLeft - (road.clientWidth - act.offsetWidth) / 2;
+    left = Math.max(0, Math.min(left, road.scrollWidth - road.clientWidth));
+    if (smooth && road.scrollTo) {
+      road.scrollTo({ left: left, behavior: 'smooth' });
+      // some browsers skip smooth scrolling (background tabs, reduced motion): land it anyway
+      setTimeout(function () { if (Math.abs(road.scrollLeft - left) > 2) road.scrollLeft = left; }, 700);
+    } else {
+      road.scrollLeft = left;
+    }
   }
 
   function openDoc(doc, page, scroll) {
@@ -217,4 +244,7 @@
   });
 
   renderDoc();
+  firstRender = false;
+  window.addEventListener('load', function () { centerActiveStop(false); });
+  window.addEventListener('resize', function () { centerActiveStop(false); });
 })();

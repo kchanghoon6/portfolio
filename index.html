@@ -395,14 +395,14 @@
         </article>
 
         <article class="card proj-card reveal" data-category="robotics">
-          <div class="cover">
+          <a class="cover" href="pages/delivery-robot.html" aria-label="Open Campus Delivery Robot details">
             <img src="src/img/covers/delivery-robot.svg" alt="" loading="lazy" />
-            <span class="cover__tag">Robotics · Planned</span>
-          </div>
+            <span class="cover__tag">Robotics · In progress</span>
+          </a>
           <div class="card__body">
             <h3 class="proj-card__title">Campus Delivery Robot</h3>
             <p class="proj-card__impact">A rule-adaptive robot that carries store items to dorm rooms.</p>
-            <p class="proj-card__desc">An in-planning autonomous delivery robot: a web app takes orders and a Raspberry&nbsp;Pi&nbsp;5 + ESP32 robot navigates the school by ArUco checkpoints to deliver. A rule engine adapts its behavior in real time and PPO reinforcement learning handles obstacle avoidance and routing, all overseen from a live FastAPI control dashboard — built in phases as a maker portfolio.</p>
+            <p class="proj-card__desc">An in-progress autonomous delivery robot: a web app takes orders and a Raspberry&nbsp;Pi&nbsp;5 + ESP32 robot navigates the school by ArUco checkpoints to deliver. A rule engine adapts its behavior in real time and PPO reinforcement learning handles obstacle avoidance and routing, all overseen from a live FastAPI control dashboard. Parts are ordered and the drop-off conveyor, folding ramp and elevator-button mast are modeled in 3D with real part dimensions.</p>
             <ul class="tags">
               <li class="tag">Raspberry Pi</li>
               <li class="tag">ESP32</li>
@@ -410,24 +410,38 @@
               <li class="tag">Reinforcement Learning</li>
               <li class="tag">FastAPI</li>
             </ul>
+            <div class="proj-card__links">
+              <a class="icon-link" href="pages/delivery-robot.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Details
+              </a>
+              <a class="icon-link" href="models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>
+                3D model
+              </a>
+            </div>
           </div>
         </article>
 
         <article class="card proj-card reveal" data-category="webdev">
           <a class="cover" href="pages/csiasc.html" aria-label="Open csiasc.com details">
             <img src="src/img/covers/cssc.png" alt="" loading="lazy" />
-            <span class="cover__tag">Webdev</span>
+            <span class="cover__tag">Webdev · Live</span>
           </a>
           <div class="card__body">
             <h3 class="proj-card__title">csiasc.com — Student Court Platform</h3>
             <p class="proj-card__impact">A self-governance court &amp; petition site for my school.</p>
-            <p class="proj-card__desc">A Flask web app for CSIA's student self-governance court (자치법정) and the 청심신문고 petition system — case records, rules, member voting, petitions, and an admin dashboard. Built end-to-end; the live site is currently offline.</p>
+            <p class="proj-card__desc">A Flask web app for CSIA's student self-governance court (자치법정) and the 청심신문고 petition system — case records, rules, member voting, petitions, and an admin dashboard. Built end-to-end and live at csiasc.com.</p>
             <ul class="tags">
               <li class="tag">Flask</li>
               <li class="tag">Python</li>
               <li class="tag">SQLite</li>
             </ul>
             <div class="proj-card__links">
+              <a class="icon-link" href="https://csiasc.com" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Visit site
+              </a>
               <a class="icon-link" href="pages/csiasc.html">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
                 Details &amp; screenshots
@@ -674,6 +688,20 @@
         </article>
       </li>
 
+      <li class="reveal" data-reveal-delay="80">
+        <article class="card">
+          <div class="card__body award__item">
+            <span class="icon-well">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="13" r="1.25"/><circle cx="15" cy="13" r="1.25"/><path d="M2 12v3M22 12v3"/></svg>
+            </span>
+            <div class="award__text">
+              <h3 class="award__title">RoboRAVE World Championship — Finalist</h3>
+              <p class="award__issuer">International robotics competition · Osaka, Japan</p>
+              <p class="award__year">2026</p>
+            </div>
+          </div>
+        </article>
+      </li>
     </ul>
   </div>
 </section>
