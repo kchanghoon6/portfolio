@@ -28,3 +28,42 @@
 .pb-next p:not(.eyebrow) { margin-top: .5rem; color: var(--muted); font-size: .9rem; }
 @media (min-width: 640px) { .pb-modes { grid-template-columns: repeat(2, 1fr); } .pb-page .sx-facts { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 900px) { .pb-page .sx-hero__bento { grid-template-columns: 1.1fr 1fr; grid-template-areas: 'intro poster' 'facts facts'; } .pb-mechanism { grid-template-columns: 1.1fr 1fr; align-items: start; } .pb-test-grid { grid-template-columns: repeat(3, 1fr); } .pb-modes { grid-template-columns: repeat(4, 1fr); } }
+
+/* Detailed engineering walkthrough, added from the current design notebook. */
+.pb-detail-grid { display:grid; gap:1rem; }
+.pb-detail-gap { margin-top:1rem; }
+.pb-assembly { overflow:hidden; }
+.pb-assembly__toolbar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.75rem; padding:1rem; border-bottom:1px solid var(--tile-border); }
+.pb-assembly .sx-seg { flex-wrap:wrap; border-radius:1rem; }
+.pb-assembly .sx-seg button { padding:.5rem .8rem; border-radius:var(--radius-pill); font-size:.82rem; }
+.pb-cad-label { font-family:var(--font-mono); font-size:.68rem; color:var(--muted); }
+.pb-assembly__layout { display:grid; }
+.pb-assembly figure { margin:0; min-width:0; }
+.pb-assembly figure img { display:block; width:100%; height:auto; aspect-ratio:16/11; object-fit:contain; }
+.pb-assembly figcaption { padding:.8rem 1.3rem 1rem; color:var(--muted); font-size:.78rem; line-height:1.55; }
+.pb-assembly__notes { padding:1.5rem; border-top:1px solid var(--tile-border); }
+.pb-assembly__notes h3 { margin-top:.6rem; font-size:1.35rem; line-height:1.25; letter-spacing:-.025em; }
+.pb-numbered { counter-reset:assembly; display:grid; gap:1rem; padding:0; margin-top:1.3rem; list-style:none; }
+.pb-numbered li { position:relative; padding-left:2.2rem; font-size:.88rem; line-height:1.55; }
+.pb-numbered li::before { counter-increment:assembly; content:counter(assembly); position:absolute; left:0; top:0; display:grid; place-items:center; width:1.55rem; height:1.55rem; border:1px solid var(--border-strong); border-radius:50%; color:var(--muted); font: .72rem var(--font-mono); }
+.pb-numbered b,.pb-numbered span { display:block; }.pb-numbered span { margin-top:.15rem; color:var(--muted); }
+.pb-spec-list { margin-top:1.2rem; border-top:1px solid var(--border); }
+.pb-spec-list > div { padding:.7rem 0; border-bottom:1px solid var(--border); }
+.pb-spec-list dt { font-size:.72rem; color:var(--muted); font-family:var(--font-mono); }
+.pb-spec-list dd { margin:.3rem 0 0; color:var(--fg-soft); font-size:.86rem; line-height:1.5; }
+.pb-spec-list--roomy > div { padding:.8rem 0; }
+.pb-control__node { padding:1rem; margin-top:.8rem; background:var(--page); border:1px solid var(--tile-border); border-radius:var(--radius-inner); }
+.pb-control__node b,.pb-control__node span { display:block; }.pb-control__node span { font-size:.8rem; color:var(--muted); line-height:1.55; margin-top:.3rem; }
+.pb-control__node--main { border-color:var(--brand); }.pb-note .pb-control__arrow { margin-top:.6rem; text-align:center; font-family:var(--font-mono); font-size:.72rem; }
+.pb-control__ends { display:grid; gap:.5rem; }
+.pb-power { margin-top:1rem; padding:1.5rem; display:grid; gap:1.5rem; }
+.pb-power__source h3 { margin-top:.6rem; font-size:1.4rem; letter-spacing:-.025em; }.pb-power__source p:not(.pb-kicker),.pb-power__source span { display:block; color:var(--muted); font-size:.88rem; line-height:1.6; margin-top:.7rem; }
+.pb-power__branches { display:grid; gap:.7rem; }
+.pb-power__branches > div { border-left:2px solid var(--border-strong); padding:.5rem 1rem; }
+.pb-power__branches b { font-size:.86rem; }.pb-power__branches span { display:block; color:var(--muted); font-size:.8rem; line-height:1.6; margin-top:.3rem; }
+.pb-materials { padding:.5rem 1.5rem; display:grid; gap:0 1.5rem; }
+.pb-materials > div { padding:1.2rem 0; border-bottom:1px solid var(--border); }
+.pb-materials dt { font-size:1rem; font-weight:600; letter-spacing:-.02em; }
+.pb-materials dd { margin:.55rem 0 0; font-size:.86rem; line-height:1.65; color:var(--muted); }.pb-materials dd b { color:var(--fg-soft); font-weight:500; }
+@media(min-width:640px){.pb-control__ends {grid-template-columns:1fr 1fr}.pb-materials{grid-template-columns:1fr 1fr}.pb-power__branches{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.pb-detail-grid{grid-template-columns:1fr 1fr}.pb-assembly__layout{grid-template-columns:1.45fr 1fr;align-items:center}.pb-assembly__notes{border-top:0;border-left:1px solid var(--tile-border)}.pb-power{grid-template-columns:1fr 2fr}.pb-detail-grid .pb-note{min-width:0}}

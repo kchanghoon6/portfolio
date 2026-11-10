@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Campus Delivery Robot · Kim Changhoon</title>
-  <meta name="description" content="An in-progress campus delivery robot designed to carry school-store orders to dorm rooms: Raspberry Pi 5 + ESP32-S3, four-wheel drive, a conveyor and two-stage folding ramp for door-side drop-off, and an elevator-button presser — modeled in 3D with real part dimensions before the build." />
+  <meta name="description" content="Campus delivery robot in fabrication preparation: chassis v4.5, cargo box v1.1, conveyor drop-off, elevator interaction, planned controls and safety validation." />
   <meta name="theme-color" content="#f3f3f5" />
   <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/project.css?v=20261008c" />
+  <link rel="stylesheet" href="../css/delivery-robot.css?v=20261110" />
   <script>
     (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
   </script>
@@ -25,7 +26,7 @@
 
       <nav class="nav__links" aria-label="Sections">
         <a class="nav__link" href="#overview">Overview</a>
-        <a class="nav__link" href="#model">3D model</a>
+        <a class="nav__link" href="#model">Current CAD</a>
         <a class="nav__link" href="#design">Design</a>
         <a class="nav__link" href="#progress">Progress</a>
       </nav>
@@ -50,7 +51,7 @@
     <div class="nav__mobile" id="nav-mobile" hidden>
       <nav aria-label="Mobile menu">
         <a class="nav__link" href="#overview">Overview</a>
-        <a class="nav__link" href="#model">3D model</a>
+        <a class="nav__link" href="#model">Current CAD</a>
         <a class="nav__link" href="#design">Design</a>
         <a class="nav__link" href="#progress">Progress</a>
         <a class="nav__link" href="../index.html#projects">← Back to portfolio</a>
@@ -59,210 +60,26 @@
   </header>
 
   <main>
-    <!-- ============================ OVERVIEW ============================ -->
-    <section class="sx-hero sx-hero--banner" id="overview" aria-labelledby="rb-title">
-      <div class="container sx-hero__bento">
-        <div class="tile sx-intro rb-intro reveal">
-          <div class="sx-intro__media" aria-hidden="true">
-            <img src="../src/img/robot/model-render.webp?v=20261110" alt="" width="1800" height="1093" />
-            <span class="sx-intro__veil"></span>
-          </div>
-          <span class="sx-chip"><span class="rb-pulse" aria-hidden="true"></span>Robotics · In progress</span>
-          <h1 class="sx-intro__title" id="rb-title">Campus Delivery Robot</h1>
-          <p class="sx-intro__lead">A robot designed to carry school-store orders to dorm rooms and <strong>unload them on its own</strong>. I am working through the mechanical layout and fabrication drawings before assembly.</p>
-          <p class="sx-intro__team">In progress · November 2026 design and fabrication preparation · assembly and testing still ahead.</p>
-          <div class="sx-intro__actions">
-            <a class="btn btn--primary" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">
-              Open the 3D model
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-            </a>
-            <a class="btn btn--soft" href="#design">Design</a>
-            <a class="btn btn--soft" href="#progress">Progress</a>
-          </div>
-        </div>
-
-        <div class="sx-facts">
-          <div class="tile sx-fact reveal" data-reveal-delay="120">
-            <span class="sx-fact__k">Brains</span>
-            <span class="sx-fact__v">Pi 5 + ESP32</span>
-            <span class="sx-fact__s">high-level decisions on the Pi, real-time motor and sensor control on an ESP32-S3</span>
-          </div>
-          <div class="tile sx-fact reveal" data-reveal-delay="160">
-            <span class="sx-fact__k">Drop-off</span>
-            <span class="sx-fact__v">250 × 900</span>
-            <span class="sx-fact__s">mm belt width × loop circumference; two-stage folding ramp (~24°)</span>
-          </div>
-          <div class="tile sx-fact reveal" data-reveal-delay="200">
-            <span class="sx-fact__k">3D model</span>
-            <span class="sx-fact__v">27 steps</span>
-            <span class="sx-fact__s">layout and assembly animation using part dimensions; not a tested build</span>
-          </div>
-        </div>
-
-        <a class="tile sx-poster-tile reveal" data-reveal-delay="80" href="#model" aria-label="Go to the interactive 3D model">
-          <span class="sx-poster-tile__paper rb-thumb">
-            <img src="../src/img/robot/model-thumb.webp?v=20261110" alt="3D model of the robot with its drop-off ramp unfolded" width="900" height="964" loading="eager" />
-          </span>
-          <span class="sx-poster-tile__cap"><b>Interactive model</b><span>WebGL · mm</span></span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ============================== MODEL ============================= -->
-    <section class="section" id="model" aria-labelledby="rb-model-title">
-      <div class="container">
-        <div class="sx-head reveal">
-          <div>
-            <p class="eyebrow">3D model</p>
-            <h2 class="section-title" id="rb-model-title">Built in 3D before it's built for real</h2>
-            <p class="section-desc">I use part dimensions to study placement and assembly. This October 18 layout shows the main switch and emergency stop moved to a lower front panel. Its 27-step animation illustrates assembly and drop-off; it does not simulate physical performance.</p>
-          </div>
-          <div class="sx-head__side">
-            <a class="sx-link" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">Open full screen ↗</a>
-          </div>
-        </div>
-
-        <div class="tile rb-model reveal">
-          <div class="rb-model__stage" data-embed>
-            <img class="rb-model__poster" src="../src/img/robot/model-render.webp?v=20261110" alt="Still frame of the interactive 3D model" width="1800" height="1093" loading="lazy" />
-            <div class="rb-model__cta">
-              <button class="btn btn--primary rb-model__load" type="button" data-embed-load="../models/delivery-robot/dropoff-3d.html">
-                Load the interactive model
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-              </button>
-              <a class="btn btn--soft rb-model__open" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">Open full screen ↗</a>
-              <span class="rb-model__hint">2.3 MB · October layout · drag to rotate, scroll to zoom, ← / → to step through the assembly</span>
-            </div>
-          </div>
-        </div>
-        <p class="sx-fine reveal">The model's interface is in Korean. This October layout is separate from the November fabrication drawings below, not a current manufacturing model. Some geometry is approximate or uses substitute parts. Strength, friction and motor torque remain unvalidated; 0.5 kg is a test target, not a payload rating.</p>
-      </div>
-    </section>
-
-    <!-- ============================== DESIGN ============================ -->
-    <section class="section" id="design" aria-labelledby="rb-design-title">
-      <div class="container">
-        <div class="sx-head reveal">
-          <div>
-            <p class="eyebrow">Design</p>
-            <h2 class="section-title" id="rb-design-title">Four subsystems, one chassis</h2>
-            <p class="section-desc">The layout places a cargo box, drop-off module and elevator-button mast above a two-deck chassis (348 mm across the wheels). The November 4 fabrication package specifies chassis v4.5: 264 × 520 mm and 264 × 462 mm SPCC steel plates, both 1.5 mm thick; cargo box v1.1 uses seven 1.5 mm AL5052-H32 panels. These are fabrication specifications, not completed parts.</p>
-          </div>
-        </div>
-
-        <div class="rb-spec">
-          <article class="tile rb-card reveal">
-            <span class="rb-card__k">01 · Drive &amp; power</span>
-            <h3 class="rb-card__title">Planned drive and power layout</h3>
-            <ul class="sx-x__list">
-              <li>Four JGB37-520 encoder motors on Ø85 mm wheels, driven by a Cytron MDD10A.</li>
-              <li>12.8 V 9.9 Ah LiFePO4 pack with fused power branches.</li>
-              <li>The layout places the main switch and emergency stop on the lower front panel; the emergency stop is intended to interrupt the motor-power relay coil independently of the computers.</li>
-            </ul>
-          </article>
-
-          <article class="tile rb-card rb-card--accent reveal" data-reveal-delay="80">
-            <span class="rb-card__k">02 · Drop-off module</span>
-            <h3 class="rb-card__title">Conveyor + two-stage folding ramp</h3>
-            <ul class="sx-x__list">
-              <li>A 250 mm green PVC belt (900 mm loop) driven by a 27 rpm worm-gear motor (~52 mm/s), top surface 219 mm above the floor.</li>
-              <li>A 250 + 250 mm ramp unfolds on two 12 rpm worm-gear axes to ~24°; a 100 N gas spring offsets its weight and a servo-released plunger locks it when stowed.</li>
-              <li>Limit switches and IR break-beams are intended to confirm ramp position and package exit.</li>
-            </ul>
-          </article>
-
-          <article class="tile rb-card reveal">
-            <span class="rb-card__k">03 · Elevator button</span>
-            <h3 class="rb-card__title">A mast that presses lift buttons</h3>
-            <ul class="sx-x__list">
-              <li>A 2040 aluminum column puts the pusher tip at 950 mm.</li>
-              <li>A DS3218 servo drives a pushrod along a linear bushing; a compression spring limits the pressing force (stroke ≈ 34 mm).</li>
-            </ul>
-          </article>
-
-          <article class="tile rb-card reveal" data-reveal-delay="80">
-            <span class="rb-card__k">04 · Sensing &amp; safety</span>
-            <h3 class="rb-card__title">See the path, watch the drop zone</h3>
-            <ul class="sx-x__list">
-              <li>Pi Camera 3 and five VL53L1X ToF sensors at the front and sides; two more watch the floor behind for the drop-off.</li>
-              <li>A 130° USB camera and LED strip are planned for door-side delivery photos.</li>
-              <li>An INA226 current monitor is specified for stall detection; 2.5 A for 0.5–1 s is a proposed cut-off to validate in bench tests.</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="tile rb-seq reveal">
-          <p class="rb-seq__h"><b>Drop-off sequence</b><span>as animated in the model</span></p>
-          <ol class="rb-seq__list">
-            <li><b>0</b>Stowed</li>
-            <li><b>1</b>Stop &amp; select</li>
-            <li><b>2</b>Unfold ramp</li>
-            <li><b>3</b>Convey</li>
-            <li><b>4</b>Confirm exit</li>
-            <li><b>5</b>Stow &amp; lock</li>
-            <li><b>6</b>Photo &amp; log</li>
-          </ol>
-        </div>
-
-        <article class="tile rb-card rb-card--plan reveal">
-          <span class="rb-card__k">Software · planned</span>
-          <h3 class="rb-card__title">Ordering to delivery</h3>
-          <p class="rb-card__p">The software plan includes web ordering, ArUco checkpoints, rule-based behavior and a FastAPI dashboard. PPO reinforcement learning is an option to investigate for obstacle avoidance and routing, not an implemented or validated controller.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============================= PROGRESS =========================== -->
-    <section class="section" id="progress" aria-labelledby="rb-progress-title">
-      <div class="container">
-        <div class="sx-head reveal">
-          <div>
-            <p class="eyebrow">Progress</p>
-            <h2 class="section-title" id="rb-progress-title">Where it stands</h2>
-          </div>
-        </div>
-
-        <div class="tile rb-road reveal">
-          <div class="sx-road">
-            <ol class="sx-road__stops sx-road__stops--4" style="--progress: 0.3333">
-              <li class="sx-stop is-done">
-                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
-                <p class="sx-stop__when">Sep 2026</p>
-                <p class="sx-stop__name">Layout <span>3D guide</span></p>
-                <div class="sx-stop__items">
-                  <p class="sx-note">Chassis, drive and electronics laid out in 3D; real battery dimensions fitted.</p>
-                </div>
-              </li>
-              <li class="sx-stop is-active" aria-current="step">
-                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
-                <p class="sx-stop__when">Nov 2026 · now</p>
-                <p class="sx-stop__name">Design <span>fabrication preparation</span></p>
-                <div class="sx-stop__items">
-                  <p class="sx-note">Chassis v4.5 and cargo box v1.1 drawings prepared in the November 4 fabrication package: two steel chassis plates and seven bent aluminum cargo panels. Assembly and physical tests are still ahead.</p>
-                </div>
-              </li>
-              <li class="sx-stop">
-                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
-                <p class="sx-stop__when">Next</p>
-                <p class="sx-stop__name">Build <span>bench tests</span></p>
-                <div class="sx-stop__items">
-                  <p class="sx-note">Assemble, then test the ramp, belt and stall cut-off before driving.</p>
-                </div>
-              </li>
-              <li class="sx-stop">
-                <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
-                <p class="sx-stop__when">Then</p>
-                <p class="sx-stop__name">Campus <span>trials</span></p>
-                <div class="sx-stop__items">
-                  <p class="sx-note">Navigation, ordering and real deliveries on campus.</p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+<section class="sx-hero sx-hero--banner" id="overview" aria-labelledby="rb-title"><div class="container sx-hero__bento">
+<div class="tile sx-intro rb-intro reveal"><span class="sx-chip">Robotics · In progress</span><h1 class="sx-intro__title" id="rb-title">Campus Delivery Robot</h1><p class="sx-intro__lead">From the school store to a dorm-room door. I am designing a robot to navigate campus, interact with an elevator and <strong>leave a package without a hand-off</strong>.</p><p class="sx-intro__team">Current planned baseline: chassis v4.5 + cargo box v1.1. Fabrication preparation, not a completed or tested robot.</p><div class="sx-intro__actions"><a class="btn btn--primary" href="#model">Explore the current design</a><a class="btn btn--soft" href="#progress">Validation ahead</a></div></div>
+<div class="sx-facts"><div class="tile sx-fact reveal"><span class="sx-fact__k">Chassis v4.5</span><span class="sx-fact__v">Two steel decks</span><span class="sx-fact__s">264 × 520 / 264 × 462 mm · 1.5 mm SPCC</span></div><div class="tile sx-fact reveal"><span class="sx-fact__k">Cargo box v1.1</span><span class="sx-fact__v">Seven panels</span><span class="sx-fact__s">1.5 mm AL5052-H32 · removable cargo module</span></div><div class="tile sx-fact reveal"><span class="sx-fact__k">Control architecture</span><span class="sx-fact__v">Pi 5 + ESP32-S3</span><span class="sx-fact__s">Vision and mission logic / local motion and interlocks</span></div></div>
+<a class="tile sx-poster-tile reveal" href="#model"><span class="sx-poster-tile__paper rb-current-thumb"><img src="../src/img/robot/cargo-v1-1.png" alt="Current cargo box CAD with open hinged lid, belt, rear ramp and printed mounts" width="1600" height="1000" fetchpriority="high"></span><span class="sx-poster-tile__cap"><b>Current cargo CAD</b><span>v1.1 · not a build photo</span></span></a></div></section>
+<section class="section" id="model" aria-labelledby="current-title"><div class="container"><div class="sx-head reveal"><div><p class="eyebrow">Current fabrication baseline</p><h2 class="section-title" id="current-title">The parts I am preparing to make</h2><p class="section-desc">The current mechanical baseline is the revised two-deck chassis and seven-panel cargo box. These CAD views show those components, not a newly integrated full-system robot. The older whole-robot viewer is kept separately as a reference.</p></div></div>
+<div class="rb-current-grid"><figure class="tile rb-figure reveal"><img src="../src/img/robot/cargo-v1-1.png" alt="Cargo box v1.1 CAD with lid opened for loading" width="1600" height="1000" loading="lazy"><figcaption><b>Cargo box v1.1 · loading access</b><p>Front piano hinge, rear handle and two automatic cabinet latches. The lid opens to about 100°. It stays closed during belt discharge.</p></figcaption></figure><figure class="tile rb-figure reveal"><img src="../src/img/robot/cargo-deployed-v1-1.png" alt="Cargo CAD with its two-stage rear ramp deployed" width="1600" height="1000" loading="lazy"><figcaption><b>Cargo box v1.1 · rear discharge</b><p>250 mm belt width, 900 mm loop; belt top at nominal Z208 mm. Two 250 mm ramp leaves form a nominal 22.7° descent.</p></figcaption></figure></div>
+<p class="sx-fine">Direct renders of the current cargo CAD viewer. Sheet panels and printed mounts come from the source geometry; purchased parts, deck, mast and ramp include simplified envelopes. The mast is shortened in this viewer for visibility. These are CAD illustrations, not manufacturing or performance verification.</p>
+<div class="rb-current-grid"><figure class="tile rb-figure rb-flat reveal"><img src="../src/img/robot/chassis-v4-5.svg" alt="Exact top-view outlines and mounting holes of the two chassis v4.5 plates exported from OpenSCAD" loading="lazy"><figcaption><b>Chassis v4.5 · exact CAD projection</b><p>Two 1.5 mm steel plates with through-holes, cable openings and slots. Six 85 mm deck spacers; the upper deck starts 53 mm behind the lower plate’s front edge. Motor-supplied L-brackets replace custom motor mounts.</p></figcaption></figure><article class="tile rb-card reveal"><span class="rb-card__k">From layout to fabrication</span><h3 class="rb-card__title">Interfaces, not just outer shapes</h3><ul class="sx-x__list"><li>The v4.5 revision lengthens mast-bracket slots and revises ESP32-board and PCA9685 mounting holes.</li><li>The v1.1 cargo revision updates the rear lintel, motor clearance holes, sensor apertures and cable grommets; rear roller tension travel is −10 / +7 mm.</li><li>Four 45 mm spacers mount the cargo module above the electronics deck. Four mounting bolts allow it to lift off for service.</li><li>Seven separate aluminum panels are cut and bent, with no welded box assumed. Left and right walls have different interfaces.</li></ul><a class="sx-link" href="../models/delivery-robot/cargo-v1-1.html" target="_blank" rel="noopener">Explore the cargo CAD ↗</a></article></div>
+</div></section>
+<section class="section" id="design" aria-labelledby="design-title"><div class="container"><div class="sx-head reveal"><div><p class="eyebrow">System design · planned</p><h2 class="section-title" id="design-title">Three layers, separate responsibilities</h2><p class="section-desc">The engineering focus is reliable delivery across physical transitions: approaching an elevator, pressing and verifying a button, boarding safely, then discharging a package at the destination. Navigation, state verification and recovery must work together without relying on building integration. No boarding or delivery success rate has been measured.</p></div></div>
+<div class="tile rb-stack reveal" aria-label="Assembly explanation, not exact CAD"><p class="rb-card__k">Assembly explanation · not exact CAD · front-to-rear placement simplified</p><div><b>03 / Cargo and drop-off</b><p>Hinged aluminum enclosure · belt and guides · two latches · rear folding ramp · camera and lighting</p></div><span aria-hidden="true">45 mm cargo spacers</span><div><b>02 / Compute and local control</b><p>Raspberry Pi 5 · ESP32-S3 · PWM / I/O boards · current sensing · two MDD3A drop-off drivers · 5 V converters</p></div><span aria-hidden="true">85 mm deck spacers · cable routes between layers</span><div><b>01 / Power and traction</b><p>Battery and retaining housing · fuses · relay · 6 V UBEC · MDD10A drive controller · four motors · rear ToF sensors</p></div><small>Main switch and emergency stop: lower front skirt. Elevator mast: front-right chassis attachment.</small></div>
+<div class="rb-spec"><article class="tile rb-card reveal"><span class="rb-card__k">Power &amp; drive</span><h3 class="rb-card__title">Keep logic alive when motion stops</h3><ul class="sx-x__list"><li>12.8 V, 9.9 Ah LiFePO4 pack with fused branches. The MDD10A is reserved for traction: two motors per side, in parallel.</li><li>The emergency-stop circuit is intended to interrupt the relay coil and disconnect actuator power, independently of software STOP. Pi and ESP32 logic remain powered for fault handling.</li><li>Separate 5 V conversion supplies compute / sensors; a 6 V UBEC supplies servos. Actual output voltage, load current and protection behavior need bench verification.</li><li>Wheel supplier dimensions are Ø86.6 × 31 mm; nominal wheelbase is 330 mm. The approximately 21–22 mm unloaded clearance is a geometry estimate, not a demonstrated threshold capability.</li></ul></article>
+<article class="tile rb-card reveal"><span class="rb-card__k">Compute &amp; sensing</span><h3 class="rb-card__title">Perception above, interlocks below</h3><ul class="sx-x__list"><li>Pi 5: camera input, mission state, photo storage and transmission queue. ESP32-S3: local motion, encoder and switch processing.</li><li>Seven VL53L1X ToF sensors: three front, two side and two rear; Pi camera for forward perception and rear USB camera with lighting for delivery evidence.</li><li>INA226 current sensing, ramp limit / stow switches, IR break-beams and two latch-feedback inputs are planned checks, not installed proof of safe operation.</li><li>Pi–ESP32 USB communication is documented, but the ESP32 power route must be resolved to avoid overlapping supplies.</li></ul></article>
+<article class="tile rb-card reveal"><span class="rb-card__k">Cargo mechanism</span><h3 class="rb-card__title">Load from above, discharge behind</h3><ul class="sx-x__list"><li>A fixed conveyor carries the package through a 200 mm guided corridor. The latest drawing’s package envelope is 140 × 200 × 100 mm and ≤2 kg, a design target, not a tested payload rating.</li><li>Two JK-XG-07A cabinet latches close mechanically and release with short 12 V pulses. The purchased latch variant’s feedback contacts still need physical verification.</li><li>Three worm-gear motors drive the belt and two ramp axes. A gas spring assists the ramp, with a servo-released plunger and stow switch for retention.</li><li>Gas-spring travel, motor-shaft engagement, friction and power-off holding loads remain verification gates.</li></ul></article>
+<article class="tile rb-card reveal"><span class="rb-card__k">Elevator &amp; autonomy</span><h3 class="rb-card__title">A button press is only one step</h3><ul class="sx-x__list"><li>A 2040 mast supports a DS3218 servo pushrod with spring compliance for button contact.</li><li>Button recognition, press confirmation, open-door detection and a clear boarding path are intended parts of the elevator workflow. Button-height adjustment and an optional extension axis are not finalized.</li><li>General door-opening hardware is outside the current scope.</li><li>Web ordering, checkpoint-based navigation and mission logging remain software plans, not claims of autonomous campus operation.</li></ul></article></div>
+<div class="tile rb-seq reveal"><p class="rb-seq__h"><b>Planned discharge state sequence</b><span>sensor confirmation, not animation timing</span></p><ol class="rb-seq__list"><li><b>1</b>Stop / check zone</li><li><b>2</b>Verify lid locked</li><li><b>3</b>Release / deploy</li><li><b>4</b>Convey</li><li><b>5</b>Confirm exit</li><li><b>6</b>Stow / verify lock</li><li><b>7</b>Photo / log</li></ol></div><p class="sx-fine">Photo upload is separate from physical discharge: a slow or failed upload must never trigger a second delivery. A servo command alone is not proof that a latch or ramp is locked.</p>
+</div></section>
+<section class="section" id="progress" aria-labelledby="progress-title"><div class="container"><div class="sx-head reveal"><div><p class="eyebrow">Status &amp; planned validation</p><h2 class="section-title" id="progress-title">Design evidence, not test results</h2><p class="section-desc">The current evidence is CAD, fabrication drawings and a revised wiring / assembly plan. Physical assembly, bench qualification and campus trials are still ahead.</p></div></div><div class="rb-spec"><article class="tile rb-card reveal"><span class="rb-card__k">Before energizing</span><h3 class="rb-card__title">Resolve the open electrical gates</h3><ul class="sx-x__list"><li>Choose one ESP32 supply path and separate incompatible servo / motor PWM frequency needs.</li><li>Provide sufficient I/O: the documented switch, beam, latch and ToF reset allocation exceeds one 16-pin expander.</li><li>Finalize latch drive current margin and verify feedback behavior on the actual parts.</li><li>Detect actuator-bus loss and require deliberate re-arming. Releasing the emergency stop must not automatically restart motion.</li></ul></article><article class="tile rb-card reveal"><span class="rb-card__k">Bench → controlled trials</span><h3 class="rb-card__title">Measure each transition</h3><ul class="sx-x__list"><li>Check fit, fastener engagement, cable clearance, stability and ramp retention with actuator power removed.</li><li>Measure loaded currents and validate current-limit thresholds, emergency stop, timeouts and fault recovery before driving.</li><li>Test package exit, jams, latch / stow confirmation and no-repeat discharge under camera or network failure.</li><li>Then record repeated button-press, boarding and floor / destination checks, plus end-to-end delivery trials. No success-rate or payload result is reported yet.</li></ul></article></div><p class="sx-fine">Strength, motor torque, package friction, water resistance and tip stability are unvalidated. CAD checks do not establish physical safety or operational reliability.</p></div></section>
+<section class="section" id="history" aria-labelledby="history-title"><div class="container"><div class="sx-head reveal"><div><p class="eyebrow">Historical reference</p><h2 class="section-title" id="history-title">Earlier whole-system layout</h2><p class="section-desc">This October layout explains the original arrangement and assembly sequence. It predates chassis v4.5 and cargo box v1.1 and is not the latest integrated CAD. Its older dimensions and mechanisms must not override the current baseline above.</p></div></div><details class="tile rb-history"><summary>Open the historical layout / assembly study</summary><div class="rb-model"><div class="rb-model__stage" data-embed><img class="rb-model__poster" src="../src/img/robot/model-render.webp" alt="Historical October whole-robot layout, not current fabrication CAD" width="1800" height="1093" loading="lazy"><div class="rb-model__cta"><button class="btn btn--primary rb-model__load" data-embed-load="../models/delivery-robot/dropoff-3d.html" type="button">Load historical model</button><a class="btn btn--soft" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">Open historical viewer ↗</a><span class="rb-model__hint">Korean interface · approximate hardware · 27-step illustration, not a tested build</span></div></div></div></details></div></section>
+</main>
 
   <footer class="footer">
     <div class="container footer__inner">
@@ -287,7 +104,7 @@
       var stage = btn.closest('[data-embed]');
       var frame = document.createElement('iframe');
       frame.src = btn.getAttribute('data-embed-load');
-      frame.title = 'Interactive 3D model of the delivery robot';
+      frame.title = 'Historical October delivery robot layout and assembly study';
       frame.className = 'rb-model__frame';
       frame.setAttribute('loading', 'eager');
       stage.innerHTML = '';

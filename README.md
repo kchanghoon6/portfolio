@@ -21,10 +21,11 @@ Open http://127.0.0.1:8766/. Detail pages in `pages/` are standalone HTML.
 
 ## Structure
 
-- `pages/pebble.html`, `css/pebble.css`, `js/pebble.js`: current research case study and CAD-still comparison.
+- `pages/pebble.html`, `css/pebble.css`, `js/pebble.js`: current research case study, internal-assembly explorer, component/material explanations and CAD-still comparisons.
 - `pages/sentry.html`, `js/sentry.js`: completed-project page and bilingual document reader.
-- `pages/delivery-robot.html`, `models/delivery-robot/`: in-progress delivery robot and public 3D layout.
+- `pages/delivery-robot.html`, `models/delivery-robot/`: in-progress delivery robot with current cargo v1.1 CAD, chassis v4.5 projection and explicitly historical October layout.
 - `css/project.css`: shared bento project-page primitives.
+- `css/delivery-robot.css`: current fabrication visuals and the historical-layout disclosure.
 - `docs/sentry/`: active translated/original PDFs, page images and panels.
 - `tools/sentry-docs/`: document translation/render pipeline; see its README.
 - `src/img/`, `src/video/`, `assets/`: images, credited footage and icons.
@@ -32,8 +33,8 @@ Open http://127.0.0.1:8766/. Detail pages in `pages/` are standalone HTML.
 
 Check light/dark themes, 375 px layouts, links and keyboard controls before shipping.
 Label CAD, software checks, plans and physical results separately. Never publish order data
-or other people's names. The delivery model is a transaction-redacted October layout,
-not the November fabrication model.
+or other people's names. The current cargo viewer preserves authentic November geometry. The separate October whole-system
+layout is transaction-redacted and retained only as a historical reference.
 
 ## Deploy
 

@@ -314,7 +314,7 @@ docs/whsdsc-*.pdf            WHSDSC certificate + redacted Phase-1 submission (k
 docs/schoolhouse-portfolio.pdf  Schoolhouse.world tutoring certificate
 src/img/covers/              card cover art (SVG, hand-built/vectorised; cssc.png)
 src/img/sentry/hero-poster.jpg  poster frame for the SENTRY hero video
-src/img/robot/               refreshed October 18 delivery-model renders
+src/img/robot/               current cargo/chassis CAD and historical October layout renders
 src/img/pebble/              current prototype, wide configuration and floor-funnel CAD renders
 src/img/webdev/cssc/         csiasc.com screenshots for pages/csiasc.html
 src/video/sentry-bridge-hero.mp4  stock footage (Mixkit), must stay credited
@@ -441,44 +441,45 @@ pages) → **Documents** reader.
 
 ---
 
-## 12. Campus Delivery Robot page (`pages/delivery-robot.html`)
+## 12. Campus Delivery Robot page (pages/delivery-robot.html)
 
-Bento project template (`css/project.css`, `.rb-` additions; small inline script for the
-model embed). Status is **in progress** — say so; never describe it as built or tested.
+Bento template with css/project.css and scoped css/delivery-robot.css. **In progress**:
+CAD/fabrication preparation, no physical assembly, payload, autonomy or success-rate result.
 
-**Order:** overview (dark hero: copy on the left, label-free 3D render on the right; amber
-"Robotics · In progress" chip; three fact tiles — *Pi 5 + ESP32*, *250 × 900* mm conveyor +
-two-stage folding ramp ~24°, *27 steps* assembly animation — and a model thumbnail tile) →
-**3D model** → **Design** (four subsystem cards, drop-off sequence strip, dashed "Software ·
-planned" card) → **Progress** (4-stop roadmap reusing `.sx-road`).
+**Current-first order:** overview and current cargo CAD → chassis/cargo component evidence →
+three-layer system explanation → power/control/sensing/elevator design → safety and validation
+→ collapsed historical October whole-system model. No current integrated whole-robot CAD has
+been established. Never label the October model as the November fabrication baseline.
 
-- **3D model.** `models/delivery-robot/dropoff-3d.html` is a public, transaction-redacted copy of the owner's October 18
-  self-contained WebGL model `~/Desktop/CSIA_2nd/Projects/Robotics/dropoff_3d_real_parts.html`
-  (2.3 MB, Korean UI, purchase links to AliExpress/Devicemart/Eleparts). The page shows a
-  poster image first; "Load the interactive model" swaps in an iframe (`[data-embed-load]`),
-  and "Open full screen" opens it in a new tab. The load button is hidden below 900px (the
-  model's three-panel UI needs a wide screen). The page notes the UI is Korean and that it is a
-  layout/assembly study, not a manufacturing drawing.
-- **Facts used** (all from the model's own notes, Oct 2026): chassis 264 × 520 mm, 348 mm
-  across the wheels, Ø85 wheels; 4 × JGB37-520 178 rpm encoder motors, Cytron MDD10A;
-  12.8 V 9.9 Ah LiFePO4, fused branches, E-stop + relay; Raspberry Pi 5 + ESP32-S3;
-  250 mm belt (900 mm loop), 27 rpm worm motor (~52 mm/s), belt top 219 mm; 250 + 250 mm
-  ramp on two 12 rpm worm axes, ~24°, 100 N gas spring, servo-released plunger lock, limit
-  switches + IR break-beams; elevator-button mast: 2040 aluminium column, tip 950 mm, DS3218
-  servo pushrod, spring-limited, ~34 mm stroke; Pi Camera 3 + 5 × VL53L1X ToF (+2 rear),
-  130° USB camera + LED strip for delivery photos, INA226 stall cut-off (2.5 A, 0.5–1 s).
-  Strength, friction and torque are **not calculated**; 0.5 kg is a **test target**, not a
-  rating. Software (web ordering, ArUco checkpoints, rule engine, PPO RL, FastAPI dashboard)
-  is **planned**, not built.
-- **Progress roadmap:** Sep 2026 Layout → **Nov 2026 · now: fabrication preparation** →
-  Next: Build / bench tests → Then: Campus trials. No physical assembly/test completion is claimed.
-  The November 4 package specifies chassis v4.5 (264 × 520 and 264 × 462 mm, 1.5 mm SPCC)
-  and seven-panel cargo box v1.1 (1.5 mm AL5052-H32). The October layout is explicitly
-  separate from those fabrication drawings. Switch/E-stop moved to the lower front panel.
-- **Images** in `src/img/robot/`: `model-render.webp` (1800×1093, hero + model poster) and
-  `model-thumb.webp` (900×964). They are headless renders of the model with dimension labels
-  and side panels hidden — recipe in §14.4.
-- Not stated (unconfirmed): whether it is a solo or team project.
+**Authoritative current mechanical sources:** sibling Robotics/섀시_가공_v4.5 (SCAD + drawing),
+물품함_v1.1 (SCAD + drawing + HTML), 업체전달_2026-11-04_정리본. The revised CarryOn mentor
+PDF provides mission/wiring intent; November drawings override older mechanical dimensions.
+- Chassis: 264 × 520 and 264 × 462 mm, 1.5 mm SPCC; six 85 mm deck spacers; upper plate
+  offset 53 mm. Supplied L-brackets, not a newly invented motor-mount design.
+- Cargo: seven 1.5 mm AL5052-H32 panels, removable on four 45 mm spacers. Belt top Z208 mm,
+  250 mm width / 900 mm loop; two 250 mm ramp leaves, nominal 22.7°; tension travel −10/+7.
+- Drawing target 140 × 200 × 100 mm and ≤2 kg is **not a tested payload rating**. Do not mix
+  the historical model's 0.5 kg test target with this current drawing target.
+- Plan includes Pi 5 + ESP32-S3, four traction motors / MDD10A, two MDD3A drop-off drivers,
+  12.8 V 9.9 Ah LiFePO4, seven VL53L1X sensors, current sensing, latches and an elevator mast.
+- Electrical open gates remain: ESP32 supply overlap; incompatible PWM needs; I/O beyond
+  one 16-pin expander; latch-feedback/current-margin verification; deliberate E-stop rearm.
+  Mission/navigation/order software and boarding validation are plans, not operational claims.
+
+**Current visual assets:** src/img/robot/cargo-v1-1.png and cargo-deployed-v1-1.png are direct
+renders from the authentic current cargo viewer. chassis-v4-5.svg is an exact SCAD flat
+projection, not a redrawn hole pattern. The system stack is explicitly a simplified explanation.
+models/delivery-robot/cargo-v1-1.html preserves original embedded geometry with public English
+controls. Purchased hardware, mast/deck/ramp envelopes are simplified; the mast is shortened
+for visibility. The homepage's cargo-CAD link points here, not to the historical model.
+
+**Historical model:** models/delivery-robot/dropoff-3d.html is the transaction-redacted
+October 18 layout. It is behind a disclosure on the detail page. Old model-render.webp and
+model-thumb.webp remain historical renders. Never copy the private original blindly: it
+contains transaction metadata that must not be published. No private source PDFs are uploaded.
+
+Not confirmed: whether this is solo or team; RoboRAVE exact event/category wording. Do not
+infer either from local files or planned submissions.
 
 ---
 
@@ -595,7 +596,7 @@ judging, not controller input. Preliminary work must lock the gap and entry offs
 compiled targets. All are software-side evidence; hardware bench testing remains ahead.
 
 **Private working sources (not copied into the public site):** sibling KSEF project,
-PEBBLE_v1_1호기/02_계획서_문서/PEBBLE_실행가이드_최신_20261107.md (revised November 10),
+PEBBLE_v1_1호기/02_계획서_문서/PEBBLE_실행가이드_최신_20261110.md,
 03_시험/PEBBLE_RQ2A_장치/깔때기안_20261109/RQ2A_깔때기_시험절차_정본.md,
 07_펌웨어/STATUS_FW10.md. Robot renders are from 01_CAD_설계/PEBBLE_v3_3D보기.html,
 SHA256 f42dca14d49b848045a6717bf1f02341bf5f66247a707428b94fe92d2ce9f4f9.
@@ -603,3 +604,40 @@ Includes November 8 tail brace and November 9 funnel. Do not publish the 17.5 MB
 viewer blindly; only clean CAD stills are used here. The Narrow/Wide buttons switch stills,
 not simulated or physical outcomes. Regenerate from the newest source after verifying its
 release and privacy; hide #ui and #tag, use the fixed-tail preset for the primary render.
+
+### Detailed engineering walkthrough (November 10 continuation)
+
+The owner asked for the detail depth of PEBBLE_필기노트_1108_v3_소재부품_실험진행.pdf (24 pages).
+Use pages 2–8 for explanatory structure, but the November 8–9 correction page and November 10
+execution guide override older parts/process/status descriptions. The original PDF includes
+private transaction/vendor information and is **not published** wholesale.
+
+New sections: Inside → width mechanism → Electronics → Materials → Tests → Progress. The
+four-button CAD assembly explorer switches authentic stills (inside / right-wheel section /
+width linkage / F5v12 sled); source geometry is unchanged. Assemblies are selectively hidden,
+the wheel is sectioned, module envelopes may be simplified. Captions and English explanations
+make these limitations explicit. No closed-ball first-prototype demonstration is shown.
+
+Key content: shell-bearing-motor load paths; 24 cartridges × 3 hooks × 2 wheels (planned 144);
+KST X08N V6 + 13 mm crank/slider/17-4PH rod/guide/gland; stationary PA12 core and service sled;
+fixed T3 tail rather than fitted deployment lines/pulleys/spring. Pololu #4797 + #3081 are
+planned part selections, not measured installed speed. Avoid older CAD metadata's gear-ratio
+text; the notes are the component-selection reference.
+
+Electronics explanation: XIAO upper-level commands via UART, RP2040 final interlock authority;
+1S 902540 800 mAh battery, r1-lite six-layer 22.5 × 20 mm board, separate 6 V drive/servo and
+3.3 V logic A/B paths. Current-path deviations and the harness bypass are disclosed, not
+presented as full-current compliance. 2.7 A pre-validation / 3.0 A conditional battery cap;
+stricter failure limits or installation hold remain possible. IMU temperature is a proxy,
+not direct battery temperature. LoRa off for the core trial campaign; field validation separate.
+
+Materials are explained by role, not generic strength numbers. The current F-plan separates
+TPU bars and ring for flat printing; assembly/adhesive/coupon approval remains open. Brace-seat
+geometry, retained spool scope and service/programming access are unresolved gates. The 128
+planned funnel activities (16 preliminary + 96 core + 16 side-slope) are distinct from a mapped,
+minimum-width maze demonstration and supporting material/thermal/radio checks.
+
+**Verification of the detailed revision:** source/privacy reviewer passed; 8 HTML pages, 143
+local references and 67 internal anchors checked with no missing targets. Four CAD explorer
+buttons show exactly one explanatory panel and active state. Both robot pages fit 375 px
+without horizontal overflow. Desktop/mobile light/dark and current cargo viewer inspected.

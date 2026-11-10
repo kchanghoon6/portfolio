@@ -15,7 +15,7 @@
   <script>
     (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
   </script>
-  <link rel="stylesheet" href="../css/pebble.css?v=20261110a" />
+  <link rel="stylesheet" href="../css/pebble.css?v=20261110b" />
 </head>
 <body class="home project-page pb-page">
   <a class="skip-link" href="#overview">Skip to content</a>
@@ -26,8 +26,9 @@
 
       <nav class="nav__links" aria-label="Sections">
         <a class="nav__link" href="#overview">Overview</a>
-        <a class="nav__link" href="#mechanism">Mechanism</a>
-        <a class="nav__link" href="#research">Research</a>
+        <a class="nav__link" href="#inside">Inside</a>
+        <a class="nav__link" href="#electronics">Electronics</a>
+        <a class="nav__link" href="#research">Tests</a>
         <a class="nav__link" href="#progress">Progress</a>
       </nav>
 
@@ -51,8 +52,9 @@
     <div class="nav__mobile" id="nav-mobile" hidden>
       <nav aria-label="Mobile menu">
         <a class="nav__link" href="#overview">Overview</a>
-        <a class="nav__link" href="#mechanism">Mechanism</a>
-        <a class="nav__link" href="#research">Research</a>
+        <a class="nav__link" href="#inside">Inside</a>
+        <a class="nav__link" href="#electronics">Electronics</a>
+        <a class="nav__link" href="#research">Tests</a>
         <a class="nav__link" href="#progress">Progress</a>
         <a class="nav__link" href="../index.html#projects">← Back to portfolio</a>
       </nav>
@@ -67,7 +69,7 @@
           <h1 class="sx-intro__title" id="pb-title">PEBBLE</h1>
           <p class="sx-intro__lead">Can changing shape help a robot <strong>get unstuck?</strong></p>
           <p class="sx-intro__team">I'm developing a small, variable-width robot for confined-space search, along with the experiment to find out when narrowing helps it escape.</p>
-          <div class="sx-intro__actions"><a class="btn btn--primary" href="#research">The research question ↓</a><a class="btn btn--soft" href="#mechanism">Explore the design</a></div>
+          <div class="sx-intro__actions"><a class="btn btn--primary" href="#research">The research question ↓</a><a class="btn btn--soft" href="#inside">Inside the robot</a></div>
         </div>
         <figure class="tile sx-poster-tile pb-render reveal" data-reveal-delay="80">
           <img src="../src/img/pebble/prototype.webp" alt="CAD render of PEBBLE with two hemispherical wheels, central core and braced tail" width="3200" height="2200" fetchpriority="high" />
@@ -81,21 +83,80 @@
       </div>
     </section>
 
+    <section class="section" id="inside" aria-labelledby="pb-inside-title">
+      <div class="container">
+        <div class="sx-head reveal"><div><p class="eyebrow">Inside the first prototype</p><h2 class="section-title" id="pb-inside-title">What turns. What slides. What stays still.</h2><p class="section-desc">The wheels rotate around a non-rotating core. Two separate linkages move the wheel assemblies sideways; a removable sled carries the electronics inside. Here is how those parts fit together.</p></div></div>
+        <div class="tile pb-assembly reveal">
+          <div class="pb-assembly__toolbar"><div class="sx-seg" role="group" aria-label="Choose an internal CAD assembly"><button type="button" data-pb-assembly="inside" aria-pressed="true">Internals</button><button type="button" data-pb-assembly="wheel" aria-pressed="false">Wheel drive</button><button type="button" data-pb-assembly="width" aria-pressed="false">Width linkage</button><button type="button" data-pb-assembly="sled" aria-pressed="false">Electronics sled</button></div><span class="pb-cad-label">CAD · selected parts hidden</span></div>
+          <div class="pb-assembly__layout">
+            <figure><img id="pb-assembly-image" src="../src/img/pebble/inside.webp" alt="PEBBLE internal CAD with the wheel shells, core housing and tail removed to reveal the wheel units, width linkages and electronics sled" width="3200" height="2200" loading="lazy" /><figcaption id="pb-assembly-caption" aria-live="polite">Wheel shells, case and tail removed. Both wheel-spacing mechanisms are shown extended.</figcaption></figure>
+            <div class="pb-assembly__notes">
+              <div data-pb-assembly-panel="inside"><p class="pb-kicker">Assembly map</p><h3>A stationary center between two moving wheels</h3><ol class="pb-numbered"><li><b>Wheel units</b><span>Each wheel has a geared drive motor inside a stationary sleeve.</span></li><li><b>Width linkages</b><span>Independent left/right servos move the complete wheel units in and out.</span></li><li><b>Electronics sled</b><span>Controllers, regulators, sensors and the battery share a removable PA12 carrier.</span></li><li><b>Reaction support</b><span>The first-prototype tail stays fixed; it is hidden in this view, not removed from the design.</span></li></ol></div>
+              <div data-pb-assembly-panel="wheel" hidden><p class="pb-kicker">Right wheel · section view</p><h3>The shell rotates. The motor body does not.</h3><ol class="pb-numbered"><li><b>Drive path</b><span>Motor D-shaft → 17-4PH hex insert → hex liner bonded into the wheel shell.</span></li><li><b>Support path</b><span>Two S6705 bearings support the shell around the PA12 motor sleeve.</span></li><li><b>Retention</b><span>Spacers separate the bearings; an aluminium retainer holds their outer-ring stack.</span></li><li><b>Service access</b><span>The polar cap opens access to the coupling and its fasteners.</span></li></ol></div>
+              <div data-pb-assembly-panel="width" hidden><p class="pb-kicker">Independent left/right motion</p><h3>Servo rotation becomes sideways travel.</h3><ol class="pb-numbered"><li><b>KST X08N V6 servo</b><span>A 13 mm crank drives a pin through the slider slot.</span></li><li><b>Slider + width rod</b><span>The slider moves a 17-4PH rod through the core wall.</span></li><li><b>Guide + gland</b><span>A guide pin resists twisting; a brass gland, O-ring and wiper surround the rod.</span></li><li><b>Axle arm</b><span>The rod moves the arm, motor sleeve and wheel together.</span></li></ol></div>
+              <div data-pb-assembly-panel="sled" hidden><p class="pb-kicker">F5v12 electronics carrier</p><h3>Service the core as one assembly.</h3><ol class="pb-numbered"><li><b>Low-level control</b><span>RP2040-Zero holds the final motion and safety decisions.</span></li><li><b>High-level functions</b><span>XIAO ESP32S3 Sense handles the camera, Wi-Fi and upper-level commands.</span></li><li><b>Power + sensors</b><span>A custom power board, separate regulated rails, ToF and IMU share the carrier.</span></li><li><b>Battery below</b><span>A planned 1S 902540 LiPo sits beneath the sled. Harness routing and thermal checks remain physical gates.</span></li></ol></div>
+            </div>
+          </div>
+        </div>
+        <p class="sx-fine reveal">These are views of the current CAD geometry, not photographs or motion simulations. Assemblies are selectively hidden and the wheel view is sectioned to expose the load path. Purchased modules include simplified reference envelopes; component colors are illustrative. The width view uses the extended configuration, not the minimum-width first-prototype starting pose.</p>
+        <div class="pb-detail-grid">
+          <article class="tile pb-note reveal"><p class="pb-kicker">01 / Wheel drive</p><h3>Torque and wheel load take different paths</h3><p>The planned drive uses two Pololu 6 V gearmotors with magnetic encoders. The motor body stays in its sleeve while the output shaft turns a steel hex coupling. The liner transfers that torque into the PA12 shell; the bearings carry the rotating shell around the sleeve.</p><dl class="pb-spec-list"><div><dt>Planned motor + encoder</dt><dd>Pololu #4797 + #3081, per side</dd></div><div><dt>Wheel support</dt><dd>2 × S6705, 25 × 32 × 4 mm, per wheel</dd></div><div><dt>Coupling / sleeve</dt><dd>17-4PH H1025 / PA12 MJF</dd></div></dl></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">02 / Contact with terrain</p><h3>TPU tread plus replaceable microspines</h3><p>TPU is intended to provide friction on smoother surfaces. On rough surfaces, directional spring-return hooks are intended to engage small features. The design has 24 cartridges per wheel, three hooks per cartridge: 144 hooks in the planned robot, not 144 tested contact points.</p><dl class="pb-spec-list"><div><dt>Carrier / hooks</dt><dd>PA12 MJF / planned Ø0.5 mm stainless wire</dd></div><div><dt>Return elements</dt><dd>0.050 mm 304 sheet leaves; small tube hinges</dd></div><div><dt>Evidence still needed</dt><dd>Engagement frequency, holding force and coupon fatigue</dd></div></dl></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">03 / Core and service</p><h3>A housing that can be opened again</h3><p>The PA12 core has a removable lid and a sled designed to translate 45 mm along the service axis. A brass ballast piece lowers the modeled center of mass, giving the core a pendulum-like reaction. That is a design rationale, not a measured stability result.</p><dl class="pb-spec-list"><div><dt>Lid</dt><dd>8 M2 fasteners, inserts and a silicone cord gasket</dd></div><div><dt>Optical openings</dt><dd>1 mm PC camera window; uncovered ToF opening</dd></div><div><dt>Environmental scope</dt><dd>No waterproof or dustproof rating claimed</dd></div></dl></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">04 / Fixed-tail baseline</p><h3>Do not confuse the concept with prototype one</h3><p>The first prototype uses the T3 tail fixed at −125°, with a planned brass brace and non-magnetic titanium hinge hardware. Its deployment lines, pulleys and return spring are not fitted. The retained spool hardware does not make it an actuated folding tail.</p><dl class="pb-spec-list"><div><dt>Current usable command range</dt><dd>7.5–20 mm per side; 136.5–161.5 mm overall nominal</dd></div><div><dt>Deferred concept</dt><dd>Closed sphere, automatic deployment and throwing</dd></div><div><dt>Open fabrication gate</dt><dd>Brace-seat dimensions and core/sled clearance approval</dd></div></dl></article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="mechanism" aria-labelledby="pb-mechanism-title">
       <div class="container">
-        <div class="sx-head reveal"><div><p class="eyebrow">The mechanism</p><h2 class="section-title" id="pb-mechanism-title">Two wheels. One stationary core.</h2><p class="section-desc">The hemispherical shells act as wheels, while the central core holds the electronics. Moving the wheels inward changes the robot's width without changing the core.</p></div></div>
+        <div class="sx-head reveal"><div><p class="eyebrow">Width mechanism</p><h2 class="section-title" id="pb-mechanism-title">Change the wheel spacing, not the core.</h2><p class="section-desc">Each side has its own servo, crank, slider, guide pin and axle arm. The first prototype uses only the 7.5–20 mm part of each side's design travel because the tail is fixed open.</p></div></div>
         <div class="pb-mechanism">
           <figure class="tile pb-compare reveal">
             <div class="pb-compare__stage"><img id="pb-state-image" src="../src/img/pebble/prototype.webp" alt="Narrow CAD configuration of PEBBLE, nominal width 136.5 millimeters" width="3200" height="2200" loading="lazy" /></div>
             <figcaption class="pb-compare__caption"><div class="sx-seg" role="group" aria-label="Compare CAD width configurations"><button type="button" data-pb-state="narrow" aria-pressed="true">Narrow</button><button type="button" data-pb-state="wide" aria-pressed="false">Wide</button></div><span id="pb-state-label" aria-live="polite">136.5 mm · nominal</span></figcaption>
           </figure>
           <div class="pb-notes">
-            <article class="tile pb-note reveal"><p class="pb-kicker">01 / Shape</p><h3>Adjust each side separately</h3><p>The same total width can be reached by drawing both wheels inward equally, or by drawing one side in farther. That difference is the variable I want to test.</p></article>
+            <article class="tile pb-note reveal"><p class="pb-kicker">01 / Kinematics</p><h3>A 13 mm crank, a slotted slider</h3><p>The KST servo rotates the crank through a designed ±50.3° range for 20 mm total linkage travel. The slider transfers the motion to a steel width rod and aluminium axle arm. Those are CAD dimensions, not a measured stroke or force rating.</p></article>
             <article class="tile pb-note reveal"><p class="pb-kicker">02 / Sensing</p><h3>Use contact, not a preview of the gap</h3><p>The planned controller uses left/right width-adjustment servo-current proxies to choose which side to narrow. Load cells on the test fixture provide an independent force reference. Whether that choice is accurate remains an open question.</p></article>
             <article class="tile pb-note reveal"><p class="pb-kicker">03 / Scope</p><h3>A research prototype, not a rescue claim</h3><p>The broader concept is a deployable spherical search robot. The first prototype instead uses a fixed, braced tail. Folding, throwing, durability and real-world rescue performance have not been physically demonstrated.</p></article>
           </div>
         </div>
         <p class="sx-fine reveal">Renders come from the November CAD, including the November 8 tail brace. Widths are nominal commanded dimensions, not measured contact widths. The hemispherical-wheel mechanism has prior art; the research focus is the escape strategy, not a claim to invent the mechanism.</p>
+      </div>
+    </section>
+
+    <section class="section" id="electronics" aria-labelledby="pb-electronics-title">
+      <div class="container">
+        <div class="sx-head reveal"><div><p class="eyebrow">Electronics and control</p><h2 class="section-title" id="pb-electronics-title">Two controllers. Separate power domains.</h2><p class="section-desc">High-level perception can request an action. The low-level controller must still decide whether the action is allowed. The power system separates wheel drive, width servos and logic rather than treating them as one load.</p></div></div>
+        <div class="pb-detail-grid">
+          <article class="tile pb-note pb-control reveal"><p class="pb-kicker">Command and safety path</p><div class="pb-control__node"><b>XIAO ESP32S3 Sense</b><span>Camera · Wi-Fi · high-level search commands</span></div><p class="pb-control__arrow">UART commands ↓</p><div class="pb-control__node pb-control__node--main"><b>RP2040-Zero</b><span>Motion control · encoder/ToF/IMU feedback · final interlock decision</span></div><p class="pb-control__arrow">Allowed outputs only ↓</p><div class="pb-control__ends"><div class="pb-control__node"><b>Wheel drive</b><span>DRV8833 → 2 geared motors</span></div><div class="pb-control__node"><b>Width control</b><span>2 KST servos → independent linkages</span></div></div><p class="sx-fine">Logical architecture, not a wiring diagram. An upper-level command does not override the RP2040's interlocks.</p></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">What each sensor contributes</p><dl class="pb-spec-list pb-spec-list--roomy"><div><dt>VL53L5CX · 8 × 8 ToF</dt><dd>Forward range information; jam/maze sensing. The funnel experiment does not use camera preview of the gap.</dd></div><div><dt>LSM6DSOX · IMU</dt><dd>Acceleration, gyro heading and an internal-temperature proxy, not a direct battery-temperature measurement.</dd></div><div><dt>Magnetic encoders</dt><dd>Wheel-motion feedback. Encoder motion alone is not proof of ground travel or successful escape.</dd></div><div><dt>INA219 × 4</dt><dd>Main battery, drive-rail and two width-servo channels. Servo-current proxies are compared with fixture load cells.</dd></div><div><dt>Wio-SX1262 · LoRa</dt><dd>Planned short field reports. LoRa is off during the core funnel/maze campaign; radio validation is separate.</dd></div></dl></article>
+        </div>
+        <div class="tile pb-power reveal"><div class="pb-power__source"><p class="pb-kicker">Power source</p><h3>1S LiPo · 902540</h3><p>800 mAh nominal in the plan, mounted below the sled.</p><span>r1-lite custom power board<br>22.5 × 20 mm · 6-layer FR4</span></div><div class="pb-power__branches"><div><b>Drive rail · 6 V</b><span>U3V40F6 → DRV8833 → wheel motors</span></div><div><b>Servo rail · 6 V</b><span>S9V11E2F6 → left/right width servos</span></div><div><b>Logic A · 3.3 V</b><span>S9V11E2F3 → XIAO and Wio</span></div><div><b>Logic B · 3.3 V</b><span>S9V11E2F3 → RP2040 and sensors</span></div></div></div>
+        <p class="sx-fine reveal">Functional power paths only. The r1-lite design has documented current-path deviations and an off-board harness bypass; the diagram is not a full-current compliance claim. The pre-validation battery-current cap is 2.7 A, and a 3.0 A ceiling is conditional on the required bench checks. Failed power-board checks can impose stricter limits or block installation. Charging/docking and automatic tail actuation are not demonstrated first-prototype features.</p>
+      </div>
+    </section>
+
+    <section class="section" id="materials" aria-labelledby="pb-materials-title">
+      <div class="container">
+        <div class="sx-head reveal"><div><p class="eyebrow">Materials and manufacturing</p><h2 class="section-title" id="pb-materials-title">Each material has a specific job.</h2><p class="section-desc">Printed polymers carry complex shapes. Precision metals transmit force and resist wear. Soft contact layers provide grip and compliance. These are planned material assignments, not certificates for the finished robot.</p></div></div>
+        <dl class="tile pb-materials reveal">
+          <div><dt>PA12 · MJF</dt><dd><b>Shells, core, sled and motor sleeves.</b> Complex lightweight structures; printed dimensions and loaded joints still need inspection.</dd></div>
+          <div><dt>TPU 95A</dt><dd><b>Tread, wipers and compliant pads.</b> The November split-print tread plan replaces an unstable upright one-piece print.</dd></div>
+          <div><dt>7075 aluminium</dt><dd><b>Axle arms, sliders and bearing retainers.</b> Carries linkage and wheel loads without making every part steel.</dd></div>
+          <div><dt>17-4PH · H1025</dt><dd><b>Width rods, hex inserts and liners.</b> Small force/torque-transfer parts; specified finish, fit and heat treatment matter.</dd></div>
+          <div><dt>440C stainless</dt><dd><b>Guide pins and bearing components.</b> Wear-resistant sliding/support parts. Magnetic interaction is a placement constraint.</dd></div>
+          <div><dt>304 sheet and wire</dt><dd><b>Microspine hooks, return leaves and small plates.</b> The thin-sheet substitutions require coupon checks rather than assumed fatigue life.</dd></div>
+          <div><dt>Brass and titanium</dt><dd><b>Glands/ballast/brace and tail hinge hardware.</b> Brass provides machinability and ballast; titanium avoids ferromagnetic hinge hardware near Hall sensing.</dd></div>
+          <div><dt>PC · PETG · FR4</dt><dd><b>Optical window, RP2040 carrier and power PCB.</b> Different materials for transparency, printable support and electrical insulation.</dd></div>
+        </dl>
+        <div class="pb-test-grid pb-detail-gap">
+          <article class="tile pb-note reveal"><p class="pb-kicker">Design → printability</p><h3>Split the tread, keep the final geometry</h3><p>The 24 slender upright bars proved difficult to print as one tread. The current F-plan prints the bars and upper ring flat as separate pieces. Assembly, adhesive choice, coupons and inspection criteria still need approval; the old one-piece bonding instruction is not automatically valid.</p></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">Design → assembly</p><h3>Prove the joint before closing the shell</h3><p>Electronics dry-fit, service access, wire routing and adhesive coupons come before irreversible bonding. The latest build sequence requires approved preparation and cure gates, not a calendar date treated as a pass.</p></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">Design → current scope</p><h3>Some fabrication details are still held</h3><p>The brace seats, split-TPU assembly, retained spool function and service/programming access have unresolved gates. A CAD image or completed document does not release those items for manufacture or prove they work.</p></article>
+        </div>
+        <p class="sx-fine reveal">The 0.4 mm microspine cover is a separate TPU film specification, not simply the printed 95A tread material. Its candidate grade and lot must pass incoming inspection. No general material strength value is presented here as the strength of a finished PEBBLE part.</p>
       </div>
     </section>
 
@@ -111,9 +172,13 @@
         <p class="sx-fine reveal">SYM and ASYM use the same total reduction per step, retrying after each jam until passage or the minimum width. The last step uses only the remaining travel. This separates the effect of asymmetry from simply making the robot narrower.</p>
         <figure class="tile pb-rig reveal"><img src="../src/img/pebble/funnel.webp" alt="CAD rendering of an adjustable floor funnel, with converging walls and instrumented jaws on a base plate" width="3200" height="2200" loading="lazy" /><figcaption><b>Adjustable floor-funnel fixture · v4</b><span>November 9 experimental design. CAD, not a physical test.</span></figcaption></figure>
         <div class="pb-test-grid">
-          <article class="tile pb-note reveal"><p class="pb-kicker">Planned comparison</p><h3>96 core trials</h3><p>Two total funnel angles (20° and 30°), two entry conditions (centered and one wall first), four modes, six repeats. Entry offsets and the exit gap are finalized in preliminary testing, not assumed from CAD.</p></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">Planned comparison</p><h3>96 core trials</h3><p>Two total funnel angles (20° and 30°), two entry conditions (centered and one wall first), four modes, six repeats. Another 16 calibration/preliminary runs and 16 side-slope checks bring the overall plan to 128. Entry offsets and the exit gap are finalized in preliminary testing.</p></article>
           <article class="tile pb-note reveal"><p class="pb-kicker">Measured outcome</p><h3>Pass the line within 60 seconds</h3><p>Success means the marked core center crosses a line 100 mm beyond the actual exit within 60 seconds. Video judges the result; it is not controller input. No remote steering is allowed in this test.</p></article>
           <article class="tile pb-note reveal"><p class="pb-kicker">What would count as evidence?</p><h3>Failures stay in the record</h3><p>I'll compare passage, time, final width and narrowing steps, with force-reference checks of the selected side. Tipping, safety stops and timeouts remain distinct outcomes. An asymmetric advantage is a hypothesis, not a result.</p></article>
+        </div>
+        <div class="pb-detail-grid pb-detail-gap">
+          <article class="tile pb-note reveal"><p class="pb-kicker">Separate capability demonstration</p><h3>Mapped maze: find, photograph, return</h3><p>A proposed transparent-maze demonstration starts on level ground, searches for a surrogate target, captures a photo and returns to the start. Width stays fixed at 136.5 mm. It is not another SYM-versus-ASYM comparison, and the final trial allocation still needs confirmation.</p></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">Supporting evidence, not escape results</p><h3>Grip coupons, heat and power</h3><p>Planned checks include TPU surface-friction measurements, microspine engagement/holding tests and controlled climb observations. Power and thermal bench checks must come first. Radio field tests are separate; no simulated pass count is reported as a physical success rate.</p></article>
         </div>
       </div>
     </section>
@@ -126,13 +191,13 @@
           <article class="tile pb-note reveal"><p class="pb-kicker">Software checked</p><h3>Firmware FW10</h3><p>The current firmware has 2,479 dynamic host tests, 10 static guards and five compiled targets recorded. Those are software-side checks, not proof that the hardware or escape controller works on the bench.</p></article>
           <article class="tile pb-note pb-note--next reveal"><p class="pb-kicker">Next / Physical validation</p><h3>Build, calibrate, then compare</h3><p>Complete fabrication and incoming inspection, assemble safely, validate power and control on the bench, then calibrate the fixture before collecting physical trials. No escape success rate is reported yet.</p></article>
         </div>
-        <p class="sx-fine reveal">This page reflects the November 10 execution guide, November 9 floor-funnel protocol and FW10 status. Simulation and keyframed CAD explanations inform the design; neither is presented as physical evidence.</p>
+        <p class="sx-fine reveal">Design basis: the materials/components notebook (especially its November 8–9 corrections), the November 10 execution guide, November 9 floor-funnel protocol and FW10 status. Simulation and keyframed CAD explanations inform the design; neither is presented as physical evidence.</p>
         <div class="tile pb-next reveal"><div><p class="eyebrow">Completed work</p><h3>SENTRY · Bridge anomaly detection</h3><p>Model bridges, public full-scale data, and two real footbridges.</p></div><a class="btn btn--soft" href="sentry.html">View completed project ↗</a></div>
       </div>
     </section>
   </main>
   <footer class="footer"><div class="container footer__inner"><div class="footer__left"><p class="footer__brand">Kim Changhoon<span class="footer__dot">.</span></p><p class="footer__meta">&copy; <span id="footer-year">2026</span> · PEBBLE · In progress</p></div><nav class="footer__nav" aria-label="Footer"><a class="footer__link" href="../index.html#projects">← Portfolio</a><a class="footer__top" href="#overview">Back to top ↑</a></nav></div></footer>
   <script src="../js/main.js?v=20261110a" defer></script>
-  <script src="../js/pebble.js?v=20261110a" defer></script>
+  <script src="../js/pebble.js?v=20261110b" defer></script>
 </body>
 </html>
