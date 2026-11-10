@@ -1,61 +1,42 @@
-# Kim Changhoon — Portfolio (static site)
+# Kim Changhoon · Portfolio
 
-A fast, dependency-free **static** portfolio (plain HTML / CSS / JS), rebuilt from the
-original Next.js project for hosting on **GitHub Pages**. White theme by default, with an
-opt-in dark mode.
+Static HTML/CSS/JavaScript portfolio. No npm, framework or runtime dependencies.
+
+- Live: https://kchanghoon6.github.io/portfolio/
+- Design rules, content sources and handoff: [context.md](context.md)
+- Current focus: **PEBBLE**, an in-progress variable-width search-robot research project.
+- **SENTRY** is completed; its original KCF submissions and English editions remain available.
+
+## Edit and preview
+
+Edit home sections in `partials/`, shared primitives in `css/foundation.css` and metadata
+in `index.template.html`. Do not edit the generated `index.html` or `css/styles.css` directly.
+
+```sh
+python3 assemble.py
+python3 -m http.server 8766 --bind 127.0.0.1
+```
+
+Open http://127.0.0.1:8766/. Detail pages in `pages/` are standalone HTML.
 
 ## Structure
 
-```
-index.html              # the whole page
-css/styles.css          # built stylesheet (foundation + all sections)
-js/main.js              # theme toggle, nav, scroll-spy, reveal, project filter
-src/img/profile.jpg     # profile photo
-src/img/covers/*.svg    # project cover art
-assets/                 # favicons / icons
-.nojekyll               # tell GitHub Pages to serve files as-is
+- `pages/pebble.html`, `css/pebble.css`, `js/pebble.js`: current research case study and CAD-still comparison.
+- `pages/sentry.html`, `js/sentry.js`: completed-project page and bilingual document reader.
+- `pages/delivery-robot.html`, `models/delivery-robot/`: in-progress delivery robot and public 3D layout.
+- `css/project.css`: shared bento project-page primitives.
+- `docs/sentry/`: active translated/original PDFs, page images and panels.
+- `tools/sentry-docs/`: document translation/render pipeline; see its README.
+- `src/img/`, `src/video/`, `assets/`: images, credited footage and icons.
+- `_src_nextjs/`: historical reference only, not the deployed application.
 
-# build sources (not required at runtime)
-index.template.html     # page template with <!-- @@SECTION@@ --> markers
-css/foundation.css      # design tokens + shared component primitives
-partials/<SECTION>.html # per-section markup
-partials/<SECTION>.css  # per-section styles
-assemble.py             # stitches partials -> index.html + css/styles.css
-_src_nextjs/            # the original Next.js source (kept for reference)
-```
+Check light/dark themes, 375 px layouts, links and keyboard controls before shipping.
+Label CAD, software checks, plans and physical results separately. Never publish order data
+or other people's names. The delivery model is a transaction-redacted October layout,
+not the November fabrication model.
 
-## Editing content
+## Deploy
 
-Edit the section markup in `partials/*.html` (and styling in `partials/*.css` or
-`css/foundation.css`), then rebuild:
-
-```bash
-python3 assemble.py
-```
-
-This regenerates `index.html` and `css/styles.css`. To change cover art, replace the
-SVGs in `src/img/covers/` (or drop in an image/`<video>` — each card's `.cover` slot
-accepts `<img>` or `<video>`).
-
-## Preview locally
-
-```bash
-python3 -m http.server 8000
-# open http://localhost:8000
-```
-
-## Deploy to GitHub Pages
-
-1. Create a repo and push these files to it.
-   - For a user/organization site, name the repo `<username>.github.io`.
-   - For a project site, any repo name works (the site will live at
-     `https://<username>.github.io/<repo>/`). All asset paths here are **relative**, so
-     project-site hosting works without changes.
-2. In the repo: **Settings → Pages → Build and deployment → Source: Deploy from a branch**,
-   branch `main`, folder `/ (root)`.
-3. GitHub serves `index.html`. The `.nojekyll` file ensures everything (including the
-   `_*` folder) is served verbatim.
-
-> Tip: you can exclude `_src_nextjs/`, `partials/`, `assemble.py`, and the `*.template.*`
-> / `foundation.css` build sources from the deployed branch if you prefer a lean Pages
-> branch — they are only needed to rebuild the site.
+GitHub Pages serves the repository root from `main`. Commit source changes together with
+regenerated outputs. **Commit and push only when the owner explicitly requests it.**
+The November 10 PEBBLE-first update follows this same build and deployment workflow.

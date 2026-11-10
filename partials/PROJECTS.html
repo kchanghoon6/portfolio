@@ -3,71 +3,36 @@
     <div class="section__head reveal">
       <p class="eyebrow">Selected work</p>
       <h2 class="section-title">Featured projects</h2>
-      <p class="section-desc">A few projects I'm most proud of, spanning structural-health AI, sports analytics, and full-stack web platforms.</p>
+      <p class="section-desc">Current robotics work, a completed bridge-monitoring project, and software used by real students.</p>
     </div>
 
-    <article class="card proj-card proj-hero reveal" data-category="ML" data-card-link="pages/sentry.html" role="link" tabindex="0" aria-label="Open SENTRY bridge anomaly detection details">
+    <article class="card proj-card proj-hero reveal" data-category="robotics" data-card-link="pages/pebble.html" role="link" tabindex="0" aria-label="Open PEBBLE shape-changing search robot details">
       <div class="cover proj-hero__cover" aria-hidden="true">
-        <img src="src/img/covers/sentry.svg" alt="" loading="lazy" />
-        <span class="cover__tag">Structural Health</span>
+        <img src="src/img/pebble/prototype.webp" alt="" width="1600" height="1100" loading="lazy" />
+        <span class="cover__tag">In progress · CAD render</span>
       </div>
       <div class="card__body proj-hero__body">
-        <p class="proj-hero__kicker">Korea Code Fair 2026 · Finals · Team of 2</p>
+        <p class="proj-hero__kicker">Current focus · PEBBLE</p>
         <div class="proj-card__head">
-          <h3 class="proj-card__title proj-hero__title">SENTRY — Low-Cost Bridge Anomaly Detection</h3>
-          <span class="proj-card__arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </span>
+          <h3 class="proj-card__title proj-hero__title">A small robot.<br>A way out of a tight spot.</h3>
+          <span class="proj-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
         </div>
-        <p class="proj-card__impact">Continuous vibration screening for small bridges, robust to temperature &amp; humidity.</p>
-        <p class="proj-card__desc">A low-cost MEMS-accelerometer system that flags abnormal bridge vibration. It learns how weather shifts a healthy bridge's natural frequency and compensates for it, then an autoencoder detects anomalies in the residual — with explainable, band-wise alarms that prioritize inspection. Validated in three stages: model bridges, full-scale public data, and two real footbridges.</p>
-        <ul class="tags">
-          <li class="tag">Python</li>
-          <li class="tag">PyTorch</li>
-          <li class="tag">Autoencoder</li>
-          <li class="tag">Signal Processing</li>
-          <li class="tag">Raspberry Pi</li>
-        </ul>
-        <div class="proj-card__links">
-          <span class="icon-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-            Details, poster &amp; reports
-          </span>
-        </div>
+        <p class="proj-card__impact">PEBBLE, a shape-changing search-robot project.</p>
+        <p class="proj-card__desc">A variable-width robot built around two hemispherical wheels and a stationary core. I'm studying when it gets wedged in a narrowing passage, and whether changing its width can help it escape. Mechanical design, sensing, and a controlled test rig are being developed together.</p>
+        <ul class="tags"><li class="tag">Mechanical design</li><li class="tag">Embedded systems</li><li class="tag">Experimental robotics</li></ul>
+        <div class="proj-card__links"><span class="icon-link">Explore the design &amp; research question ↗</span></div>
       </div>
     </article>
 
     <div class="grid grid-3 proj-featured-grid">
       <article class="card proj-card proj-card--featured reveal" data-category="ML">
-        <a class="cover" href="pages/whsdsc.html" aria-label="Open Wharton Data Science Competition details">
-          <img src="src/img/covers/whsdsc.svg" alt="" loading="lazy" />
-          <span class="cover__tag">Sports Analytics</span>
-        </a>
+        <a class="cover" href="pages/sentry.html" aria-label="Open completed SENTRY project"><img src="src/img/covers/sentry.svg" alt="" loading="lazy" /><span class="cover__tag">ML · Completed</span></a>
         <div class="card__body">
-          <div class="proj-card__head">
-            <h3 class="proj-card__title">WHL Hockey Analytics — Wharton DS Competition</h3>
-            <span class="proj-card__arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </span>
-          </div>
-          <p class="proj-card__impact">Team power rankings &amp; matchup win-probability modeling for a simulated hockey league.</p>
-          <p class="proj-card__desc">Student Team Leader for the 2026 Wharton High School Data Science Competition (Wharton Global Youth Program). Built a Poisson GLM over a 1,312-game season to power-rank 32 teams and predict tournament win probabilities, and quantified offensive-line quality disparity using expected goals (xG).</p>
-          <ul class="tags">
-            <li class="tag">Python</li>
-            <li class="tag">Poisson GLM</li>
-            <li class="tag">Expected Goals</li>
-            <li class="tag">Statistics</li>
-          </ul>
-          <div class="proj-card__links">
-            <a class="icon-link" href="https://github.com/kchanghoon6/WHSDSC_2026" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.3-.54-1.5.11-3.13 0 0 1.01-.32 3.3 1.2.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.29-1.52 3.3-1.2 3.3-1.2.65 1.63.24 2.83.12 3.13.77.82 1.23 1.87 1.23 3.15 0 4.51-2.81 5.51-5.49 5.8.43.36.81 1.09.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5Z"/></svg>
-              GitHub
-            </a>
-            <a class="icon-link" href="pages/whsdsc.html">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-              Details &amp; certificate
-            </a>
-          </div>
+          <div class="proj-card__head"><h3 class="proj-card__title">SENTRY — Bridge Anomaly Detection</h3><span class="proj-card__arrow" aria-hidden="true">↗</span></div>
+          <p class="proj-card__impact">From model bridges to two real footbridges.</p>
+          <p class="proj-card__desc">A low-cost vibration-screening system with weather compensation and autoencoder-based alarms. Korea Code Fair 2026 finals, built with one teammate; I did most of the work. The completed project is documented in the original submissions and English translations.</p>
+          <ul class="tags"><li class="tag">Python</li><li class="tag">PyTorch</li><li class="tag">Signal processing</li></ul>
+          <div class="proj-card__links"><a class="icon-link" href="pages/sentry.html">Details, poster &amp; reports ↗</a></div>
         </div>
       </article>
 
@@ -120,10 +85,15 @@
       </div>
 
       <div class="grid grid-3 proj-archive-grid" id="proj-archive-grid">
+        <article class="card proj-card reveal" data-category="robotics">
+          <a class="cover" href="pages/pebble.html" aria-label="Open PEBBLE details"><img src="src/img/pebble/prototype.webp" alt="" loading="lazy" /><span class="cover__tag">In progress · CAD render</span></a>
+          <div class="card__body"><h3 class="proj-card__title">PEBBLE — Shape-Changing Search Robot</h3><p class="proj-card__impact">Studying how a small robot can escape a narrowing passage.</p><p class="proj-card__desc">A split-sphere robot design with adjustable wheel spacing, servo-current sensing, and a controlled floor-funnel experiment. Design and fabrication preparation are in progress; physical performance is not yet validated.</p><ul class="tags"><li class="tag">CAD</li><li class="tag">Embedded systems</li><li class="tag">Robotics</li></ul><div class="proj-card__links"><a class="icon-link" href="pages/pebble.html">Design &amp; research ↗</a></div></div>
+        </article>
+
         <article class="card proj-card reveal" data-category="ML">
           <a class="cover" href="pages/sentry.html" aria-label="Open SENTRY details">
             <img src="src/img/covers/sentry.svg" alt="" loading="lazy" />
-            <span class="cover__tag">Structural Health</span>
+            <span class="cover__tag">ML · Completed</span>
           </a>
           <div class="card__body">
             <h3 class="proj-card__title">SENTRY — Bridge Anomaly Detection</h3>
@@ -270,7 +240,7 @@
           <div class="card__body">
             <h3 class="proj-card__title">Campus Delivery Robot</h3>
             <p class="proj-card__impact">A rule-adaptive robot that carries store items to dorm rooms.</p>
-            <p class="proj-card__desc">An in-progress autonomous delivery robot: a web app takes orders and a Raspberry&nbsp;Pi&nbsp;5 + ESP32 robot navigates the school by ArUco checkpoints to deliver. A rule engine adapts its behavior in real time and PPO reinforcement learning handles obstacle avoidance and routing, all overseen from a live FastAPI control dashboard. Parts are ordered and the drop-off conveyor, folding ramp and elevator-button mast are modeled in 3D with real part dimensions.</p>
+            <p class="proj-card__desc">A campus delivery-robot design with Raspberry Pi 5 + ESP32-S3 control, a conveyor and folding ramp, and an elevator-button mast. November chassis and cargo-box fabrication drawings are prepared; assembly, control software and physical validation are still ahead.</p>
             <ul class="tags">
               <li class="tag">Raspberry Pi</li>
               <li class="tag">ESP32</li>

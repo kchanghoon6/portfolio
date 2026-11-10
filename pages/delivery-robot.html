@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Campus Delivery Robot · Kim Changhoon</title>
-  <meta name="description" content="An in-progress campus delivery robot that carries school-store orders to dorm rooms: Raspberry Pi 5 + ESP32-S3, four-wheel drive, a conveyor and two-stage folding ramp for door-side drop-off, and an elevator-button presser — modeled in 3D with real part dimensions before the build." />
+  <meta name="description" content="An in-progress campus delivery robot designed to carry school-store orders to dorm rooms: Raspberry Pi 5 + ESP32-S3, four-wheel drive, a conveyor and two-stage folding ramp for door-side drop-off, and an elevator-button presser — modeled in 3D with real part dimensions before the build." />
   <meta name="theme-color" content="#f3f3f5" />
   <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,13 +64,13 @@
       <div class="container sx-hero__bento">
         <div class="tile sx-intro rb-intro reveal">
           <div class="sx-intro__media" aria-hidden="true">
-            <img src="../src/img/robot/model-render.webp" alt="" width="1800" height="1093" />
+            <img src="../src/img/robot/model-render.webp?v=20261110" alt="" width="1800" height="1093" />
             <span class="sx-intro__veil"></span>
           </div>
           <span class="sx-chip"><span class="rb-pulse" aria-hidden="true"></span>Robotics · In progress</span>
           <h1 class="sx-intro__title" id="rb-title">Campus Delivery Robot</h1>
-          <p class="sx-intro__lead">A robot that carries school-store orders to dorm rooms and <strong>unloads them on its own</strong> — designed part by part, with real dimensions, before it is built.</p>
-          <p class="sx-intro__team">In progress · parts ordered October 2026 · assembly and testing next.</p>
+          <p class="sx-intro__lead">A robot designed to carry school-store orders to dorm rooms and <strong>unload them on its own</strong>. I am working through the mechanical layout and fabrication drawings before assembly.</p>
+          <p class="sx-intro__team">In progress · November 2026 design and fabrication preparation · assembly and testing still ahead.</p>
           <div class="sx-intro__actions">
             <a class="btn btn--primary" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">
               Open the 3D model
@@ -90,18 +90,18 @@
           <div class="tile sx-fact reveal" data-reveal-delay="160">
             <span class="sx-fact__k">Drop-off</span>
             <span class="sx-fact__v">250 × 900</span>
-            <span class="sx-fact__s">mm conveyor belt plus a two-stage folding ramp (~24°)</span>
+            <span class="sx-fact__s">mm belt width × loop circumference; two-stage folding ramp (~24°)</span>
           </div>
           <div class="tile sx-fact reveal" data-reveal-delay="200">
             <span class="sx-fact__k">3D model</span>
             <span class="sx-fact__v">27 steps</span>
-            <span class="sx-fact__s">assembly animation built from purchased-part dimensions</span>
+            <span class="sx-fact__s">layout and assembly animation using part dimensions; not a tested build</span>
           </div>
         </div>
 
         <a class="tile sx-poster-tile reveal" data-reveal-delay="80" href="#model" aria-label="Go to the interactive 3D model">
           <span class="sx-poster-tile__paper rb-thumb">
-            <img src="../src/img/robot/model-thumb.webp" alt="3D model of the robot with its drop-off ramp unfolded" width="900" height="964" loading="eager" />
+            <img src="../src/img/robot/model-thumb.webp?v=20261110" alt="3D model of the robot with its drop-off ramp unfolded" width="900" height="964" loading="eager" />
           </span>
           <span class="sx-poster-tile__cap"><b>Interactive model</b><span>WebGL · mm</span></span>
         </a>
@@ -115,7 +115,7 @@
           <div>
             <p class="eyebrow">3D model</p>
             <h2 class="section-title" id="rb-model-title">Built in 3D before it's built for real</h2>
-            <p class="section-desc">Every purchased part is placed at its real size. The model plays the assembly in 27 steps — with the bolts, checks and purchase link for each part — and animates the drop-off sequence.</p>
+            <p class="section-desc">I use part dimensions to study placement and assembly. This October 18 layout shows the main switch and emergency stop moved to a lower front panel. Its 27-step animation illustrates assembly and drop-off; it does not simulate physical performance.</p>
           </div>
           <div class="sx-head__side">
             <a class="sx-link" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">Open full screen ↗</a>
@@ -124,18 +124,18 @@
 
         <div class="tile rb-model reveal">
           <div class="rb-model__stage" data-embed>
-            <img class="rb-model__poster" src="../src/img/robot/model-render.webp" alt="Still frame of the interactive 3D model" width="1800" height="1093" loading="lazy" />
+            <img class="rb-model__poster" src="../src/img/robot/model-render.webp?v=20261110" alt="Still frame of the interactive 3D model" width="1800" height="1093" loading="lazy" />
             <div class="rb-model__cta">
               <button class="btn btn--primary rb-model__load" type="button" data-embed-load="../models/delivery-robot/dropoff-3d.html">
                 Load the interactive model
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
               </button>
               <a class="btn btn--soft rb-model__open" href="../models/delivery-robot/dropoff-3d.html" target="_blank" rel="noopener">Open full screen ↗</a>
-              <span class="rb-model__hint">2.3 MB · drag to rotate, scroll to zoom, ← / → to step through the assembly</span>
+              <span class="rb-model__hint">2.3 MB · October layout · drag to rotate, scroll to zoom, ← / → to step through the assembly</span>
             </div>
           </div>
         </div>
-        <p class="sx-fine reveal">The model's interface is in Korean. It is a layout and assembly study, not a manufacturing drawing: strength, friction and motor torque have not been calculated yet, and the 0.5 kg payload is a test target, not a rating.</p>
+        <p class="sx-fine reveal">The model's interface is in Korean. This October layout is separate from the November fabrication drawings below, not a current manufacturing model. Some geometry is approximate or uses substitute parts. Strength, friction and motor torque remain unvalidated; 0.5 kg is a test target, not a payload rating.</p>
       </div>
     </section>
 
@@ -146,18 +146,18 @@
           <div>
             <p class="eyebrow">Design</p>
             <h2 class="section-title" id="rb-design-title">Four subsystems, one chassis</h2>
-            <p class="section-desc">A 264 × 520 mm two-deck chassis (348 mm across the wheels) carries a cargo box, a drop-off module and an elevator-button mast.</p>
+            <p class="section-desc">The layout places a cargo box, drop-off module and elevator-button mast above a two-deck chassis (348 mm across the wheels). The November 4 fabrication package specifies chassis v4.5: 264 × 520 mm and 264 × 462 mm SPCC steel plates, both 1.5 mm thick; cargo box v1.1 uses seven 1.5 mm AL5052-H32 panels. These are fabrication specifications, not completed parts.</p>
           </div>
         </div>
 
         <div class="rb-spec">
           <article class="tile rb-card reveal">
             <span class="rb-card__k">01 · Drive &amp; power</span>
-            <h3 class="rb-card__title">Four-wheel drive on a LiFePO4 pack</h3>
+            <h3 class="rb-card__title">Planned drive and power layout</h3>
             <ul class="sx-x__list">
               <li>Four JGB37-520 encoder motors on Ø85 mm wheels, driven by a Cytron MDD10A.</li>
               <li>12.8 V 9.9 Ah LiFePO4 pack with fused power branches.</li>
-              <li>An emergency stop and relay cut motor power independently of the computers.</li>
+              <li>The layout places the main switch and emergency stop on the lower front panel; the emergency stop is intended to interrupt the motor-power relay coil independently of the computers.</li>
             </ul>
           </article>
 
@@ -167,7 +167,7 @@
             <ul class="sx-x__list">
               <li>A 250 mm green PVC belt (900 mm loop) driven by a 27 rpm worm-gear motor (~52 mm/s), top surface 219 mm above the floor.</li>
               <li>A 250 + 250 mm ramp unfolds on two 12 rpm worm-gear axes to ~24°; a 100 N gas spring offsets its weight and a servo-released plunger locks it when stowed.</li>
-              <li>Limit switches and IR break-beams confirm the ramp position and that the package has fully left.</li>
+              <li>Limit switches and IR break-beams are intended to confirm ramp position and package exit.</li>
             </ul>
           </article>
 
@@ -185,8 +185,8 @@
             <h3 class="rb-card__title">See the path, watch the drop zone</h3>
             <ul class="sx-x__list">
               <li>Pi Camera 3 and five VL53L1X ToF sensors at the front and sides; two more watch the floor behind for the drop-off.</li>
-              <li>A 130° USB camera with an LED strip photographs the delivered package by the door.</li>
-              <li>An INA226 current monitor stops a motor that stalls (2.5 A for 0.5–1 s).</li>
+              <li>A 130° USB camera and LED strip are planned for door-side delivery photos.</li>
+              <li>An INA226 current monitor is specified for stall detection; 2.5 A for 0.5–1 s is a proposed cut-off to validate in bench tests.</li>
             </ul>
           </article>
         </div>
@@ -207,7 +207,7 @@
         <article class="tile rb-card rb-card--plan reveal">
           <span class="rb-card__k">Software · planned</span>
           <h3 class="rb-card__title">Ordering to delivery</h3>
-          <p class="rb-card__p">Orders come in through a web app; the robot navigates the school by ArUco checkpoints, a rule engine adapts its behavior in real time, PPO reinforcement learning handles obstacle avoidance and routing, and a FastAPI dashboard oversees it live.</p>
+          <p class="rb-card__p">The software plan includes web ordering, ArUco checkpoints, rule-based behavior and a FastAPI dashboard. PPO reinforcement learning is an option to investigate for obstacle avoidance and routing, not an implemented or validated controller.</p>
         </article>
       </div>
     </section>
@@ -235,10 +235,10 @@
               </li>
               <li class="sx-stop is-active" aria-current="step">
                 <span class="sx-stop__node" aria-hidden="true"><span class="sx-stop__dot"></span></span>
-                <p class="sx-stop__when">Oct 2026 · now</p>
-                <p class="sx-stop__name">Parts <span>drop-off module</span></p>
+                <p class="sx-stop__when">Nov 2026 · now</p>
+                <p class="sx-stop__name">Design <span>fabrication preparation</span></p>
                 <div class="sx-stop__items">
-                  <p class="sx-note">Parts ordered from three suppliers; drop-off module and button mast modeled with purchased-part dimensions.</p>
+                  <p class="sx-note">Chassis v4.5 and cargo box v1.1 drawings prepared in the November 4 fabrication package: two steel chassis plates and seven bent aluminum cargo panels. Assembly and physical tests are still ahead.</p>
                 </div>
               </li>
               <li class="sx-stop">

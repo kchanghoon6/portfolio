@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PEBBLE · Shape-Changing Search Robot · Kim Changhoon</title>
+  <meta name="description" content="PEBBLE: an in-progress variable-width research robot. Mechanical design, embedded firmware, and a controlled experiment comparing symmetric and asymmetric narrowing in confined passages. Physical testing is still ahead." />
+  <meta name="theme-color" content="#f3f3f5" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/project.css?v=20261110a" />
+  <script>
+    (function () { try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {} })();
+  </script>
+  <link rel="stylesheet" href="../css/pebble.css?v=20261110a" />
+</head>
+<body class="home project-page pb-page">
+  <a class="skip-link" href="#overview">Skip to content</a>
+
+  <header class="nav" id="site-nav">
+    <div class="nav__pill">
+      <a class="nav__brand" href="../index.html#top">CK<span class="nav__dot">.</span></a>
+
+      <nav class="nav__links" aria-label="Sections">
+        <a class="nav__link" href="#overview">Overview</a>
+        <a class="nav__link" href="#mechanism">Mechanism</a>
+        <a class="nav__link" href="#research">Research</a>
+        <a class="nav__link" href="#progress">Progress</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+          <span class="icon-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>
+          <span class="icon-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+        </button>
+
+        <a class="nav__cta" href="../index.html#projects">
+          <span aria-hidden="true">←</span> Portfolio
+        </a>
+
+        <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Open menu">
+          <svg class="nav__icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+          <svg class="nav__icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav__mobile" id="nav-mobile" hidden>
+      <nav aria-label="Mobile menu">
+        <a class="nav__link" href="#overview">Overview</a>
+        <a class="nav__link" href="#mechanism">Mechanism</a>
+        <a class="nav__link" href="#research">Research</a>
+        <a class="nav__link" href="#progress">Progress</a>
+        <a class="nav__link" href="../index.html#projects">← Back to portfolio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="sx-hero" id="overview" aria-labelledby="pb-title">
+      <div class="container sx-hero__bento">
+        <div class="tile sx-intro pb-intro reveal">
+          <span class="sx-chip">Current focus · Robotics · In progress</span>
+          <h1 class="sx-intro__title" id="pb-title">PEBBLE</h1>
+          <p class="sx-intro__lead">Can changing shape help a robot <strong>get unstuck?</strong></p>
+          <p class="sx-intro__team">I'm developing a small, variable-width robot for confined-space search, along with the experiment to find out when narrowing helps it escape.</p>
+          <div class="sx-intro__actions"><a class="btn btn--primary" href="#research">The research question ↓</a><a class="btn btn--soft" href="#mechanism">Explore the design</a></div>
+        </div>
+        <figure class="tile sx-poster-tile pb-render reveal" data-reveal-delay="80">
+          <img src="../src/img/pebble/prototype.webp" alt="CAD render of PEBBLE with two hemispherical wheels, central core and braced tail" width="3200" height="2200" fetchpriority="high" />
+          <figcaption class="sx-poster-tile__cap"><b>First-prototype design</b><span>CAD · not a photograph</span></figcaption>
+        </figure>
+        <div class="sx-facts">
+          <div class="tile sx-fact reveal"><span class="sx-fact__k">Mechanism</span><span class="sx-fact__v">Variable width</span><span class="sx-fact__s">independently adjustable left and right wheel spacing</span></div>
+          <div class="tile sx-fact reveal" data-reveal-delay="80"><span class="sx-fact__k">Experiment</span><span class="sx-fact__v">4 modes</span><span class="sx-fact__s">fixed wide, fixed narrow, symmetric and asymmetric narrowing</span></div>
+          <div class="tile sx-fact reveal" data-reveal-delay="120"><span class="sx-fact__k">Current stage · Nov 2026</span><span class="sx-fact__v">Before the bench</span><span class="sx-fact__s">CAD and firmware developed; physical validation is still ahead</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mechanism" aria-labelledby="pb-mechanism-title">
+      <div class="container">
+        <div class="sx-head reveal"><div><p class="eyebrow">The mechanism</p><h2 class="section-title" id="pb-mechanism-title">Two wheels. One stationary core.</h2><p class="section-desc">The hemispherical shells act as wheels, while the central core holds the electronics. Moving the wheels inward changes the robot's width without changing the core.</p></div></div>
+        <div class="pb-mechanism">
+          <figure class="tile pb-compare reveal">
+            <div class="pb-compare__stage"><img id="pb-state-image" src="../src/img/pebble/prototype.webp" alt="Narrow CAD configuration of PEBBLE, nominal width 136.5 millimeters" width="3200" height="2200" loading="lazy" /></div>
+            <figcaption class="pb-compare__caption"><div class="sx-seg" role="group" aria-label="Compare CAD width configurations"><button type="button" data-pb-state="narrow" aria-pressed="true">Narrow</button><button type="button" data-pb-state="wide" aria-pressed="false">Wide</button></div><span id="pb-state-label" aria-live="polite">136.5 mm · nominal</span></figcaption>
+          </figure>
+          <div class="pb-notes">
+            <article class="tile pb-note reveal"><p class="pb-kicker">01 / Shape</p><h3>Adjust each side separately</h3><p>The same total width can be reached by drawing both wheels inward equally, or by drawing one side in farther. That difference is the variable I want to test.</p></article>
+            <article class="tile pb-note reveal"><p class="pb-kicker">02 / Sensing</p><h3>Use contact, not a preview of the gap</h3><p>The planned controller uses left/right width-adjustment servo-current proxies to choose which side to narrow. Load cells on the test fixture provide an independent force reference. Whether that choice is accurate remains an open question.</p></article>
+            <article class="tile pb-note reveal"><p class="pb-kicker">03 / Scope</p><h3>A research prototype, not a rescue claim</h3><p>The broader concept is a deployable spherical search robot. The first prototype instead uses a fixed, braced tail. Folding, throwing, durability and real-world rescue performance have not been physically demonstrated.</p></article>
+          </div>
+        </div>
+        <p class="sx-fine reveal">Renders come from the November CAD, including the November 8 tail brace. Widths are nominal commanded dimensions, not measured contact widths. The hemispherical-wheel mechanism has prior art; the research focus is the escape strategy, not a claim to invent the mechanism.</p>
+      </div>
+    </section>
+
+    <section class="section" id="research" aria-labelledby="pb-research-title">
+      <div class="container">
+        <div class="sx-head reveal"><div><p class="eyebrow">The research question</p><h2 class="section-title" id="pb-research-title">Narrow equally, or narrow on one side?</h2><p class="section-desc">When a robot enters a converging passage off-center, can contact-responsive asymmetric narrowing help it escape, compared with symmetric narrowing at the same total width reduction?</p></div></div>
+        <div class="pb-modes" aria-label="Four planned experimental modes">
+          <article class="tile pb-mode reveal"><p class="pb-kicker">NONE</p><h3>Stay wide</h3><p>Keep both sides fully extended. No narrowing response.</p><span class="pb-mode__value">161.5 mm fixed</span></article>
+          <article class="tile pb-mode reveal"><p class="pb-kicker">MIN</p><h3>Start narrow</h3><p>Begin at the minimum width. No further change.</p><span class="pb-mode__value">136.5 mm fixed</span></article>
+          <article class="tile pb-mode reveal"><p class="pb-kicker">SYM</p><h3>Narrow both sides</h3><p>After a jam, reduce left and right equally.</p><span class="pb-mode__value">5 + 5 mm / first step</span></article>
+          <article class="tile pb-mode reveal"><p class="pb-kicker">ASYM</p><h3>Choose a side</h3><p>Reduce the side selected by the current proxy first.</p><span class="pb-mode__value">10 mm / first step</span></article>
+        </div>
+        <p class="sx-fine reveal">SYM and ASYM use the same total reduction per step, retrying after each jam until passage or the minimum width. The last step uses only the remaining travel. This separates the effect of asymmetry from simply making the robot narrower.</p>
+        <figure class="tile pb-rig reveal"><img src="../src/img/pebble/funnel.webp" alt="CAD rendering of an adjustable floor funnel, with converging walls and instrumented jaws on a base plate" width="3200" height="2200" loading="lazy" /><figcaption><b>Adjustable floor-funnel fixture · v4</b><span>November 9 experimental design. CAD, not a physical test.</span></figcaption></figure>
+        <div class="pb-test-grid">
+          <article class="tile pb-note reveal"><p class="pb-kicker">Planned comparison</p><h3>96 core trials</h3><p>Two total funnel angles (20° and 30°), two entry conditions (centered and one wall first), four modes, six repeats. Entry offsets and the exit gap are finalized in preliminary testing, not assumed from CAD.</p></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">Measured outcome</p><h3>Pass the line within 60 seconds</h3><p>Success means the marked core center crosses a line 100 mm beyond the actual exit within 60 seconds. Video judges the result; it is not controller input. No remote steering is allowed in this test.</p></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">What would count as evidence?</p><h3>Failures stay in the record</h3><p>I'll compare passage, time, final width and narrowing steps, with force-reference checks of the selected side. Tipping, safety stops and timeouts remain distinct outcomes. An asymmetric advantage is a hypothesis, not a result.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="progress" aria-labelledby="pb-progress-title">
+      <div class="container">
+        <div class="sx-head reveal"><div><p class="eyebrow">Work in progress · November 10, 2026</p><h2 class="section-title" id="pb-progress-title">What exists, and what still has to work.</h2><p class="section-desc">The design and software have checkable outputs. Physical testing is the next standard they need to meet.</p></div></div>
+        <div class="pb-test-grid">
+          <article class="tile pb-note reveal"><p class="pb-kicker">Design developed</p><h3>Robot + test fixture</h3><p>Detailed CAD covers the wheel-spacing mechanism, electronics sled, harness and braced tail, alongside the adjustable floor funnel. Manufacturing fit, material samples and assembly checks still have to be verified on real parts.</p></article>
+          <article class="tile pb-note reveal"><p class="pb-kicker">Software checked</p><h3>Firmware FW10</h3><p>The current firmware has 2,479 dynamic host tests, 10 static guards and five compiled targets recorded. Those are software-side checks, not proof that the hardware or escape controller works on the bench.</p></article>
+          <article class="tile pb-note pb-note--next reveal"><p class="pb-kicker">Next / Physical validation</p><h3>Build, calibrate, then compare</h3><p>Complete fabrication and incoming inspection, assemble safely, validate power and control on the bench, then calibrate the fixture before collecting physical trials. No escape success rate is reported yet.</p></article>
+        </div>
+        <p class="sx-fine reveal">This page reflects the November 10 execution guide, November 9 floor-funnel protocol and FW10 status. Simulation and keyframed CAD explanations inform the design; neither is presented as physical evidence.</p>
+        <div class="tile pb-next reveal"><div><p class="eyebrow">Completed work</p><h3>SENTRY · Bridge anomaly detection</h3><p>Model bridges, public full-scale data, and two real footbridges.</p></div><a class="btn btn--soft" href="sentry.html">View completed project ↗</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer__inner"><div class="footer__left"><p class="footer__brand">Kim Changhoon<span class="footer__dot">.</span></p><p class="footer__meta">&copy; <span id="footer-year">2026</span> · PEBBLE · In progress</p></div><nav class="footer__nav" aria-label="Footer"><a class="footer__link" href="../index.html#projects">← Portfolio</a><a class="footer__top" href="#overview">Back to top ↑</a></nav></div></footer>
+  <script src="../js/main.js?v=20261110a" defer></script>
+  <script src="../js/pebble.js?v=20261110a" defer></script>
+</body>
+</html>

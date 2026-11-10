@@ -1,0 +1,30 @@
+/* PEBBLE case study. Shared bento primitives live in project.css. */
+.pb-intro { background: var(--invert-bg); min-height: 28rem; }
+.pb-intro .sx-intro__title { font-size: clamp(3.8rem, 8vw, 6rem); }
+.pb-intro .sx-intro__lead { max-width: 24ch; }
+.pb-render { margin: 0; min-width: 0; }
+.pb-render > img { width: 100%; flex: 1; min-height: 0; object-fit: contain; border-radius: var(--radius-inner); background: var(--surface-2); }
+.pb-render .sx-poster-tile__cap { flex-wrap: wrap; }
+.pb-page .sx-facts { grid-template-columns: 1fr; }
+.pb-mechanism, .pb-notes, .pb-test-grid { display: grid; gap: 1rem; }
+.pb-note { padding: clamp(1.3rem, 3vw, 1.75rem); }
+.pb-kicker { color: var(--brand); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; }
+.pb-note h3, .pb-mode h3 { font-size: 1.18rem; line-height: 1.25; letter-spacing: -.025em; margin-top: .6rem; }
+.pb-note p:not(.pb-kicker), .pb-mode p:not(.pb-kicker) { font-size: .92rem; color: var(--muted); line-height: 1.65; margin-top: .65rem; }
+.pb-compare { overflow: hidden; margin: 0; align-self: start; }
+.pb-compare__stage img { display: block; width: 100%; height: auto; }
+.pb-compare__caption { padding: 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
+.pb-compare__caption > span { font-family: var(--font-mono); font-size: .74rem; color: var(--muted); }
+.pb-modes { display: grid; gap: 1rem; }
+.pb-mode { padding: 1.4rem; display: flex; flex-direction: column; }
+.pb-mode__value { display: block; padding-top: 1.2rem; margin-top: auto; font-family: var(--font-mono); font-size: .74rem; color: var(--fg-soft); }
+.pb-rig { margin: 1.5rem 0 1rem; padding: .75rem; overflow: hidden; }
+.pb-rig img { display: block; width: 100%; height: auto; max-height: 34rem; object-fit: cover; border-radius: var(--radius-inner); }
+.pb-rig figcaption { padding: .8rem .6rem .25rem; display: flex; flex-wrap: wrap; gap: .4rem 1rem; justify-content: space-between; font-size: .88rem; }
+.pb-rig figcaption span { color: var(--muted); font-size: .8rem; }
+.pb-note--next { border-style: dashed; border-color: var(--border-strong); }
+.pb-next { margin-top: 2rem; padding: 1.6rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.pb-next h3 { margin-top: .4rem; font-size: 1.2rem; letter-spacing: -.025em; }
+.pb-next p:not(.eyebrow) { margin-top: .5rem; color: var(--muted); font-size: .9rem; }
+@media (min-width: 640px) { .pb-modes { grid-template-columns: repeat(2, 1fr); } .pb-page .sx-facts { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .pb-page .sx-hero__bento { grid-template-columns: 1.1fr 1fr; grid-template-areas: 'intro poster' 'facts facts'; } .pb-mechanism { grid-template-columns: 1.1fr 1fr; align-items: start; } .pb-test-grid { grid-template-columns: repeat(3, 1fr); } .pb-modes { grid-template-columns: repeat(4, 1fr); } }
