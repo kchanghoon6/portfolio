@@ -21,7 +21,7 @@ Open http://127.0.0.1:8766/. Detail pages in `pages/` are standalone HTML.
 
 ## Structure
 
-- `pages/pebble.html`, `css/pebble.css`, `js/pebble.js`: current research case study, internal-assembly explorer, component/material explanations and CAD-still comparisons.
+- `pages/pebble.html`, `css/pebble.css`, `js/pebble.js`: visual notebook: large annotated CAD, component callouts, native control/test diagrams and expandable engineering notes.
 - `pages/sentry.html`, `js/sentry.js`: completed-project page and bilingual document reader.
 - `pages/delivery-robot.html`, `models/delivery-robot/`: in-progress delivery robot with current cargo v1.1 CAD, chassis v4.5 projection and explicitly historical October layout.
 - `css/project.css`: shared bento project-page primitives.

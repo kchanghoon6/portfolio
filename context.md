@@ -601,8 +601,7 @@ PEBBLE_v1_1호기/02_계획서_문서/PEBBLE_실행가이드_최신_20261110.md,
 07_펌웨어/STATUS_FW10.md. Robot renders are from 01_CAD_설계/PEBBLE_v3_3D보기.html,
 SHA256 f42dca14d49b848045a6717bf1f02341bf5f66247a707428b94fe92d2ce9f4f9.
 Includes November 8 tail brace and November 9 funnel. Do not publish the 17.5 MB internal
-viewer blindly; only clean CAD stills are used here. The Narrow/Wide buttons switch stills,
-not simulated or physical outcomes. Regenerate from the newest source after verifying its
+viewer blindly; only clean CAD stills are used here. The anatomy buttons switch stills, not simulated or physical outcomes. Regenerate from the newest source after verifying its
 release and privacy; hide #ui and #tag, use the fixed-tail preset for the primary render.
 
 ### Detailed engineering walkthrough (November 10 continuation)
@@ -612,7 +611,7 @@ Use pages 2–8 for explanatory structure, but the November 8–9 correction pag
 execution guide override older parts/process/status descriptions. The original PDF includes
 private transaction/vendor information and is **not published** wholesale.
 
-New sections: Inside → width mechanism → Electronics → Materials → Tests → Progress. The
+Source-content baseline before the visual-first revision: Inside → width mechanism → Electronics → Materials → Tests → Progress. The
 four-button CAD assembly explorer switches authentic stills (inside / right-wheel section /
 width linkage / F5v12 sled); source geometry is unchanged. Assemblies are selectively hidden,
 the wheel is sectioned, module envelopes may be simplified. Captions and English explanations
@@ -641,3 +640,34 @@ minimum-width maze demonstration and supporting material/thermal/radio checks.
 local references and 67 internal anchors checked with no missing targets. Four CAD explorer
 buttons show exactly one explanatory panel and active state. Both robot pages fit 375 px
 without horizontal overflow. Desktop/mobile light/dark and current cargo viewer inspected.
+
+### Visual-first notebook revision (current presentation)
+
+Owner feedback: the engineering expansion was too text-heavy. The default page now follows
+the notebook's image + direct label structure, not paragraphs beside a small CAD render.
+Keep this visual-first hierarchy for future revisions; don't add visible prose cards by default.
+
+PEBBLE now has four compact chapters: Anatomy, Control/power, Experiment, Current state.
+- Four notebook-*.webp stills use original geometry, tightly framed, with illustrative
+  component colors. Colors distinguish parts/material roles, not actual paint or finishes.
+- Direct leader labels use real projected geometry centers from the final camera. Wheel
+  bearing/shell endpoints are raycast-confirmed visible mesh vertices. Normalized positions
+  are embedded in js/pebble.js. If geometry, view, crop or image framing changes, recalculate
+  them; never retain old anchors blindly. Mobile shows a large image plus readable label buttons.
+- The command/power map, four width-policy glyphs and trial matrix are native diagrams.
+  They explain the plan, not dimensional CAD, physics simulation or measured outcomes.
+- All five technical-note groups were retained with exact normalized text, in closed native
+  disclosures. Source-backed hardware/safety/fabrication facts were not discarded.
+- Logical default text-node count fell from 2,121 to about 429 words (varies by selected view),
+  roughly 80%. Not a full-document word reduction: complete notes remain expandable.
+
+Delivery page uses large current cargo views and direct labels, an exact chassis projection,
+a simplified native SVG three-deck map and four illustrated discharge stages. All 60 original
+factual blocks remain in named disclosures. Default text falls roughly 60%. Current v4.5 /
+v1.1 and historical October layout boundaries remain explicit.
+
+QA: 8 HTML pages, 142 local refs and 68 internal anchors checked. Both themes and 375 px
+checked; all five PEBBLE disclosures open still fit 375 px. Original full notes and all
+60 delivery factual blocks independently compared, not accepted on self-report. No source
+PDF or internal 17.5 MB viewer was published. Core factual caveats from the earlier revision
+remain authoritative.
